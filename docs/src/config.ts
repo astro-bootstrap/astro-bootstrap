@@ -1,11 +1,30 @@
-export const SITE_TITLE = 'Astro-Bootstrap';
+export type menu = (
+  | {
+      title: string;
+      href: string;
+      children?: undefined;
+    }
+  | {
+      title: string;
+      children: (
+        | {
+            title: string;
+            href: string;
+          }
+        | {
+            divider: true;
+          }
+      )[];
+    }
+)[];
+export const SITE_TITLE: string = 'Astro-Bootstrap';
 
-export const MAIN_MENU = [ 
-{ title: 'Home', href: '/' },
-// { title: 'Getting Started', href: '/getting-started' },
-// { title: 'Dropdown', children: [
-//   {title: 'First child', href: '/first'},
-//   {divider: true },
-//   {title: 'Second child', href: '/second'},
-// ]}
+export const MAIN_MENU: menu = [
+  { title: 'Home', href: '/' },
+  { title: 'Getting Started', href: '/getting-started' },
+  { title: 'Components', href: '/components' },
+  {
+    title: 'parent',
+    children: [{ title: 'child', href: '/' }, { divider: true }],
+  },
 ];

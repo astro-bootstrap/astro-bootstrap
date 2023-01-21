@@ -7,9 +7,10 @@ const components = await Astro.glob('../pages/components/**/*.{md,mdx}');
   <ul class="list-unstyled ps-2">
     {
       components.map((component) => {
-        const astro: string = component.frontmatter.variant === 'component' 
-          ? (<sup class="astro-component text-danger">.astro</sup>) 
-          : null 
+        const astro: string =
+          component.frontmatter.variant === 'component' ? (
+            <sup class="astro-component text-danger">.astro</sup>
+          ) : null;
         return (
           <li>
             <a href={component.url} class="text-decoration-none">

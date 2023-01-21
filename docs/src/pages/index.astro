@@ -4,23 +4,37 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout title="Welcome to Astro.">
   <main>
-    <h1>Welcome to <span class="text-gradient">Astro-Bootstrap</span></h1>
-    <div class="instructions">
-      <p>To get started, click on a component on the left.</p>
-      <p>The library is currently under development</p>
-      <p>Install Astro-Bootstrap with `npm install astro-bootstrap`</p>
-      <p>You must load bootstrap 5.x CSS for these components to work</p>
+    <div class="container">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-6 col-sm-9 py-5">
+          <h1 class="py-5">
+            Welcome to <span class="text-gradient">Astro-Bootstrap</span>
+          </h1>
+          <a
+            role="button"
+            href="/getting-started"
+            class="btn btn-lg btn-primary m-1">Get Started</a
+          >
+          <a
+            role="button"
+            href="/components"
+            class="btn btn-lg btn-secondary m-1">Components</a
+          >
+        </div>
+      </div>
     </div>
-
-    <ul role="list" class="link-card-grid"></ul>
   </main>
 </BaseLayout>
 
 <style>
-  main {
-    margin: auto;
-    padding: 1.5rem;
-    max-width: 60ch;
+  :root {
+    --accent: 124, 58, 237;
+    --accent-gradient: linear-gradient(
+      45deg,
+      rgb(var(--accent)),
+      #da62c4 30%,
+      white 60%
+    );
   }
   h1 {
     font-size: 3rem;
@@ -33,30 +47,5 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     -webkit-text-fill-color: transparent;
     background-size: 400%;
     background-position: 0%;
-  }
-  .instructions {
-    line-height: 1.6;
-    margin: 1rem 0;
-    border: 1px solid rgba(var(--accent), 25%);
-    background-color: white;
-    padding: 1rem;
-    border-radius: 0.4rem;
-  }
-  .instructions code {
-    font-size: 0.875em;
-    font-weight: bold;
-    background: rgba(var(--accent), 12%);
-    color: rgb(var(--accent));
-    border-radius: 4px;
-    padding: 0.3em 0.45em;
-  }
-  .instructions strong {
-    color: rgb(var(--accent));
-  }
-  .link-card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-    gap: 1rem;
-    padding: 0;
   }
 </style>
