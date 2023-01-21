@@ -3,7 +3,7 @@ const components = await Astro.glob('../pages/components/**/*.{md,mdx}');
 const utilities = await Astro.glob('../pages/utilities/**/*.{md,mdx}');
 ---
 
-<div class="pt-3 side-nav">
+<aside class="pt-3 side-nav">
   <h3 class="h5">Components</h3>
   <ul class="list-unstyled ps-2">
     {
@@ -41,14 +41,11 @@ const utilities = await Astro.glob('../pages/utilities/**/*.{md,mdx}');
         })
     }
   </ul>
-</div>
+</aside>
 <style>
   .side-nav {
     height: 100% !important;
-    overflow: scroll;
+    overflow-x: hidden;
     overflow-y: auto;
-    margin-right: -15px;
-    padding-right: calc(15px + 1rem);
-    flex-wrap: nowrap;
   }
 </style>

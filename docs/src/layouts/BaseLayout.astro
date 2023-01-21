@@ -22,10 +22,14 @@ const titleText = isHome ? `${SITE_TITLE}` : `${title} - ${SITE_TITLE}`;
     <title>{titleText}</title>
   </head>
   <body>
-    <header>
+
       <Navbar />
-    </header>
+ 
     <slot />
   </body>
 </html>
-
+<style>
+  body {
+    height: 100vh;
+  }
+</style>

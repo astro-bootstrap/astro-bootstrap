@@ -9,8 +9,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "predeployold": "npm run build",
-    "deployold": "gh-pages -d dist",
+    "predeploy": "pnpm run build",
     "deploy": "gh-pages -d dist --branch master --repo \"https://github.com/astro-bootstrap/astro-bootstrap.github.io.git\"",
     "update": "pnpm update --interactive --latest"
   },
