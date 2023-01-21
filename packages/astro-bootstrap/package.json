@@ -1,0 +1,53 @@
+{
+  "name": "astro-bootstrap",
+  "description": "Bootstrap 5 components crafted for use with Astro",
+  "keywords": [
+    "astro-component",
+    "css",
+    "withastro",
+    "bootstrap",
+    "components"
+  ],
+  "version": "0.0.17",
+  "type": "module",
+  "exports": {
+    ".": "./index.ts"
+  },
+  "files": [
+    "lib/**/*"
+  ],
+  "scripts": {
+    "eslint": "eslint \"lib/**/*.{js,astro}\"",
+    "eslint:fix": "pnpm run eslint -- --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/astro-bootstrap/astro-bootstrap.git"
+  },
+  "bugs": {
+    "url": "https://github.com/astro-bootstrap/astro-bootstrap/issues"
+  },
+  "homepage": "https://astro-bootstrap.github.io",
+  "author": {
+    "name": "Sean Emerson",
+    "email": "emerson.sean.dev@gmail.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@typescript-eslint/parser": "^5.48.2",
+    "eslint": "^8.32.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-astro": "^0.21.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.8.3",
+    "prettier-plugin-astro": "^0.7.2"
+  },
+  "peerDependencies": {
+    "astro": "1.x",
+    "bootstrap": "5.x"
+  },
+  "dependencies": {
+    "nanoid": "^4.0.0",
+    "title-case": "^3.0.3"
+  }
+}

@@ -1,0 +1,15 @@
+---
+const { id, index: i, show, alwaysOpen, class: className } = Astro.props;
+const dataBsParent = alwaysOpen ? null : `#${id}`;
+---
+
+<div
+  id={`${id}-collapse-${i}`}
+  class:list={['accordion-collapse', 'collapse', { show }]}
+  aria-labelledby={`${id}-heading-${i}`}
+  data-bs-parent={dataBsParent}
+>
+  <div class:list={['accordion-body', className]}>
+    <slot />
+  </div>
+</div>

@@ -1,0 +1,12 @@
+---
+const { class: className = '', id } = Astro.props;
+
+export interface Props {
+  class: string;
+  id: string;
+}
+---
+
+<div class:list={['tab-content', className]} id={`${id}-tab-content`}>
+  <slot />
+</div>

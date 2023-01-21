@@ -1,0 +1,12 @@
+---
+const { href, title } = Astro.props;
+import ActiveLink from './ActiveLink.astro';
+export interface Props {
+  href: string;
+  title: string;
+}
+---
+
+<li class="nav-item">
+  <ActiveLink {href} class="nav-link">{title}</ActiveLink>
+</li>

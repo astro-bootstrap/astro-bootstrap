@@ -1,0 +1,13 @@
+---
+const buttons = [{ text: 'Left' }, { text: 'Center' }, { text: 'Right' }];
+---
+
+<div class="btn-group" role="group" aria-label="Basic example">
+  {
+    buttons.map((button) => (
+      <button type="button" class="btn btn-primary">
+        {button.text}
+      </button>
+    ))
+  }
+</div>

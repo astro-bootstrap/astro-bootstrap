@@ -1,0 +1,16 @@
+---
+const { id, text, class: className, index: i, show } = Astro.props;
+---
+
+<h2 class:list={['accordion-header', className]} id={`${id}-heading-${i}`}>
+  <button
+    class="accordion-button"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target={`#${id}-collapse-${i}`}
+    aria-expanded={show}
+    aria-controls={`${id}-collapse-${i}`}
+  >
+    <slot />
+  </button>
+</h2>

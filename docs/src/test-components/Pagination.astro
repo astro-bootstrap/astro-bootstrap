@@ -1,0 +1,33 @@
+---
+import ActiveLink from 'astro-bootstrap/ActiveLink.astro';
+const { page } = Astro.props;
+const prevDisabled = page.url.prev == undefined;
+const nextDisabled = page.url.next == undefined;
+// create array of page numbers based on number of paginated pages
+const pages = Array(page.lastPage).fill(1).map((n, i) => n + i);
+const path = Astro.url.pathname;
+// remove numbers from the end of this pages path
+let baseURL = path.replace(/\d+$/, '');
+// remove trailing slash
+baseURL = baseURL.replace(/\/$/, '');
+---
+
+<nav aria-label="...">
+  <ul class="pagination">
+    <li class:list={['page-item', { disabled: prevDisabled }]}>
+      <a class="page-link" href={page.url.prev}>Previous</a>
+    </li>
+    {
+      pages.map((page) => (
+        <li class="page-item">
+          <ActiveLink class="page-link" href={page === 1 ? baseURL : `${baseURL}/${page}`}>
+            {page}
+          </ActiveLink>
+        </li>
+      ))
+    }
+    <li class:list={['page-item', { disabled: nextDisabled }]}>
+      <a class="page-link" href={page.url.next}>Next</a>
+    </li>
+  </ul>
+</nav>

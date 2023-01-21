@@ -1,0 +1,59 @@
+---
+import BreadcrumbItem from './BreadcrumbItem.astro';
+
+const {
+  id = '',
+  class: className = '',
+  itemClass = '',
+  ariaLabel = 'Breadcrumb',
+} = Astro.props;
+
+const path: string = Astro.url.pathname;
+const slugs: string[] = path.split('/').filter((x) => x);
+let currentPath: string = '';
+
+interface Parts {
+  text: string;
+  href: string | undefined;
+}
+
+interface Props {
+  id: string;
+  class: string;
+  itemClass: string;
+  ariaLabel: string;
+}
+
+let parts: Parts[] = [
+  {
+    text: 'Home',
+    href: path !== '/' ? '/' : undefined,
+  },
+];
+
+slugs.forEach((slug) => {
+  const text: string = slug.replace(/[-_]/g, ' ');
+  currentPath = `${currentPath}/${slug}`;
+  const href = currentPath;
+
+  parts.push({
+    text: text,
+    href,
+  });
+});
+const slot = await Astro.slots.render('default');
+---
+
+<nav aria-label={ariaLabel} {id}>
+  <ol class="breadcrumb" class={className}>
+    <slot>
+      {
+        parts.map(({ text, href }) => (
+          <BreadcrumbItem {href} class={itemClass}>
+            {text}
+          </BreadcrumbItem>
+        ))
+      }
+    </slot>
+  </ol>
+</nav>

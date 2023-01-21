@@ -1,0 +1,18 @@
+---
+const { ariaControls } = Astro.props;
+export interface Props {
+  ariaControls: string;
+}
+---
+
+<button
+  class="navbar-toggler"
+  type="button"
+  data-bs-toggle="collapse"
+  data-bs-target={`#${ariaControls}`}
+  aria-controls={ariaControls}
+  aria-expanded="false"
+  aria-label="Toggle navigation"
+>
+  <span class="navbar-toggler-icon"></span>
+</button>

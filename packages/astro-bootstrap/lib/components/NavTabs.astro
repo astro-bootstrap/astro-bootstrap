@@ -1,0 +1,15 @@
+---
+const { id, class: className = '' } = Astro.props;
+
+export interface Props {
+  id: string;
+  class: string;
+}
+---
+
+<ul class:list={['nav nav-tabs', className]} id={`${id}-tabs`} role="tablist">
+  <slot />
+</ul>
+<script>
+  import 'bootstrap/js/dist/tab';
+</script>

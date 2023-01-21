@@ -1,0 +1,23 @@
+---
+const components = await Astro.glob('../pages/components/**/*.{md,mdx}');
+---
+
+<div class="pt-3">
+  <h3 class="h5">All Components</h3>
+  <ul class="list-unstyled ps-2">
+    {
+      components.map((component) => {
+        const astro: string = component.frontmatter.variant === 'component' 
+          ? (<sup class="astro-component text-danger">.astro</sup>) 
+          : null 
+        return (
+          <li>
+            <a href={component.url} class="text-decoration-none">
+              {component.frontmatter.title} {astro}
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</div>

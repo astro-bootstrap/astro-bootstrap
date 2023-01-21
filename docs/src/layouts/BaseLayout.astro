@@ -1,0 +1,74 @@
+---
+export interface Props {
+  title: string;
+}
+
+import { SITE_TITLE } from '../config';
+const { title } = Astro.props;
+import 'bootstrap/dist/css/bootstrap.css';
+import Navbar from '../components/Navbar.astro';
+import SideNav from '../components/SideNav.astro';
+const path = Astro.url.pathname;
+const isHome = path === '/';
+const titleText = isHome ? `${SITE_TITLE}` : `${title} - ${SITE_TITLE}`;
+---
+
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{titleText}</title>
+  </head>
+  <body>
+    <header>
+      <Navbar />
+    </header>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xl-2 col-md-3 col-12">
+          <div class="side-nav">
+            <aside>
+              <SideNav />
+            </aside>
+          </div>
+        </div>
+        <div class="col-xl-10 col-md-9 col-12 p-5">
+          <main>
+            <slot />
+          </main>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<style>
+  .side-nav {
+    height: 100% !important;
+    overflow: auto;
+    margin-right: -15px;
+    padding-right: calc(15px + 1rem);
+    flex-wrap: nowrap;
+  }
+</style>
+<style is:global>
+  :root {
+    --accent: 124, 58, 237;
+    --accent-gradient: linear-gradient(
+      45deg,
+      rgb(var(--accent)),
+      #da62c4 30%,
+      white 60%
+    );
+  }
+  html {
+    font-family: system-ui, sans-serif;
+    background-color: #f6f6f6;
+  }
+  code {
+    font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
+      DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+  }
+</style>

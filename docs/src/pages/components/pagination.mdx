@@ -1,0 +1,29 @@
+---
+title: Pagination
+layout: '../../layouts/Default.astro'
+variant: component
+---
+import Example from '@components/Example.astro'
+import Standard from '@examples/Pagination/standard.html'
+import rawPagination from './pagination-test/[...page].astro?raw'
+
+The pagination component generates the pagination controls for the page.
+
+You must set up the pagination through Astro's paginate function (see below). This component then accesses the `page` property to generate the pagination buttons.
+
+<Example>
+<div class="d-flex justify-content-center" slot="component">
+<Standard slot="component" />
+</div>
+<Fragment slot="code" set:html={rawPagination}/>
+</Example>
+
+The rendered code is a static example, <a href="pagination-test"> click here to see a live demo.</a>
+
+The Pagination component returns the default bootstrap pagination component, with the current page as an active link, and prev/next disabled if not available e.g.
+
+You can optionally set the `aria-label` property with the `ariaLabel` prop e.g.
+
+```
+<Pagination page={page} aria-label="Pagination">
+```

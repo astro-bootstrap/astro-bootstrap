@@ -1,0 +1,43 @@
+---
+import {
+  NavbarDropdown,
+  NavbarItem,
+  NavbarCollapse,
+  NavbarToggler,
+} from 'astro-bootstrap';
+// demonstration data
+const siteTitle = 'Astro site'; // pull this in from a config file
+const items = [
+  // pull this in from a config file
+  { title: 'Home', href: '#' },
+  { title: 'About', href: '#' },
+  {
+    title: 'Dropdown',
+    children: [
+      { title: 'First child', href: '#' },
+      { divider: true },
+      { title: 'Second child', href: '#' },
+    ],
+  },
+];
+---
+
+<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">{siteTitle}</a>
+    <NavbarToggler ariaControls="navbarSupportedContent" />
+    <NavbarCollapse id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        {
+          items.map((item) =>
+            item.children ? (
+              <NavbarDropdown {...item} />
+            ) : (
+              <NavbarItem {...item} />
+            ),
+          )
+        }
+      </ul>
+    </NavbarCollapse>
+  </div>
+</nav>

@@ -1,0 +1,31 @@
+---
+const {
+  index,
+  active = false,
+  id,
+  class: className = '',
+  buttonClass = '',
+} = Astro.props;
+export interface Props {
+  index: number;
+  active?: boolean;
+  id: string;
+  class: string;
+  buttonClass: string;
+}
+---
+
+<li class:list={['nav-item', className]} role="presentation">
+  <button
+    class:list={['nav-link', buttonClass, { active }]}
+    id={`${id}-tab-${index}`}
+    data-bs-toggle="tab"
+    data-bs-target={`#${id}-tab-pane-${index}`}
+    type="button"
+    role="tab"
+    aria-controls={`${id}-tab-pane-${index}`}
+    aria-selected={index === 0}
+  >
+    <slot />
+  </button>
+</li>

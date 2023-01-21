@@ -1,0 +1,14 @@
+---
+import PaginationLink from './PaginationLink.astro';
+const { disabled = false, class: className } = Astro.props;
+export interface Props {
+  class?: string;
+  disabled?: boolean;
+}
+
+// tabindex="-1" for disabled links
+---
+
+<li class:list={['page-item', className, { disabled }]}>
+  <slot />
+</li>

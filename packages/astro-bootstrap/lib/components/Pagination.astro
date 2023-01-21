@@ -1,0 +1,108 @@
+---
+// todo: limit number of pagination results and display elipsis ... indead of excessive numbers, but keep last number?
+import PaginationItem from './PaginationItem.astro';
+import PaginationLink from './PaginationLink.astro';
+const {
+  page,
+  ariaLabel = 'Page pagination control',
+  id,
+  class: className,
+  itemClass,
+  linkClass,
+  size,
+} = Astro.props;
+export interface Props {
+  ariaLabel?: string;
+  id?: string;
+  class?: string;
+  itemClass?: string;
+  linkClass?: string;
+  size?: 'sm' | 'lg';
+}
+
+const sm = size === 'sm' ? true : false;
+const lg = size === 'lg' ? true : false;
+const { prev, next, current } = page.url;
+const { currentPage, lastPage } = page;
+
+const path: string = Astro.url.pathname;
+
+// remove numbers from the end of this pages path, if we are on a generated pagination page
+let baseURL: string = path.replace(/\d+$/, '');
+// remove trailing slash if present
+baseURL = baseURL.replace(/\/$/, '');
+
+const pagination = (current: number, last: number, delta: number = 2) => {
+  const left = current - delta;
+  const right = current + delta + 1;
+  const range = [];
+  const rangeWithDots = [];
+  let l;
+
+  for (let i = 1; i <= last; i++) {
+    // add first and last pages, and pages to display
+    if (i == 1 || i == last || (i >= left && i < right)) {
+      range.push(i);
+    }
+  }
+  // add ... for pages which don't exist in range[]
+  for (let i of range) {
+    if (l) {
+      if (i - l === 2) {
+        rangeWithDots.push(l + 1);
+      } else if (i - l !== 1) {
+        rangeWithDots.push('...');
+      }
+    }
+    rangeWithDots.push(i);
+    l = i;
+  }
+
+  return rangeWithDots;
+};
+
+const pages = pagination(currentPage, lastPage);
+---
+
+<nav aria-label={ariaLabel}>
+  <ul
+    class:list={[
+      'pagination',
+      className,
+      { 'pagination-sm': sm, 'pagination-lg': lg },
+    ]}
+    {id}
+  >
+    <PaginationItem disabled={prev == null} class={itemClass}>
+      <PaginationLink disabled={prev == null} href={prev} class={linkClass}>
+        Previous
+      </PaginationLink>
+    </PaginationItem>
+    {
+      pages.map((page) => {
+        let href = '';
+        let disabled = false;
+        if (page === 1) {
+          href = baseURL;
+        } else if (page === '...') {
+          href = null;
+          disabled = true;
+        } else {
+          href = `${baseURL}/${page}`;
+        }
+        return (
+          <PaginationItem class={itemClass}>
+            <PaginationLink href={href} {disabled}>
+              {page}
+            </PaginationLink>
+          </PaginationItem>
+        );
+      })
+    }
+    <PaginationItem disabled={next == null} class={itemClass}>
+      <PaginationLink disabled={next == null} href={next} class={linkClass}>
+        Next
+      </PaginationLink>
+    </PaginationItem>
+  </ul>
+</nav>

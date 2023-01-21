@@ -1,0 +1,45 @@
+---
+import ActiveLink from './ActiveLink.astro';
+const { title, children } = Astro.props;
+
+export interface Props {
+  title: string;
+  children: Child[];
+}
+
+export interface Child {
+  divider?: boolean;
+  title?: string;
+  href?: string;
+}
+---
+
+<li class="nav-item dropdown">
+  <a
+    class="nav-link dropdown-toggle"
+    href="#"
+    role="button"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+  >
+    {title}
+  </a>
+  <ul class="dropdown-menu">
+    {
+      children.map((child) => (
+        <li>
+          {child.divider ? (
+            <hr class="dropdown-divider" />
+          ) : (
+            <ActiveLink href={child.href} class="dropdown-item">
+              {child.title}
+            </ActiveLink>
+          )}
+        </li>
+      ))
+    }
+  </ul>
+</li>
+<script>
+  import 'bootstrap/js/dist/dropdown';
+</script>

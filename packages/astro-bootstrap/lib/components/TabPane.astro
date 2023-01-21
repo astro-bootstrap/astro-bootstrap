@@ -1,0 +1,29 @@
+---
+const {
+  index,
+  class: className = '',
+  active = false,
+  fade = false,
+  id,
+} = Astro.props;
+
+const show = fade && active;
+
+export interface Props {
+  index: number;
+  active?: boolean;
+  fade: boolean;
+  id: string;
+  class: string;
+}
+---
+
+<div
+  class:list={['tab-pane', className, { fade: fade, show: show, active }]}
+  id={`${id}-tab-pane-${index}`}
+  role="tabpanel"
+  aria-labelledby={`${id}-tab-${index}`}
+  tabindex="0"
+>
+  <slot />
+</div>

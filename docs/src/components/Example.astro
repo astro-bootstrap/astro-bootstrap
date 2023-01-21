@@ -1,0 +1,35 @@
+---
+// const codeSlot = await Astro.slots.render('code')
+import { Code } from 'astro/components';
+const codeSlot = await Astro.slots.render('code');
+---
+
+<div class="container-fluid border rounded g-0 mb-3">
+  <div class="row p-3">
+    <div class="col">
+      <slot name="component" />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="p-2 bg-dark text-white border-top border-bottom">Astro file</div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <Code code={codeSlot} lang="astro" />
+      <!-- {code} -->
+    </div>
+  </div>
+</div>
+<style is:global>
+  /* has to be global as without, is scoped to only this component */
+  .astro-code {
+    padding: 1rem;
+    margin-bottom: 0;
+  }
+  .breadcrumb {
+    margin-bottom: 0;
+  }
+
+</style>

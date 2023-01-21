@@ -1,0 +1,69 @@
+---
+import NavTabs from './NavTabs.astro';
+import NavTab from './NavTab.astro';
+import TabContent from './TabContent.astro';
+import TabPane from './TabPane.astro';
+
+import { nanoid } from 'nanoid';
+
+const {
+  tabs,
+  id: userId,
+  class: className = '',
+  navClass = '',
+  buttonClass = '',
+  paneClass = '',
+  fade = false,
+} = Astro.props;
+
+const id = userId || `tabs-${nanoid(8)}`;
+
+export interface TabInterface {
+  title: string;
+  body: string;
+  active?: boolean;
+}
+
+export interface TabContentInterface {
+  tabs?: TabInterface[];
+  id?: string;
+  fade: boolean;
+  class: string;
+  navClass: string;
+  buttonClass: string;
+  paneClass: string;
+}
+
+export interface Props extends TabContentInterface {}
+---
+
+<NavTabs {id} class={className}>
+  <slot>
+    {
+      tabs &&
+        tabs.map((tab: TabInterface, index: number) => (
+          <NavTab
+            {index}
+            {id}
+            active={tab.active}
+            class={navClass}
+            buttonClass={buttonClass}
+          >
+            {tab.title}
+          </NavTab>
+        ))
+    }
+  </slot>
+</NavTabs>
+<TabContent class={className} {id}>
+  <slot>
+    {
+      tabs &&
+        tabs.map((tab, index: number) => (
+          <TabPane {index} {fade} {id} active={tab.active} class={paneClass}>
+            {tab.body}
+          </TabPane>
+        ))
+    }
+  </slot>
+</TabContent>

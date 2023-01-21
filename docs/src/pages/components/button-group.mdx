@@ -1,0 +1,16 @@
+---
+title: Button group
+layout: '@layouts/Default.astro'
+variant: template
+---
+import Standard from '@examples/ButtonGroup/Standard.astro';
+import rawStandard from '@examples/ButtonGroup/Standard.astro?raw';
+import Example from '@components/Example.astro'
+
+The button group HTML markup can be simplified and made more dry by adding the button text to an array, and iterating over it e.g.
+
+
+<Example>
+  <Standard slot="component"/>
+  <Fragment slot="code" set:html={rawStandard} />
+</Example>

@@ -1,0 +1,67 @@
+---
+import AccordionItem from './AccordionItem.astro';
+import AccordionHeader from './AccordionHeader.astro';
+import AccordionBody from './AccordionBody.astro';
+
+import { nanoid } from 'nanoid';
+
+const {
+  flush = false,
+  class: className = '',
+  data = [],
+  id: userId,
+  alwaysOpen = false,
+  headerClass = '',
+  itemClass = '',
+  bodyClass = '',
+} = Astro.props;
+
+export interface AccordionInterface {
+  alwaysOpen: boolean;
+  id: string;
+  headerClass: string;
+  itemClass: string;
+  bodyClass: string;
+}
+
+interface Props extends AccordionInterface {
+  flush: boolean;
+  class: string;
+  data?: Data[];
+}
+
+export interface Data {
+  header: string;
+  body: string;
+  show?: boolean;
+}
+
+const id = userId || `accordion-${nanoid(8)}`;
+---
+
+<div class:list={['accordion', className, { 'accordion-flush': flush }]} {id}>
+  <slot>
+    {
+      data &&
+        data.map((item, index: number) => (
+          <AccordionItem class={itemClass}>
+            <AccordionHeader {id} {index} class={headerClass} show={item.show}>
+              <Fragment set:html={item.header} />
+            </AccordionHeader>
+            <AccordionBody
+              {id}
+              {index}
+              class={bodyClass}
+              show={item.show}
+              {alwaysOpen}
+            >
+              <Fragment set:html={item.body} />
+            </AccordionBody>
+          </AccordionItem>
+        ))
+    }
+  </slot>
+</div>
+<script>
+  import 'bootstrap/js/dist/collapse.js';
+</script>

@@ -1,0 +1,13 @@
+---
+title: Navbar
+layout: '@layouts/Default.astro'
+variant: component
+---
+import Example from '@components/Example.astro';
+import Standard from '@examples/Navbar/Standard.astro';
+import rawStandard from '@examples/Navbar/Standard.astro?raw';
+
+<Example>
+  <Standard slot="component" />
+  <Fragment slot="code" set:html={rawStandard} />
+</Example>

@@ -1,0 +1,25 @@
+---
+title: Tabs
+variant: component
+layout: '@layouts/Default.astro'
+---
+import Example from '@components/Example.astro';
+import Standard from '@examples/Tabs/Standard.astro';
+import rawStandard from '@examples/Tabs/Standard.astro?raw'
+
+Make sure you set one of your Tabs to active via your data.
+
+<Example>
+  <Standard slot="component"/>
+  <Fragment slot="code" set:html={rawStandard} />
+</Example>
+
+```  
+id and class are optional
+class adds a class to the tab content pane
+omit fade if you don't want a fade transition between content panes
+
+```
+
+
+

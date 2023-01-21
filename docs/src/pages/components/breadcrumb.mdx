@@ -1,0 +1,18 @@
+---
+title: Breadcrumb
+layout: '@layouts/Default.astro'
+variant: component
+---
+import Example from '@components/Example.astro';
+import rawStandard from '@examples/Breadcrumb/Standard.astro?raw';
+import Standard from '@examples/Breadcrumb/Standard.astro';
+
+In order to use breadcrumbs you need to import the astro-bootstrap/Breadcrumbs.astro component. The breadcrumbs are automatically generated. To modify the output, you need to change the scss variables and/or target the CSS utility classes.
+
+<Example>
+  <Standard slot="component"/>
+  <Fragment slot="code" set:html={rawStandard} />
+</Example>
+
+- id is optional
+- set aria-label with ariaLabel, defaults to "Breadcrumb"

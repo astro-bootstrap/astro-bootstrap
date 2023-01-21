@@ -1,0 +1,10 @@
+---
+import { Tabs } from 'astro-bootstrap';
+const tabs = [
+  { title: 'Tab 1', body: 'Tab 1 text', active: true },
+  { title: 'Tab 2', body: 'Tab 2 text' },
+  { title: 'Tab 3', body: 'Tab 3 text' },
+];
+---
+
+<Tabs {tabs} id="exampleTabs" class="p-3" fade />

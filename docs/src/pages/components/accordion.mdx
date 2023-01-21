@@ -1,0 +1,30 @@
+---
+title: Accordion
+layout: '@layouts/Default.astro'
+variant: component
+---
+import Example from '@components/Example.astro';
+import Standard from '@examples/Accordion/Standard.astro';
+import rawStandard from '@examples/Accordion/Standard.astro?raw';
+
+The following example shows how the accordion can be implemented with a JavaScript loop to avoid code repetition. See the bootstrap docs for variations.
+
+<Example>
+  <Standard slot="component" />
+  <Fragment slot="code" set:html={rawStandard} />
+</Example>
+
+
+Optional props:
+```
+  <Accordion
+  flush
+  alwaysOpen
+  data={data}
+  class="accordion-class"
+  headerClass="accordion-header-class"
+  itemClass="accordion-item-class"
+  bodyClass="accordion-body-class"
+  id="example2"
+/>
+```
