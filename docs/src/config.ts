@@ -23,8 +23,8 @@ export const MAIN_MENU: menu = [
   { title: 'Home', href: '/' },
   { title: 'Getting Started', href: '/getting-started' },
   { title: 'Components', href: '/components' },
-  {
-    title: 'parent',
-    children: [{ title: 'child', href: '/' }, { divider: true }],
-  },
+  // {
+  //   title: 'parent',
+  //   children: [{ title: 'child', href: '/' }, { divider: true }],
+  // },
 ];

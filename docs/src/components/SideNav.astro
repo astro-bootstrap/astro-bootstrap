@@ -1,9 +1,10 @@
 ---
 const components = await Astro.glob('../pages/components/**/*.{md,mdx}');
+const utilities = await Astro.glob('../pages/utilities/**/*.{md,mdx}');
 ---
 
-<div class="pt-3">
-  <h3 class="h5">All Components</h3>
+<div class="pt-3 side-nav">
+  <h3 class="h5">Components</h3>
   <ul class="list-unstyled ps-2">
     {
       components.map((component) => {
@@ -21,4 +22,33 @@ const components = await Astro.glob('../pages/components/**/*.{md,mdx}');
       })
     }
   </ul>
+  <h3 class="h5">Utilities</h3>
+  <ul class="list-unstyled ps-2">
+    {
+      utilities &&
+        utilities.map((utility) => {
+          const astro: string =
+            utility.frontmatter.variant === 'component' ? (
+              <sup class="astro-component text-danger">.astro</sup>
+            ) : null;
+          return (
+            <li>
+              <a href={utility.url} class="text-decoration-none">
+                {utility.frontmatter.title} {astro}
+              </a>
+            </li>
+          );
+        })
+    }
+  </ul>
 </div>
+<style>
+  .side-nav {
+    height: 100% !important;
+    overflow: scroll;
+    overflow-y: auto;
+    margin-right: -15px;
+    padding-right: calc(15px + 1rem);
+    flex-wrap: nowrap;
+  }
+</style>

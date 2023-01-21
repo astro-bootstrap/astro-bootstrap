@@ -9,30 +9,48 @@ import SideNav from '../components/SideNav.astro';
 ---
 
 <BaseLayout {title}>
-  <div class="container-fluid">
+  <div class="container-fluid component-wrapper">
     <div class="row">
-      <div class="col-xl-2 col-md-3 col-12">
-        <div class="side-nav">
-          <aside>
-            <SideNav />
-          </aside>
-        </div>
-      </div>
-      <div class="col-xl-10 col-md-9 col-12 p-5">
+
+      <div class="col-xl-10 col-lg-9 col-sm-8 col-12 p-5 right-column">
         <main>
           <h1>{title}</h1>
           <slot />
         </main>
       </div>
+      <div class="col-xl-2 col-lg-3 col-sm-4  col-12 left-column order-sm-first">
+        <aside>
+          <SideNav />
+        </aside>
+      </div>
     </div>
   </div>
 </BaseLayout>
 <style>
-  .side-nav {
-    height: 100% !important;
-    overflow: auto;
-    margin-right: -15px;
-    padding-right: calc(15px + 1rem);
-    flex-wrap: nowrap;
+  body {
+    overflow: hidden;
+  }
+  .component-wrapper {
+    display: flex;
+    overflow: hidden;
+    height: 100vh;
+    /* margin-top: -100px;
+    padding-top: 100px; */
+    /* position: relative;
+    width: 100%;
+    backface-visibility: hidden;
+    will-change: overflow; */
+  }
+  .left-column,
+  .right-column {
+
+    height: 100%;
+  }
+  .left-column {
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  .right-column {
+    overflow: scroll;
   }
 </style>
