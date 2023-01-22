@@ -1,37 +1,38 @@
 ---
 const { title, api } = Astro.props.frontmatter || Astro.props;
+const { headings } = Astro.props;
 export interface Props {
   title: string;
 }
 import BaseLayout from './BaseLayout.astro';
 
 import SideNav from '@components/SideNav.astro';
+import Toc from '@components/Toc.astro';
 import Api from '@components/Api.astro';
 ---
 
 <BaseLayout {title}>
   <div class="container-fluid">
     <div class="row flex-class">
-      <div class="col-xl-10 col-lg-9 col-sm-8 col-12 p-5 right-column">
+      <div class="col-xl-8 col-lg-6 col-sm-4 col-12 py-2 px-3 main-column">
         <main>
-          <h1>{title}</h1>
+          <h1 id="overview">{title}</h1>
           <slot />
-          { api && <Api data={api} />}
+       
         </main>
       </div>
       <div
-        class="col-xl-2 col-lg-3 col-sm-4 col-12 left-column order-sm-first sticky-col"
+        class="col-xl-2 col-lg-3 col-sm-4 col-12 left-column order-sm-first sticky-col py-2 px-2"
       >
         <SideNav />
+      </div>
+      <div class="col-xl-2 col-lg-3 col-sm-4 d-none d-sm-block sticky-col right-column py-2 px-2">
+        <Toc {headings} />
       </div>
     </div>
   </div>
 </BaseLayout>
 <style>
-  /* .flex-class {
-    display: flex;
-    flex-wrap: wrap;
-  } */
   .sticky-col {
     overflow: hidden;
     position: sticky;

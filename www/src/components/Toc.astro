@@ -1,0 +1,65 @@
+---
+const { headings } = Astro.props;
+
+export interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+export interface Props {
+  headings: Heading[];
+}
+
+import type { TocItem } from '../util/generateToc';
+
+import generateToc from '../util/generateToc';
+import TocItemLink from './TocItemLink.astro';
+
+const toc: TocItem[] = generateToc(headings);
+---
+
+<div class="toc-wrapper">
+  <h4 class="h5">On this page</h4>
+  <ul class="toc-root toc list-unstyled" id="js-toc">
+    {toc.map((heading) => <TocItemLink {heading} />)}
+  </ul>
+</div>
+<style>
+  ul.toc {
+    list-style: none;
+    padding: 0;
+  }
+  a.header-link {
+    padding-top: 0.275rem;
+    padding-bottom: 0.275rem;
+
+    display: inline-flex;
+    gap: 0.5em;
+    width: 100%;
+    font: inherit;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    line-height: 1.3;
+    color: var(--theme-text-lighter);
+    text-decoration: none;
+    unicode-bidi: plaintext;
+
+    padding-inline-start: 1rem;
+
+    font-size: 1em;
+    transition: border-inline-start-color 100ms ease-out,
+      background-color 200ms ease-out;
+  }
+</style>
+<script>
+  import ScrollSpy from 'bootstrap/js/dist/scrollspy';
+  const bsScrollSpy = new ScrollSpy(document.body, {
+    target: '#js-toc',
+    // offset: 10,
+  });
+</script>
+<style is:global>
+  [id] {
+    scroll-margin-top: 4rem;
+  }
+</style>

@@ -4,7 +4,7 @@ subtitle: Build vertically collapsing accordions in combination with the collaps
 layout: '@layouts/Component.astro'
 variant: component
 api:
-  - name: Accordion
+  accordion:
     import: "import { accordion } from 'astro-bootstrap'"
     props:
     - name: data
@@ -38,6 +38,7 @@ import Flush from '@examples/Accordion/Flush.astro';
 import rawFlush from '@examples/Accordion/Flush.astro?raw';
 import AlwaysOpen from '@examples/Accordion/AlwaysOpen.astro';
 import rawAlwaysOpen from '@examples/Accordion/AlwaysOpen.astro?raw';
+import Api from '@components/Api.astro';
 
 ## Examples
 
@@ -91,3 +92,9 @@ Optional props:
   id="example2"
 />
 ```
+
+## API
+
+### Accordion 
+
+<Api component={frontmatter.api.accordion} />

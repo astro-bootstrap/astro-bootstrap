@@ -1,8 +1,6 @@
 ---
 const { props } = Astro.props;
 import { marked } from 'marked';
-import { Code } from 'astro/components';
-// const content = marked.parse(markdown);
 
 export interface Props {
   props: ApiProps[];
@@ -33,7 +31,9 @@ export interface ApiProps {
             </td>
             <td class="text-monospace">{prop.type}</td>
             <td class="text-monospace">
-              {prop.default && <Code code={prop.default} lang="js" theme="min-dark" /> }
+              {prop.default && (
+                <Fragment set:html={marked.parse(`\`${prop.default}\``)} />
+              )}
             </td>
             <td
               class="text-monospace"
