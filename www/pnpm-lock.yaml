@@ -6,6 +6,7 @@ importers:
     specifiers:
       '@astrojs/image': ^0.12.1
       '@astrojs/mdx': ^0.14.0
+      '@types/marked': ^4.0.8
       '@typescript-eslint/parser': ^5.48.2
       astro: ^1.9.2
       astro-bootstrap: workspace:*
@@ -26,6 +27,7 @@ importers:
       bootstrap: 5.3.0-alpha1_@popperjs+core@2.11.6
       marked: 4.2.12
     devDependencies:
+      '@types/marked': 4.0.8
       '@typescript-eslint/parser': 5.48.2_7uibuqfxkfaozanbtbziikiqje
       eslint: 8.32.0
       eslint-config-prettier: 8.6.0_eslint@8.32.0
@@ -711,6 +713,10 @@ packages:
   /@types/json5/0.0.30:
     resolution: {integrity: sha512-sqm9g7mHlPY/43fcSNrCYfOeX9zkTTK+euO5E6+CVijSMm5tTjkVdwdqRkY3ljjIAf8679vps5jKUoJBCLsMDA==}
     dev: false
+
+  /@types/marked/4.0.8:
+    resolution: {integrity: sha512-HVNzMT5QlWCOdeuBsgXP8EZzKUf0+AXzN+sLmjvaB3ZlLqO+e4u0uXrdw9ub69wBKFs+c6/pA4r9sy6cCDvImw==}
+    dev: true
 
   /@types/mdast/3.0.10:
     resolution: {integrity: sha512-W864tg/Osz1+9f4lrGTZpCSO5/z4608eUp19tbozkq2HJK6i3z1kT0H9tlADXuYIb1YYOBByU4Jsqkk75q48qA==}
