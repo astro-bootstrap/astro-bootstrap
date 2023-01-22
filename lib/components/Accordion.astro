@@ -6,27 +6,27 @@ import AccordionBody from './AccordionBody.astro';
 import { nanoid } from 'nanoid';
 
 const {
-  flush = false,
-  class: className = '',
+  flush,
+  class: className,
   data = [],
   id: userId,
-  alwaysOpen = false,
-  headerClass = '',
-  itemClass = '',
-  bodyClass = '',
+  alwaysOpen,
+  headerClass,
+  itemClass,
+  bodyClass,
 } = Astro.props;
 
 export interface AccordionInterface {
-  alwaysOpen: boolean;
-  id: string;
-  headerClass: string;
-  itemClass: string;
-  bodyClass: string;
+  alwaysOpen?: boolean;
+  id?: string;
+  headerClass?: string;
+  itemClass?: string;
+  bodyClass?: string;
 }
 
 interface Props extends AccordionInterface {
-  flush: boolean;
-  class: string;
+  flush?: boolean;
+  class?: string;
   data?: Data[];
 }
 

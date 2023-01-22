@@ -1,0 +1,47 @@
+---
+const { props } = Astro.props;
+import { marked } from 'marked';
+import { Code } from 'astro/components';
+// const content = marked.parse(markdown);
+
+export interface Props {
+  props: ApiProps[];
+}
+
+export interface ApiProps {
+  name: string;
+  type: string;
+  default?: string;
+  description?: string;
+  required?: boolean;
+}
+---
+
+<div class="overflow-auto mt-4 mb-5">
+  <table class="mb-0 table table-striped table-bordered">
+    <thead
+      ><tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr
+      ></thead
+    >
+    <tbody>
+      {
+        props.map((prop) => (
+          <tr class="prop-table-row">
+            <td class="text-monospace">
+              {prop.name}{' '}
+              {prop.required && <sup class="text-danger">required</sup>}
+            </td>
+            <td class="text-monospace">{prop.type}</td>
+            <td class="text-monospace">
+              {prop.default && <Code code={prop.default} lang="js" theme="min-dark" /> }
+            </td>
+            <td
+              class="text-monospace"
+              set:html={marked.parse(prop.description)}
+            />
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>

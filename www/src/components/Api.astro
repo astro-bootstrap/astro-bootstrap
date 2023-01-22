@@ -1,0 +1,29 @@
+---
+const { data } = Astro.props;
+import { Code } from 'astro/components';
+import ApiTable from './ApiTable.astro';
+import type { ApiProps } from './ApiTable.astro';
+
+export interface Props {
+  data: Component[];
+}
+
+export interface Component {
+  name: string;
+  import: string;
+  props: ApiProps[];
+}
+---
+
+<h2>API</h2>
+<>
+  {
+    data.map((component) => (
+      <>
+        <h3>{component.name}</h3>
+        <Code code={component.import} />
+        <ApiTable props={component.props} />
+      </>
+    ))
+  }
+</>

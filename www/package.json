@@ -2,7 +2,9 @@
   "name": "astro-bootstrap.github.io",
   "version": "0.0.1",
   "private": true,
-  "workspaces": ["../packages/*"],
+  "workspaces": [
+    "../*"
+  ],
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -11,14 +13,16 @@
     "astro": "astro",
     "predeploy": "pnpm run build",
     "deploy": "gh-pages -d dist --branch master --repo \"https://github.com/astro-bootstrap/astro-bootstrap.github.io.git\"",
-    "update": "pnpm update --interactive --latest"
+    "update": "pnpm update --interactive --latest",
+    "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
     "@astrojs/image": "^0.12.1",
     "@astrojs/mdx": "^0.14.0",
     "astro": "^1.9.2",
     "astro-bootstrap": "workspace:*",
-    "bootstrap": "^5.3.0-alpha1"
+    "bootstrap": "^5.3.0-alpha1",
+    "marked": "^4.2.12"
   },
   "devDependencies": {
     "@typescript-eslint/parser": "^5.48.2",

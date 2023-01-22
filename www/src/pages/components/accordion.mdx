@@ -1,0 +1,93 @@
+---
+title: Accordion
+subtitle: Build vertically collapsing accordions in combination with the collapse js module.
+layout: '@layouts/Component.astro'
+variant: component
+api:
+  - name: Accordion
+    import: "import { accordion } from 'astro-bootstrap'"
+    props:
+    - name: data
+      type: "{ header: string; body: string; show?: boolean;}[]"
+      default: ''
+      description: Data to display in accordion, including the `show` property.
+      required: true
+    - name: flush
+      type: boolean
+      default: "false"
+      description: Adds the 'accordion-flush' class to the accordion.
+    - name: alwaysOpen
+      type: boolean
+      default: "false"
+      description: Prevents Accordion Items from closing when another one is opened
+    - name: id
+      type: string
+      default: "false"
+      description: Prevents Accordion Items from closing when another one is opened
+    - name: class
+      type: string
+      default: ""
+      description: Appends a class to the `accordion` div.
+---
+import Example from '@components/Example.astro';
+import Standard from '@examples/Accordion/Standard.astro';
+import rawStandard from '@examples/Accordion/Standard.astro?raw';
+import Collapsed from '@examples/Accordion/Collapsed.astro';
+import rawCollapsed from '@examples/Accordion/Collapsed.astro?raw';
+import Flush from '@examples/Accordion/Flush.astro';
+import rawFlush from '@examples/Accordion/Flush.astro?raw';
+import AlwaysOpen from '@examples/Accordion/AlwaysOpen.astro';
+import rawAlwaysOpen from '@examples/Accordion/AlwaysOpen.astro?raw';
+
+## Examples
+
+The following examples show how to implement the accordion with minimal code.
+
+### Basic Example
+
+<Example>
+  <Standard slot="component" />
+  <Fragment slot="code" set:html={rawStandard} />
+</Example>
+
+### Fully Collapsed State
+
+If you want your `Accordion` to start in a fully-collapsed state, then simply don't add a `show: true` prop to any of the data elements.
+
+<Example>
+  <Collapsed slot="component" />
+  <Fragment slot="code" set:html={rawCollapsed} />
+</Example>
+
+### Flush
+
+Add `flush` to remove the default background-color, some borders, and some rounded corners to render accordions edge-to-edge with their parent container.
+
+<Example>
+  <Flush slot="component" />
+  <Fragment slot="code" set:html={rawFlush} />
+</Example>
+
+### Always open
+
+You can make accordion items stay open when another item is opened by using the `alwaysOpen` prop. If you're looking to
+control the component, you must use an array of strings for `activeKey` or `defaultActiveKey`.
+
+<Example>
+  <AlwaysOpen slot="component" />
+  <Fragment slot="code" set:html={rawAlwaysOpen} />
+</Example>
+
+Optional props:
+```
+  <Accordion
+  flush
+  alwaysOpen
+  data={data}
+  class="accordion-class"
+  headerClass="accordion-header-class"
+  itemClass="accordion-item-class"
+  bodyClass="accordion-body-class"
+  id="example2"
+/>
+```

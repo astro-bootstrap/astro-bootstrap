@@ -1,11 +1,12 @@
 ---
-const { title } = Astro.props.frontmatter || Astro.props;
+const { title, api } = Astro.props.frontmatter || Astro.props;
 export interface Props {
   title: string;
 }
 import BaseLayout from './BaseLayout.astro';
 
-import SideNav from '../components/SideNav.astro';
+import SideNav from '@components/SideNav.astro';
+import Api from '@components/Api.astro';
 ---
 
 <BaseLayout {title}>
@@ -15,6 +16,7 @@ import SideNav from '../components/SideNav.astro';
         <main>
           <h1>{title}</h1>
           <slot />
+          { api && <Api data={api} />}
         </main>
       </div>
       <div
