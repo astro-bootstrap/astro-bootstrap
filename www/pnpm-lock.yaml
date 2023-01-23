@@ -6,6 +6,7 @@ importers:
     specifiers:
       '@astrojs/image': ^0.12.1
       '@astrojs/mdx': ^0.14.0
+      '@types/bootstrap': ^5.2.6
       '@types/marked': ^4.0.8
       '@typescript-eslint/parser': ^5.48.2
       astro: ^1.9.2
@@ -27,6 +28,7 @@ importers:
       bootstrap: 5.3.0-alpha1_@popperjs+core@2.11.6
       marked: 4.2.12
     devDependencies:
+      '@types/bootstrap': 5.2.6
       '@types/marked': 4.0.8
       '@typescript-eslint/parser': 5.48.2_7uibuqfxkfaozanbtbziikiqje
       eslint: 8.32.0
@@ -610,7 +612,6 @@ packages:
 
   /@popperjs/core/2.11.6:
     resolution: {integrity: sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw==}
-    dev: false
 
   /@proload/core/0.3.3:
     resolution: {integrity: sha512-7dAFWsIK84C90AMl24+N/ProHKm4iw0akcnoKjRvbfHifJZBLhaDsDus1QJmhG12lXj4e/uB/8mB/0aduCW+NQ==}
@@ -677,6 +678,12 @@ packages:
     dependencies:
       '@babel/types': 7.20.7
     dev: false
+
+  /@types/bootstrap/5.2.6:
+    resolution: {integrity: sha512-BlAc3YATdasbHoxMoBWODrSF6qwQO/E9X8wVxCCSa6rWjnaZfpkr2N6pUMCY6jj2+wf0muUtLySbvU9etX6YqA==}
+    dependencies:
+      '@popperjs/core': 2.11.6
+    dev: true
 
   /@types/debug/4.1.7:
     resolution: {integrity: sha512-9AonUzyTjXXhEOa0DnqpzZi6VHlqKMswga9EXjpXnnqxwLtdvPPtlO8evrI5D9S6asFRCQ6v+wpiUKbw+vKqyg==}

@@ -23,8 +23,9 @@ const titleText = isHome ? `${SITE_TITLE}` : `${title} - ${SITE_TITLE}`;
   </head>
   <body>
     <Navbar />
-
-    <slot />
+    <div class="content">
+      <slot />
+    </div>
   </body>
 </html>
 <style>
@@ -32,5 +33,9 @@ const titleText = isHome ? `${SITE_TITLE}` : `${title} - ${SITE_TITLE}`;
     height: 100vh;
     /* for bs scrollSpy */
     position: relative;
+  }
+  .content {
+    position: absolute;
+    top: 4rem;
   }
 </style>

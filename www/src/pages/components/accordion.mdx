@@ -1,11 +1,12 @@
 ---
 title: Accordion
-subtitle: Build vertically collapsing accordions in combination with the collapse js module.
+description: Build vertically collapsing accordions with an integrated JS module.
+docs: https://getbootstrap.com/docs/5.3/components/accordion/
 layout: '@layouts/Component.astro'
 variant: component
 api:
   accordion:
-    import: "import { accordion } from 'astro-bootstrap'"
+    import: "import { Accordion } from 'astro-bootstrap'"
     props:
     - name: data
       type: "{ header: string; body: string; show?: boolean;}[]"
@@ -22,14 +23,27 @@ api:
       description: Prevents Accordion Items from closing when another one is opened
     - name: id
       type: string
-      default: "false"
-      description: Prevents Accordion Items from closing when another one is opened
+      default: 'null'
+      description: Set the `id` on the `accordion` div.
     - name: class
       type: string
-      default: ""
+      default: 'null'
       description: Appends a class to the `accordion` div.
+    - name: itemClass
+      type: string
+      default: 'null'
+      description: Appends a class to the `accordion-item` div.
+    - name: headerClass
+      type: string
+      default: 'null'
+      description: Appends a class to the `accordion-header` div.
+    - name: bodyClass
+      type: string
+      default: 'null'
+      description: Appends a class to the `accordion-body` div.
 ---
 import Example from '@components/Example.astro';
+import Api from '@components/Api.astro';
 import Standard from '@examples/Accordion/Standard.astro';
 import rawStandard from '@examples/Accordion/Standard.astro?raw';
 import Collapsed from '@examples/Accordion/Collapsed.astro';
@@ -38,7 +52,8 @@ import Flush from '@examples/Accordion/Flush.astro';
 import rawFlush from '@examples/Accordion/Flush.astro?raw';
 import AlwaysOpen from '@examples/Accordion/AlwaysOpen.astro';
 import rawAlwaysOpen from '@examples/Accordion/AlwaysOpen.astro?raw';
-import Api from '@components/Api.astro';
+import IdAndClasses from '@examples/Accordion/IdAndClasses.astro';
+import rawIdAndClasses from '@examples/Accordion/IdAndClasses.astro?raw';
 
 ## Examples
 
@@ -79,19 +94,21 @@ control the component, you must use an array of strings for `activeKey` or `defa
   <Fragment slot="code" set:html={rawAlwaysOpen} />
 </Example>
 
-Optional props:
-```
-  <Accordion
-  flush
-  alwaysOpen
-  data={data}
-  class="accordion-class"
-  headerClass="accordion-header-class"
-  itemClass="accordion-item-class"
-  bodyClass="accordion-body-class"
-  id="example2"
-/>
-```
+### Set ID and classes
+
+The following properties are available:
+
+- `id` to add an id to the parent `accordion` div.
+- `class` to append a class to the parent `accordion` div.
+- `itemClass` to append a class to the `accordion-item` div.
+- `headerClass` to append a class to the `accordion-header` div.
+- `bodyClass` to append a class to the `accordion-body` div.
+
+<Example>
+  <IdAndClasses slot="component" />
+  <Fragment slot="code" set:html={rawIdAndClasses} />
+</Example>
+
 
 ## API
 

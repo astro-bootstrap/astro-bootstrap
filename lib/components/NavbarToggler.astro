@@ -1,7 +1,7 @@
 ---
-const { ariaControls } = Astro.props;
+const { controls } = Astro.props;
 export interface Props {
-  ariaControls: string;
+  controls: string;
 }
 ---
 
@@ -9,8 +9,8 @@ export interface Props {
   class="navbar-toggler"
   type="button"
   data-bs-toggle="collapse"
-  data-bs-target={`#${ariaControls}`}
-  aria-controls={ariaControls}
+  data-bs-target={`#${controls}`}
+  aria-controls={controls}
   aria-expanded="false"
   aria-label="Toggle navigation"
 >

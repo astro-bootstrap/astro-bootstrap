@@ -1,13 +1,99 @@
 ---
 title: Navbar
+description: Documentation and examples for Bootstrap’s powerful, responsive navigation header, the navbar. Includes support for branding, navigation, and more, including support for our collapse plugin.
+docs: https://getbootstrap.com/docs/5.3/components/navbar/
 layout: '@layouts/Component.astro'
 variant: component
+api:
+  navbarToggler:
+    import: "import { Navbar } from 'astro-bootstrap'"
+    props:
+    - name: controls
+      type: string
+      default: null
+      required: true
+      description: Must be the same as the `id` property of the `<Navbar.Collapse />` component.
+  navbarCollapse:
+    import: "import { Navbar } from 'astro-bootstrap'"
+    props:
+    - name: id
+      type: string
+      default: null
+      required: true
+      description: Must be the same as the `contols` property of the `<Navbar.Toggler />` component.
+  navbarItem:
+    import: "import { Navbar } from 'astro-bootstrap'"
+    props:
+    - name: href
+      type: string
+      default: null
+      required: true
+      description: Set the `href` for the menu item. 
+    - name: title
+      type: string
+      default: null
+      required: true
+      description: Set the `innerText` for the menu item. 
+  navbarDropdown:
+    import: "import { Navbar } from 'astro-bootstrap'"
+    props:
+    - name: title
+      type: string
+      default: null
+      required: true
+      description: Set the `innerText` for the dropdown menu item. 
+    - name: children
+      type: array of objects
+      default: null
+      required: true
+      description: See below for object properties
+  navbarDropdownChildProps:
+    import: "import { Navbar } from 'astro-bootstrap'"
+    props:
+    - name: href
+      type: string
+      default: null
+      required: true
+      description: Set the `href` for the dropdown menu child item. 
+    - name: title
+      type: string
+      default: null
+      required: true
+      description: Set the `innerText` for the dropdown menu child item. 
 ---
 import Example from '@components/Example.astro';
+import Api from '@components/Api.astro';
 import Standard from '@examples/Navbar/Standard.astro';
 import rawStandard from '@examples/Navbar/Standard.astro?raw';
+
+## Examples
+
+### Basic
 
 <Example>
   <Standard slot="component" />
   <Fragment slot="code" set:html={rawStandard} />
 </Example>
+
+## API
+
+### Navbar.Toggler
+
+<Api component={frontmatter.api.navbarToggler} />
+
+### Navbar.Collapse
+
+<Api component={frontmatter.api.navbarCollapse} />
+
+### Navbar.Item
+
+<Api component={frontmatter.api.navbarItem} />
+
+### Navbar.Dropdown
+
+<Api component={frontmatter.api.navbarDropdown} />
+
+### Navbar.Dropdown Child
+
+<Api component={frontmatter.api.navbarDropdownChildProps} />
+

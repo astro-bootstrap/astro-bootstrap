@@ -18,7 +18,7 @@ import TocItemLink from './TocItemLink.astro';
 const toc: TocItem[] = generateToc(headings);
 ---
 
-<nav class="toc-wrapper">
+<nav class="toc-wrapper py-2">
   <h4 class="h5">On this page</h4>
   <ul class="toc-root toc list-unstyled" id="js-toc">
     {toc.map((heading) => <TocItemLink {heading} />)}
@@ -53,6 +53,7 @@ const toc: TocItem[] = generateToc(headings);
 </style>
 <script>
   import ScrollSpy from 'bootstrap/js/dist/scrollspy';
+  // eslint-disable-next-line no-unused-vars
   const bsScrollSpy = new ScrollSpy(document.body, {
     target: '#js-toc',
     // offset: 10,

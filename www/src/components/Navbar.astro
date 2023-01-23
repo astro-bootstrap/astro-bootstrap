@@ -1,13 +1,12 @@
 ---
 import { Navbar } from 'astro-bootstrap';
 import { SITE_TITLE, MAIN_MENU } from '../config';
-// demonstration data
 ---
 
-<nav class="navbar navbar-expand-lg bg-primary sticky-top" data-bs-theme="dark">
+<nav class="navbar navbar-expand-lg bg-primary fixed-top" data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">{SITE_TITLE}</a>
-    <Navbar.Toggler ariaControls="navbarSupportedContent" />
+    <Navbar.Toggler controls="navbarSupportedContent" />
     <Navbar.Collapse id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         {

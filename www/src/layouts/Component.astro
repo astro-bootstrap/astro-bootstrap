@@ -1,9 +1,11 @@
 ---
-const { title, subtitle } = Astro.props.frontmatter || Astro.props;
+const { title, description, docs } = Astro.props.frontmatter || Astro.props;
 const { headings } = Astro.props;
 export interface Props {
   title: string;
+  description: string;
   headings: any;
+  frontmatter: any;
 }
 import BaseLayout from './BaseLayout.astro';
 
@@ -14,31 +16,35 @@ import Toc from '@components/Toc.astro';
 <BaseLayout {title}>
   <div class="container-fluid">
     <div class="row flex-class">
-      <div class="col-xl-8 col-lg-6 col-sm-4 col-12 py-2 px-3 main-column">
+      <div class="col-xl-8 col-lg-6 col-sm-4 col-12 py-2 px-3">
         <main>
           <h1 id="overview">{title}</h1>
-          <p class="lead">{subtitle}</p>
+          {description && <p class="lead">{description}</p>}
+          {
+            docs && (
+              <p>
+                View the official docs <a href={docs}>here</a>
+              </p>
+            )
+          }
           <slot />
         </main>
       </div>
-      <div
-        class="col-xl-2 col-lg-3 col-sm-4 col-12 left-column order-sm-first sticky-col py-2 px-2"
-      >
+      <div class="col-xl-2 col-lg-3 col-sm-4 col-12 order-sm-first sticky-col">
         <SideNav />
       </div>
-      <div
-        class="col-xl-2 col-lg-3 col-sm-4 d-none d-sm-block sticky-col right-column py-2 px-2"
-      >
-        {headings && <Toc {headings} /> }
+      <div class="col-xl-2 col-lg-3 col-sm-4 d-none d-sm-block sticky-col">
+        {headings && <Toc {headings} />}
       </div>
     </div>
   </div>
 </BaseLayout>
 <style>
   .sticky-col {
-    overflow: hidden;
     position: sticky;
-    top: 4rem;
+    top: 4rem; /* needs to be set even though everything has been pushed down 4rem */
     height: calc(100vh - 4rem);
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 </style>

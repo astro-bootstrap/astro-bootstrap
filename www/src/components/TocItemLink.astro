@@ -7,7 +7,7 @@ const { depth, slug, text, children } = heading;
 
 <li>
   <a
-    class:list={[`header-link depth-${depth}`, 'link-light']}
+    class:list={[`header-link depth-${depth}`, 'text-decoration-none']}
     href={`#${slug}`}
   >
     {text}
@@ -33,7 +33,7 @@ const { depth, slug, text, children } = heading;
     padding-inline-start: 3rem;
   }
   .active {
-    background-color: blue;
+    background-color: red;
   }
 </style>
 

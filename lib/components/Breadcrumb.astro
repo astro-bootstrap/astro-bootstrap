@@ -2,9 +2,9 @@
 import BreadcrumbItem from './BreadcrumbItem.astro';
 
 const {
-  id = '',
-  class: className = '',
-  itemClass = '',
+  id,
+  class: className,
+  itemClass,
   ariaLabel = 'Breadcrumb',
 } = Astro.props;
 
@@ -18,10 +18,10 @@ interface Parts {
 }
 
 interface Props {
-  id: string;
-  class: string;
-  itemClass: string;
-  ariaLabel: string;
+  id?: string;
+  class?: string;
+  itemClass?: string;
+  ariaLabel?: string;
 }
 
 let parts: Parts[] = [
@@ -41,7 +41,6 @@ slugs.forEach((slug) => {
     href,
   });
 });
-const slot = await Astro.slots.render('default');
 ---
 
 <nav aria-label={ariaLabel} {id}>
