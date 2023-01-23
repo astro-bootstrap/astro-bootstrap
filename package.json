@@ -17,7 +17,6 @@
     "lib/**/*"
   ],
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
     "eslint": "eslint \"lib/**/*.{js,astro}\"",
     "eslint:fix": "pnpm run eslint -- --fix"
   },
