@@ -5,7 +5,7 @@ const {
   id,
   class: className,
   itemClass,
-  ariaLabel = 'Breadcrumb',
+  'aria-label': ariaLabel = 'Breadcrumb',
 } = Astro.props;
 
 const path: string = Astro.url.pathname;
@@ -21,7 +21,7 @@ interface Props {
   id?: string;
   class?: string;
   itemClass?: string;
-  ariaLabel?: string;
+  'aria-label'?: string;
 }
 
 let parts: Parts[] = [
