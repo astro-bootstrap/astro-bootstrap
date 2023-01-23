@@ -4,7 +4,7 @@ import PaginationItem from './PaginationItem.astro';
 import PaginationLink from './PaginationLink.astro';
 const {
   page,
-  ariaLabel = 'Page pagination control',
+  'aria-label': ariaLabel = 'Page pagination control',
   id,
   class: className,
   itemClass,
@@ -12,7 +12,8 @@ const {
   size,
 } = Astro.props;
 export interface Props {
-  ariaLabel?: string;
+  page: any;
+  'aria-label'?: string;
   id?: string;
   class?: string;
   itemClass?: string;
