@@ -3,6 +3,7 @@ const { title, subtitle } = Astro.props.frontmatter || Astro.props;
 const { headings } = Astro.props;
 export interface Props {
   title: string;
+  headings: any;
 }
 import BaseLayout from './BaseLayout.astro';
 
@@ -18,7 +19,6 @@ import Toc from '@components/Toc.astro';
           <h1 id="overview">{title}</h1>
           <p class="lead">{subtitle}</p>
           <slot />
-       
         </main>
       </div>
       <div
@@ -26,8 +26,10 @@ import Toc from '@components/Toc.astro';
       >
         <SideNav />
       </div>
-      <div class="col-xl-2 col-lg-3 col-sm-4 d-none d-sm-block sticky-col right-column py-2 px-2">
-        <Toc {headings} />
+      <div
+        class="col-xl-2 col-lg-3 col-sm-4 d-none d-sm-block sticky-col right-column py-2 px-2"
+      >
+        {headings && <Toc {headings} /> }
       </div>
     </div>
   </div>
