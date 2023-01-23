@@ -1,15 +1,36 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Card from '@components/Card.astro';
+export interface CardData {
+  title: string;
+  text: string;
+}
+const cards: CardData[] = [
+  {
+    title: 'Hand crafted for Astro.js',
+    text: `To maintain astro's fast build times we have created native Astro components. To minimise JS sent to the browser, our components use stock bootstrap JS modules. No need to hydrate your component with React.`,
+  },
+  {
+    title: 'Bootstrap CSS at its core',
+    text: `Built with compatibility in mind, all our components are compadible with Bootstrap 5. By relying entirely on the Bootstrap stylesheet, Astro-Bootstrap components are compadible with existing themes that you have created. You can also customise with Bootstrap's powerfull SCSS variables.`,
+  },
+  {
+    title: 'Built for rapid development',
+    text: 'We understand that excessive components will slow down development for a developer who is experienced with bootstrap. Since astro gives you such easy control over HTML we have only created Astro components in cases where they will make your code more dry. Stock bootstrap JS has been included.',
+  },
+];
 ---
 
 <BaseLayout title="Welcome to Astro.">
   <main>
-    <div class="container">
-      <div class="row d-flex justify-content-center">
-        <div class="col-md-6 col-sm-9 py-5">
-          <h1 class="py-5">
-            Welcome to <span class="text-gradient">Astro-Bootstrap</span>
-          </h1>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6 col-sm-9 py-5 offset-md-2">
+          <h1 class="py-3 text-gradient">Astro-Bootstrap</h1>
+          <p class="lead fs-3 lh-lg">
+            The most popular front-end framework
+            <br />Hand crafted for Astro.js
+          </p>
           <a
             role="button"
             href="/getting-started"
@@ -21,6 +42,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             class="btn btn-lg btn-secondary m-1">Components</a
           >
         </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row row-cols-3">
+        {
+          cards.map((card) => (
+            <div class="col">
+              <Card {...card} />
+            </div>
+          ))
+        }
       </div>
     </div>
   </main>

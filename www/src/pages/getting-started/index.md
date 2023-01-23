@@ -16,19 +16,19 @@ yarn add astro-bootstrap
 pnpm add astro-bootstrap
 ```
 
-**Step 2 - Ensure that you have bootstrap v5.x installed. (it's a peer dependency, so install the version that you want)**
+**Step 2 - Ensure that you have bootstrap v5.x installed, along with type definitions (it's a peer dependency, so install the version that you want)**
 
 e.g.
 
 ```bash
 #npm
-npm install bootstrap@latest
+npm install bootstrap @types/bootstrap
 
 # yarn
-yarn add bootstrap@latest
+yarn add bootstrap @types/bootstrap
 
 # pnpm
-pnpm add bootstrap@latest
+pnpm add bootstrap @types/bootstrap
 ```
 
 **Step 3 - Ensure that the bootstrap CSS (your your modified version of it) is being loaded**
