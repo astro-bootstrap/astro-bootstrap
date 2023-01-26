@@ -1,0 +1,7 @@
+---
+const {href} = Astro.props;
+export interface Props {
+  href: string;
+}
+---
+<a href={href} class="alert-link"><slot/></a>

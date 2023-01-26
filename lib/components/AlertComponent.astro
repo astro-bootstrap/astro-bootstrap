@@ -1,0 +1,28 @@
+---
+const { variant, class: className, dismissable } = Astro.props;
+export interface Props {
+  variant: string;
+  class?: string;
+  dismissable?: boolean;
+}
+---
+
+<div
+  class:list={[
+    'alert',
+    `alert-${variant}`,
+    className,
+    { 'alert-dismissible': dismissable },
+  ]}
+  role="alert"
+>
+  <div><slot /></div>
+  { dismissable && <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"></button>}
+</div>
+<script>
+  import 'bootstrap/js/dist/alert';
+</script>
