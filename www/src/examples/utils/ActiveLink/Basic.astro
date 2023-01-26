@@ -1,0 +1,16 @@
+---
+import { ActiveLink } from 'astro-bootstrap';
+---
+<ActiveLink href="/utilities/active-link" class="custom-class-added">Active Link docs page</ActiveLink>
+<br>
+<ActiveLink href="/">Home</ActiveLink>
+<br>
+<ActiveLink href="/disabled" disabled>Disabled</ActiveLink>
+<style>
+  .active {
+    background-color: red;
+  }
+  a.disabled, a.disabled:hover, a.disabled:focus a.disabled:active, a.disabled:visited {
+    color: gray;
+  }
+</style>

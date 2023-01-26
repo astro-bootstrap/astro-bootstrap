@@ -19,7 +19,7 @@ export interface Props {
 }
 
 const tabIndex = disabled && '-1';
-const href = disabled ? null : userHref;
+const href = disabled ?? userHref;
 ---
 
 <a
