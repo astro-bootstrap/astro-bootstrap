@@ -4,14 +4,16 @@
  * import { ComponentName } from 'a/libstro-bootstrap';
  */
 
+// Components
+//
+
 // Accordion
 export { default as Accordion } from './lib/components/Accordion.astro';
 export { default as AccordionBody } from './lib/components/AccordionBody.astro';
 export { default as AccordionHeader } from './lib/components/AccordionHeader.astro';
 export { default as AccordionItem } from './lib/components/AccordionItem.astro';
 
-// Active Link
-export { default as ActiveLink } from './lib/components/ActiveLink.astro';
+
 
 // Breadcrumb
 export { default as Breadcrumb } from './lib/components/Breadcrumb.astro';
@@ -37,3 +39,12 @@ export { default as NavTabs } from './lib/components/NavTabs.astro';
 export { default as TabContent } from './lib/components/TabContent.astro';
 export { default as TabPane } from './lib/components/TabPane.astro';
 export { default as Tabs } from './lib/components/Tabs.astro';
+
+
+// Utils
+// 
+
+// Active Link
+export { default as ActiveLink } from './lib/utils/ActiveLink.astro';
+export { default as Marked } from './lib/utils/Marked.astro';
+export { default as InlineCode } from './lib/utils/InlineCode.astro';

@@ -1,0 +1,5 @@
+---
+import { marked } from 'marked';
+const defaultSlot = await Astro.slots.render('default');
+---
+{ defaultSlot && <Fragment set:html={marked.parse(defaultSlot)} />}

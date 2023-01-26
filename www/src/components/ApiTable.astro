@@ -1,6 +1,6 @@
 ---
+import {InlineCode, Marked } from 'astro-bootstrap';
 const { props } = Astro.props;
-import { marked } from 'marked';
 
 export interface Props {
   props: ApiProps[];
@@ -25,20 +25,19 @@ export interface ApiProps {
       {
         props.map((prop) => (
           <tr class="prop-table-row">
-            <td class="text-monospace">
+            <td>
               {prop.name}{' '}
               {prop.required && <sup class="text-danger">required</sup>}
             </td>
-            <td class="text-monospace">{prop.type}</td>
-            <td class="text-monospace">
+            <td>{prop.type}</td>
+            <td>
               {prop.default && (
-                <Fragment set:html={marked.parse(`\`${prop.default}\``)} />
+                <InlineCode code={prop.default} />
               )}
             </td>
-            <td
-              class="text-monospace"
-              set:html={marked.parse(prop.description)}
-            />
+            <td>
+              <Marked>{prop.description}</Marked>
+            </td>
           </tr>
         ))
       }
