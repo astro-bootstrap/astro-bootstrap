@@ -33,23 +33,37 @@ pnpm add bootstrap @types/bootstrap
 
 **Step 3 - Ensure that the bootstrap CSS (your your modified version of it) is being loaded**
 
-You should create a BaseLayout component which is imported into each layout file that you use e.g.
-
 ```astro
 ---
-// /src/layouts/BaseLayout.astro
+// /src/layouts/Layout.astro
 import 'bootstrap/dist/css/bootstrap.css'
 ---
-{/* the rest of your layout file here */}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <main>
+    <slot />
+  </main>
+</body>
+</html>
 ```
 
-**Step 4 - Import and use an Astro-Bootstrap component**
+**Step 5 - Import and use an Astro-Bootstrap component**
 
 e.g.
 
 ```astro
 ---
+import Layout from '../layouts/Layout.astro';
 import { Breadcrumbs } from 'astro-bootstrap';
 ---
-<Breadcrumbs />
+<BaseLayout>  
+  <Breadcrumbs />
+</BaseLayout>
 ```
