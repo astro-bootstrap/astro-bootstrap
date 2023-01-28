@@ -1,5 +1,5 @@
 ---
-import { MarkedInline } from 'astro-bootstrap';
+import { Marked } from 'astro-bootstrap';
 import BaseLayout from './BaseLayout.astro';
 import SideNav from '@components/SideNav.astro';
 import Toc from '@components/Toc.astro';
@@ -24,7 +24,7 @@ export interface Props {
             description && (
               <>
                 <div class="lead">
-                <MarkedInline>{description}</MarkedInline>
+                <Marked inline>{description}</Marked>
                 </div>
               </>
             )

@@ -1,6 +1,19 @@
 ---
-import xss from 'xss';
+const { inline = false } = Astro.props;
 import { marked } from 'marked';
+import xss from 'xss';
+
+export interface Props {
+  inline?: boolean;
+}
 const slot = await Astro.slots.render('default');
 ---
-<Fragment set:html={xss(marked.parseInline(slot))} />
+
+{
+  Astro.slots.has('default') &&
+    (inline ? (
+      <Fragment set:html={xss(marked.parseInline(slot))} />
+    ) : (
+      <Fragment set:html={xss(marked.parse(slot))} />
+    ))
+}
