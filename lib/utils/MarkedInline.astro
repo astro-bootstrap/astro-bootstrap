@@ -4,3 +4,4 @@ import { marked } from 'marked';
 const slot = await Astro.slots.render('default');
 ---
 <Fragment set:html={xss(marked.parseInline(slot))} />
+

@@ -1,0 +1,47 @@
+---
+title: Marked
+description: Parse a string as markdown
+layout: '@layouts/Component.astro'
+variant: component
+# api:
+#   inline_code:
+#     import: "import { Marked } from 'astro-bootstrap'"
+#     props:
+#     - name: code
+#       type: string
+#       default:
+#       description: The code which will be parsed as markdown inline code
+#       required: true
+    
+  
+---
+import Example from '@components/Example.astro';
+import Api from '@components/Api.astro';
+import Basic from '@examples/utils/Marked/Basic.astro';
+import rawBasic from '@examples/utils/Marked/Basic.astro?raw';
+
+import Block from '@examples/utils/Marked/Block.astro';
+import rawBlock from '@examples/utils/Marked/Block.astro?raw';
+
+
+## Examples
+
+### Basic Example (inline)
+
+<Example>
+  <Basic slot="component" />
+  <Fragment slot="code" set:html={rawBasic} />
+</Example>
+
+### Block parsing
+
+<Example>
+  <Block slot="component" />
+  <Fragment slot="code" set:html={rawBlock} />
+</Example>
+
+{/* ## API
+
+### InlineCode
+
+<Api component={frontmatter.api.inline_code} /> */}

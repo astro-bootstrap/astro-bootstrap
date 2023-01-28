@@ -47,4 +47,5 @@ export { default as Tabs } from './lib/components/Tabs.astro';
 // Active Link
 export { default as ActiveLink } from './lib/utils/ActiveLink.astro';
 export { default as Marked } from './lib/utils/Marked.astro';
+export { default as MarkedInline } from './lib/utils/MarkedInline.astro';
 export { default as InlineCode } from './lib/utils/InlineCode.astro';

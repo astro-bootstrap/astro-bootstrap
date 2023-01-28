@@ -1,0 +1,37 @@
+---
+title: InlineCode
+description: The inline code allows you to emulate \`inline-code\` (`inline-code`) in an Astro component.
+layout: '@layouts/Component.astro'
+variant: component
+api:
+  inline_code:
+    import: "import { InlineCode } from 'astro-bootstrap'"
+    props:
+    - name: code
+      type: string
+      default:
+      description: The code which will be parsed as markdown inline code
+      required: true
+    
+  
+---
+import Example from '@components/Example.astro';
+import Api from '@components/Api.astro';
+import Basic from '@examples/utils/InlineCode/Basic.astro';
+import rawBasic from '@examples/utils/InlineCode/Basic.astro?raw';
+
+
+## Examples
+
+### Basic Example
+
+<Example>
+  <Basic slot="component" />
+  <Fragment slot="code" set:html={rawBasic} />
+</Example>
+
+## API
+
+### InlineCode
+
+<Api component={frontmatter.api.inline_code} />
