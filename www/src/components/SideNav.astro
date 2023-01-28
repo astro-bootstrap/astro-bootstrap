@@ -1,4 +1,5 @@
 ---
+import SideNavItems from './SideNavItems.astro';
 const components = await Astro.glob('../pages/components/**/*.{md,mdx}');
 const utilities = await Astro.glob('../pages/utilities/**/*.{md,mdx}');
 ---
@@ -6,39 +7,10 @@ const utilities = await Astro.glob('../pages/utilities/**/*.{md,mdx}');
 <nav class="side-nav py-2">
   <h3 class="h5">Components</h3>
   <ul class="list-unstyled ps-2">
-    {
-      components.map((component) => {
-        const astro: string =
-          component.frontmatter.variant === 'component' ? (
-            <sup class="astro-component text-danger">.astro</sup>
-          ) : null;
-        return (
-          <li>
-            <a href={component.url} class="text-decoration-none">
-              {component.frontmatter.title} {astro}
-            </a>
-          </li>
-        );
-      })
-    }
+    <SideNavItems elements={components} />
   </ul>
   <h3 class="h5">Utilities</h3>
   <ul class="list-unstyled ps-2">
-    {
-      utilities &&
-        utilities.map((utility) => {
-          const astro: string =
-            utility.frontmatter.variant === 'component' ? (
-              <sup class="astro-component text-danger">.astro</sup>
-            ) : null;
-          return (
-            <li>
-              <a href={utility.url} class="text-decoration-none">
-                {utility.frontmatter.title} {astro}
-              </a>
-            </li>
-          );
-        })
-    }
+    <SideNavItems elements={utilities} />
   </ul>
 </nav>
