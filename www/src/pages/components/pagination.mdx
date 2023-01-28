@@ -1,11 +1,43 @@
 ---
 title: Pagination
+description: Documentation and examples for showing pagination to indicate a series of related content exists across multiple pages.
 layout: '@layouts/Component.astro'
 variant: component
+api:
+  pagination:
+    import: "import { Pagination } from 'astro-bootstrap'"
+    props:
+      - name: page
+        type: Astro page property
+        default: ''
+        description: Gives `Pagination` access to the page
+        required: true
+      - name: aria-label
+        type: Astro page property
+        default: Page pagination control
+        description: Change the `aria-label`
+      - name: id
+        type: string
+        default:
+        description: Set the `id` on the `accordion` div.
+      - name: class
+        type: string
+        default:
+        description: Appends a class to the `pagination` `ul` tag.
+      - name: itemClass
+        type: string
+        default:
+        description: Appends a class to the `page-item` `li` tag.
+      - name: linkClass
+        type: string
+        default:
+        description: Appends a class to the `page-link` `anchor` tag.
+
 ---
 import Example from '@components/Example.astro'
-import Standard from '@examples/Pagination/standard.html'
-import rawPagination from './pagination-test/[...page].astro?raw'
+import Api from '@components/Api.astro';
+import Basic from '@examples/Pagination/basic.html'
+import rawBasic from './pagination-test/[...page].astro?raw'
 
 The pagination component generates the pagination controls for the page.
 
@@ -13,9 +45,9 @@ You must set up the pagination through Astro's paginate function (see below). Th
 
 <Example>
 <div class="d-flex justify-content-center" slot="component">
-<Standard slot="component" />
+<Basic />
 </div>
-<Fragment slot="code" set:html={rawPagination}/>
+<Fragment slot="code" set:html={rawBasic}/>
 </Example>
 
 The rendered code is a static example, <a href="pagination-test"> click here to see a live demo.</a>
@@ -27,3 +59,9 @@ You can optionally set the `aria-label` property with the `ariaLabel` prop e.g.
 ```
 <Pagination page={page} aria-label="Pagination">
 ```
+
+## API
+
+### Pagination
+
+<Api component={frontmatter.api.pagination} />

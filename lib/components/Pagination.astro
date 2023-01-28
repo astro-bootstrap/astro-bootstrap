@@ -21,9 +21,7 @@ export interface Props {
   size?: 'sm' | 'lg';
 }
 
-const sm = size === 'sm' ? true : false;
-const lg = size === 'lg' ? true : false;
-const { prev, next, current } = page.url;
+const { prev, next } = page.url;
 const { currentPage, lastPage } = page;
 
 const path: string = Astro.url.pathname;
@@ -70,7 +68,7 @@ const pages = pagination(currentPage, lastPage);
     class:list={[
       'pagination',
       className,
-      { 'pagination-sm': sm, 'pagination-lg': lg },
+      { 'pagination-sm': size === 'sm', 'pagination-lg': size === 'lg' },
     ]}
     {id}
   >
