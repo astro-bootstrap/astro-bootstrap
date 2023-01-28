@@ -1,5 +1,9 @@
 ---
 const {title, text} = Astro.props;
+export interface Props {
+  title: string;
+  text: string;
+}
 ---
 <div class="card border-0" >
   <div class="card-body">
