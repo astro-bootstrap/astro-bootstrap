@@ -9,3 +9,7 @@ add the following js controlled components:
 - scrollspy (easy) with link to source for TOC?
 
 tabs - default export?
+
+get Props from astro 
+ 
+- page
