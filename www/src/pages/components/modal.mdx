@@ -1,7 +1,18 @@
 ---
 title: Modal
 layout: '@layouts/Component.astro'
-variant: template
+variant: js
+description: Use Bootstrap’s JavaScript modal plugin to add dialogs to your site for lightboxes, user notifications, or completely custom content.
 ---
+import Example from '@components/Example.astro';
+import rawBasic from '@examples/Modal/Basic.astro?raw';
+import Basic from '@examples/Modal/Basic.astro';
 
-To add: example, include JS and JS to launch modal automatically, or with button
+## Examples
+
+### Basic
+
+<Example>
+  <Basic slot="component" />
+  <Fragment slot="code" set:html={rawBasic} />
+</Example>

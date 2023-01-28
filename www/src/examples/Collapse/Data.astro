@@ -1,0 +1,26 @@
+---
+// Template example only
+const target = 'collapseExample'
+---
+
+<p>
+  <button
+    class="btn btn-primary"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target={`#${target}`}
+    aria-expanded="false"
+    aria-controls={target}
+  >
+    Button with data-bs-target
+  </button>
+</p>
+<div class="collapse" id={target}>
+  <div class="card card-body">
+    Some placeholder content for the collapse component. This panel is hidden by
+    default but revealed when the user activates the relevant trigger.
+  </div>
+</div>
+<script>
+  import 'bootstrap/js/dist/collapse';
+</script>

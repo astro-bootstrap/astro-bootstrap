@@ -1,7 +1,21 @@
 ---
 title: Dropdowns
 layout: '@layouts/Component.astro'
-variant: template
+variant: js
+draft: false
+docs: https://getbootstrap.com/docs/5.2/components/collapse/
+description: Toggle the visibility of content across your project with a few classes and a Bootstrap JS plugin.
 ---
+import Example from '@components/Example.astro';
+import rawBasic from '@examples/Dropdowns/Basic.astro?raw';
+import Basic from '@examples/Dropdowns/Basic.astro';
 
-To add: template for iterating over dropdown items, and including JS
+## Examples
+
+### Basic
+
+<Example>
+  <Basic slot="component" />
+  <Fragment slot="code" set:html={rawBasic} />
+</Example>
+
