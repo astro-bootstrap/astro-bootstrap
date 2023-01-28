@@ -1,23 +1,26 @@
 ---
+const { title, description, docs } = Astro.props.frontmatter || Astro.props;
+const { headings,  url } = Astro.props;
+export interface Props {
+  title: string;
+  description?: string;
+  headings?: any;
+  url?: any;
+  frontmatter?: any;
+}
+
 import { Marked } from 'astro-bootstrap';
 import BaseLayout from './BaseLayout.astro';
 import SideNav from '@components/SideNav.astro';
 import Toc from '@components/Toc.astro';
 
-const { title, description, docs, url } =
-  Astro.props.frontmatter || Astro.props;
-const { headings } = Astro.props;
-export interface Props {
-  title: string;
-  description: string;
-  headings: any;
-  url: any;
-  frontmatter: any;
+let slug: string = '';
+if (url) {
+  const slugs = url.split('/').filter((x) => x);
+  const category = slugs[slugs.length - 2];
+  slug = category === 'components' && slugs[slugs.length - 1];
+  slug = docs && docs;
 }
-
-const slugs = url.split('/').filter((x:string) => x);
-const category = slugs[slugs.length - 2];
-const slug = category === 'components' && slugs[slugs.length - 1];
 ---
 
 <BaseLayout {title}>
@@ -47,14 +50,6 @@ const slug = category === 'components' && slugs[slugs.length - 1];
           }
           <slot />
         </main>
-        {
-          docs && (
-            <p>
-              View the official docs <a href={docs}>here</a>
-            </p>
-          )
-        }
-        <slot />
       </div>
 
       <div class="col-xl-2 col-lg-3 col-sm-4 col-12 order-sm-first sticky-col">
@@ -74,5 +69,10 @@ const slug = category === 'components' && slugs[slugs.length - 1];
     height: calc(100vh - 4rem);
     overflow-x: hidden;
     overflow-y: auto;
+  }
+</style>
+<style is:global>
+  .text-astro {
+    color: #ff5d01;
   }
 </style>

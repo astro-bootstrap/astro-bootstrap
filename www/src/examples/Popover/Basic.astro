@@ -1,0 +1,10 @@
+---
+// Template example only
+---
+<button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+<script>
+  import Popover from 'bootstrap/js/dist/popover';
+  const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+  /* eslint-disable-next-line  no-unused-vars*/ // only required if using es-lint
+  const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new Popover(popoverTriggerEl))
+</script>
