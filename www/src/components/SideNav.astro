@@ -2,12 +2,13 @@
 import SideNavItems from './SideNavItems.astro';
 const components = await Astro.glob('../pages/components/**/*.{md,mdx}');
 const utilities = await Astro.glob('../pages/utilities/**/*.{md,mdx}');
+const filtered = (posts => posts.filter((post) => !post.frontmatter.draft)) ;
 ---
 
 <nav class="side-nav py-2">
   <h3 class="h5">Components</h3>
   <ul class="list-unstyled ps-2">
-    <SideNavItems elements={components} />
+    <SideNavItems elements={filtered(components)} />
   </ul>
   <h3 class="h5">Utilities</h3>
   <ul class="list-unstyled ps-2">

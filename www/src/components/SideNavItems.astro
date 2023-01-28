@@ -13,6 +13,8 @@ const { elements } = Astro.props;
       suffix = { class: 'text-astro', text: '.astro' };
     } else if (element.frontmatter.variant === 'js') {
       suffix = { class: 'text-warning', text: 'JS' };
+    } else if (element.frontmatter.variant === 'template') {
+      suffix = { class: 'text-success', text: 'template' };
     }
     return (
       <li>
