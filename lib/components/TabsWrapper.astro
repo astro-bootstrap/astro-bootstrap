@@ -1,18 +1,16 @@
 ---
-import NavTabs from './NavTabs.astro';
-import NavTab from './NavTab.astro';
-import TabContent from './TabContent.astro';
-import TabPane from './TabPane.astro';
+import { Tabs } from '../../index';
 
 import { nanoid } from 'nanoid';
 
 const {
   tabs,
   id: userId,
-  class: className = '',
-  navClass = '',
-  buttonClass = '',
-  paneClass = '',
+  listClass,
+  itemClass,
+  linkClass,
+  contentClass,
+  paneClass,
   fade = false,
 } = Astro.props;
 
@@ -27,43 +25,44 @@ export interface TabInterface {
 export interface TabContentInterface {
   tabs?: TabInterface[];
   id?: string;
-  fade: boolean;
-  class: string;
-  navClass: string;
-  buttonClass: string;
-  paneClass: string;
+  fade?: boolean;
+  listClass?: string;
+  itemClass?: string;
+  linkClass?: string;
+  contentClass?: string;
+  paneClass?: string;
 }
 
 export interface Props extends TabContentInterface {}
 ---
 
-<NavTabs {id} class={className}>
+<Tabs.List {id} class={listClass}>
   <slot>
     {
       tabs &&
         tabs.map((tab: TabInterface, index: number) => (
-          <NavTab
+          <Tabs.Item
             {index}
             {id}
             active={tab.active}
-            class={navClass}
-            buttonClass={buttonClass}
+            class={itemClass}
+            {linkClass}
           >
             {tab.title}
-          </NavTab>
+          </Tabs.Item>
         ))
     }
   </slot>
-</NavTabs>
-<TabContent class={className} {id}>
+</Tabs.List>
+<Tabs.Content class={contentClass} {id}>
   <slot>
     {
       tabs &&
         tabs.map((tab, index: number) => (
-          <TabPane {index} {fade} {id} active={tab.active} class={paneClass}>
+          <Tabs.Pane {index} {fade} {id} active={tab.active} class={paneClass}>
             {tab.body}
-          </TabPane>
+          </Tabs.Pane>
         ))
     }
   </slot>
-</TabContent>
+</Tabs.Content>

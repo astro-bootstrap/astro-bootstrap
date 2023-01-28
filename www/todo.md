@@ -7,3 +7,5 @@ add the following js controlled components:
 - modal
 - offcanvas
 - scrollspy (easy) with link to source for TOC?
+
+tabs - default export?

@@ -4,6 +4,7 @@ const { headings,  url } = Astro.props;
 export interface Props {
   title: string;
   description?: string;
+  docs?: string;
   headings?: any;
   url?: any;
   frontmatter?: any;
@@ -17,10 +18,12 @@ import Toc from '@components/Toc.astro';
 let slug: string = '';
 if (url) {
   const slugs = url.split('/').filter((x) => x);
-  const category = slugs[slugs.length - 2];
+  const category: string = slugs[slugs.length - 2];
   slug = category === 'components' && slugs[slugs.length - 1];
   slug = docs && docs;
 }
+
+docs ? slug = docs : null;
 ---
 
 <BaseLayout {title}>

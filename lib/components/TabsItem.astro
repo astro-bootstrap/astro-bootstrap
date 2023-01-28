@@ -3,21 +3,21 @@ const {
   index,
   active = false,
   id,
-  class: className = '',
-  buttonClass = '',
+  class: className,
+  linkClass,
 } = Astro.props;
 export interface Props {
   index: number;
   active?: boolean;
   id: string;
-  class: string;
-  buttonClass: string;
+  class?: string;
+  linkClass?: string;
 }
 ---
 
 <li class:list={['nav-item', className]} role="presentation">
   <button
-    class:list={['nav-link', buttonClass, { active }]}
+    class:list={['nav-link', linkClass, { active }]}
     id={`${id}-tab-${index}`}
     data-bs-toggle="tab"
     data-bs-target={`#${id}-tab-pane-${index}`}

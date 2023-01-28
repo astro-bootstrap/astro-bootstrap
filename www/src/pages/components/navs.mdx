@@ -1,7 +1,22 @@
 ---
 title: Navs
 layout: '@layouts/Component.astro'
-variant: component
+variant: template
+docs: navs-tabs
+description: Documentation and examples for how to use Bootstrap’s included navigation components.
 ---
+import Example from '@components/Example.astro';
+import rawBasic from '@examples/Navs/Basic.astro?raw';
+import Basic from '@examples/Navs/Basic.astro';
 
-To add: example, import ActiveLink, assign the nav class used
+The base `.nav` component provides a strong foundation for building all types of navigation components. For that reason an astro component has not been included.
+
+## Examples
+
+### Basic
+
+<Example>
+  <Basic slot="component" />
+  <Fragment slot="code" set:html={rawBasic} />
+</Example>
+
