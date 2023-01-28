@@ -4,14 +4,20 @@ import BaseLayout from './BaseLayout.astro';
 import SideNav from '@components/SideNav.astro';
 import Toc from '@components/Toc.astro';
 
-const { title, description, docs } = Astro.props.frontmatter || Astro.props;
+const { title, description, docs, url } =
+  Astro.props.frontmatter || Astro.props;
 const { headings } = Astro.props;
 export interface Props {
   title: string;
   description: string;
   headings: any;
+  url: any;
   frontmatter: any;
 }
+
+const slugs = url.split('/').filter((x:string) => x);
+const category = slugs[slugs.length - 2];
+const slug = category === 'components' && slugs[slugs.length - 1];
 ---
 
 <BaseLayout {title}>
@@ -22,13 +28,24 @@ export interface Props {
           <h1 id="overview">{title}</h1>
           {
             description && (
-              <>
-                <div class="lead pb-2">
+              <p class="lead mb-2">
                 <Marked inline>{description}</Marked>
-                </div>
-              </>
+              </p>
             )
           }
+          {
+            slug && (
+              <p>
+                View the official docs{' '}
+                <a
+                  href={`https://getbootstrap.com/docs/5.2/components/${slug}/`}
+                >
+                  here
+                </a>
+              </p>
+            )
+          }
+          <slot />
         </main>
         {
           docs && (
