@@ -13,8 +13,7 @@
     "astro": "astro",
     "predeploy": "pnpm run build",
     "deploy": "gh-pages -d dist --branch master --repo \"https://github.com/astro-bootstrap/astro-bootstrap.github.io.git\"",
-    "update": "pnpm update --interactive --latest",
-    "preinstall": "npx only-allow pnpm"
+    "update": "pnpm update --interactive --latest"
   },
   "dependencies": {
     "@astrojs/image": "^0.12.1",
