@@ -1,6 +1,6 @@
 ---
 title: ActiveLink
-description: The ActiveLink component automatically adds a class if the link
+description: The ActiveLink component automatically adds a class if the `href` matches the current page's path.
 layout: '@layouts/Component.astro'
 variant: component
 api:
@@ -38,13 +38,19 @@ import rawBasic from '@examples/utils/ActiveLink/Basic.astro?raw';
 import All from '@examples/utils/ActiveLink/All.astro';
 import rawAll from '@examples/utils/ActiveLink/All.astro?raw';
 
-
-## Examples
-
 The ActiveLink checks if the href matches the current page. If true:
 
 - The `activeClass` is added (`active` by default)
 - Sets `aria-current="page"`
+
+If the `disabled` (boolean) property is set:
+
+- The `disabledClass` is added (`disabled` by default)
+- `tabindex="-1"` is added to disable keyboard tabbing.
+- Css `curser` set to default to emulate standard text.
+- The `href` is removed.
+
+## Examples
 
 ### Basic Example
 

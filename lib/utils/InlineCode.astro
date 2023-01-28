@@ -2,8 +2,8 @@
 import Marked from './Marked.astro'
 const { code } = Astro.props;
 export interface Props {
-  code?: string;
+  code: string;
 }
 ---
 
-{ code && <Marked inline>`{code}`</Marked>}
+<Marked inline>`{code}`</Marked>
