@@ -33,11 +33,12 @@ export { default as NavbarToggler } from './lib/components/NavbarToggler.astro';
 export { default as Pagination } from './lib/components/Pagination.astro';
 
 // Tabs
-export { default as NavTab } from './lib/components/NavTab.astro';
-export { default as NavTabs } from './lib/components/NavTabs.astro';
-export { default as TabContent } from './lib/components/TabContent.astro';
-export { default as TabPane } from './lib/components/TabPane.astro';
-export { default as Tabs } from './lib/components/Tabs.astro';
+export * as Tabs from './lib/components/Tabs';
+export { default as TabsDefault } from './lib/components/TabsDefault.astro';
+export { default as TabsList } from './lib/components/TabsList.astro';
+export { default as TabsItem } from './lib/components/TabsItem.astro';
+export { default as TabsContent } from './lib/components/TabsContent.astro';
+export { default as TabsPane } from './lib/components/TabsPane.astro';
 
 
 // Utils
@@ -47,12 +48,6 @@ export { default as Tabs } from './lib/components/Tabs.astro';
 export { default as ActiveLink } from './lib/utils/ActiveLink.astro';
 export { default as Marked } from './lib/utils/Marked.astro';
 export { default as InlineCode } from './lib/utils/InlineCode.astro';
-export * as Tabs from './lib/components/Tabs';
-export { default as TabsWrapper } from './lib/components/TabsWrapper.astro';
-export { default as TabsList } from './lib/components/TabsList.astro';
-export { default as TabsItem } from './lib/components/TabsItem.astro';
-export { default as TabsContent } from './lib/components/TabsContent.astro';
-export { default as TabsPane } from './lib/components/TabsPane.astro';
 
 // Carousel
 export { default as Carousel } from './lib/components/Carousel.astro';
