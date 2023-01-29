@@ -1,16 +1,15 @@
 ---
-const { slides, class: className, id} = Astro.props
+const { slides, class: className, id } = Astro.props;
+
 export interface Props {
   slides: Slide[];
   class?: string;
   id: string;
 }
-export interface Slide {
-  img: string;
-  alt: string;
-  active?: boolean;
-}
+
+import type { Slide } from './Carousel';
 ---
+
 <div class="carousel-indicators">
   {
     slides.map((slide, index) => {
@@ -20,7 +19,7 @@ export interface Slide {
           type="button"
           data-bs-target={`#${id}`}
           data-bs-slide-to={index}
-          class:list={[{ active: slide.active }]}
+          class:list={[className, { active: slide.active }]}
           aria-current={ariaCurrent}
           aria-label={slide.alt}
         />

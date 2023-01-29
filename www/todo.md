@@ -8,8 +8,10 @@ add the following js controlled components:
 - offcanvas
 - scrollspy (easy) with link to source for TOC?
 
-tabs - default export?
+roll your own examples for components
 
-get Props from astro 
+how to get Props from astro 
  
 - page
+
+more examples for carousels

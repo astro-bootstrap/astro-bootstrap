@@ -1,0 +1,25 @@
+---
+const { id, class: className, dark, fade } = Astro.props;
+export interface Props {
+  id: string;
+  class?: string;
+  dark?: boolean;
+  fade?: boolean;
+}
+---
+
+<div
+  {id}
+  class:list={[
+    'carousel',
+    'slide',
+    className,
+    { 'carousel-dark': dark, 'carousel-fade': fade },
+  ]}
+  data-bs-ride="carousel"
+>
+  <slot />
+</div>
+<script>
+  import 'bootstrap/js/dist/carousel';
+</script>
