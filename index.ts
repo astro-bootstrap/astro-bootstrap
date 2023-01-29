@@ -53,3 +53,8 @@ export { default as TabsList } from './lib/components/TabsList.astro';
 export { default as TabsItem } from './lib/components/TabsItem.astro';
 export { default as TabsContent } from './lib/components/TabsContent.astro';
 export { default as TabsPane } from './lib/components/TabsPane.astro';
+
+// Carousel
+export { default as Carousel } from './lib/components/Carousel.astro';
+export { default as CarouselControls } from './lib/components/CarouselControls.astro';
+export { default as CarouselIndicators } from './lib/components/CarouselIndicators.astro';

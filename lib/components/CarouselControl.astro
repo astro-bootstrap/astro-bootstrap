@@ -1,0 +1,19 @@
+---
+const {class: className, id, direction} = Astro.props;
+export interface Props {
+  class?: string;
+  id: string;
+  direction: 'next' | 'prev';
+}
+const text: string = direction == 'prev' ? 'Previous' : 'Next';
+
+---
+<button
+    class:list={[className, `carousel-control-${direction}`]}
+    type="button"
+    data-bs-target={`#${id}`}
+    data-bs-slide={direction}
+  >
+    <span class={`carousel-control-${direction}-icon`} aria-hidden="true"></span>
+    <span class="visually-hidden">{text}</span>
+  </button>

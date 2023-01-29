@@ -1,0 +1,7 @@
+---
+const {id, class: className } = Astro.props;
+
+---
+<div {id} class:list={['carousel', 'slide', className]} data-bs-ride="carousel">
+  <slot />
+</div>

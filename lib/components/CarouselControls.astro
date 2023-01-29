@@ -1,0 +1,12 @@
+---
+import CarouselControl from './CarouselControl.astro';
+const {class: className, id} = Astro.props;
+export interface Props {
+  class?: string;
+  id: string;
+}
+
+
+---
+<CarouselControl id={id} direction="prev" class={className}/>
+<CarouselControl id={id} direction="next" class={className}/>
