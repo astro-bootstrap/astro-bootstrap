@@ -1,15 +1,5 @@
 ---
-// Template only
+import { Alert } from 'astro-bootstrap';
 ---
 
-<div class="alert alert-danger alert-dismissible mb-0" role="alert">
-  <div>Hard coded alert message</div>
-  <button
-    type="button"
-    class="btn-close"
-    data-bs-dismiss="alert"
-    aria-label="Close"></button>
-</div>
-<script>
-  import 'bootstrap/js/dist/alert';
-</script>
+<Alert.default variant="danger" dismissable>Alert Text</Alert.default>

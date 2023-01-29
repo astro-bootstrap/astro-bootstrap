@@ -1,11 +1,14 @@
 /**
  * Export astro components
  * usage:
- * import { ComponentName } from 'a/libstro-bootstrap';
+ * import { ComponentName } from 'astro-bootstrap';
  */
 
-// Components
-//
+// Alert
+export * as Alert from './lib/components/Alert';
+// export { default as AlertComponent } from './lib/components/AlertComponent.astro';
+export { default as AlertHeading } from './lib/components/AlertHeading.astro';
+export { default as AlertLink } from './lib/components/AlertLink.astro';
 
 // Accordion
 export { default as Accordion } from './lib/components/Accordion.astro';
@@ -20,10 +23,6 @@ export { default as Breadcrumb } from './lib/components/Breadcrumb.astro';
 export { default as BreadcrumbItem } from './lib/components/BreadcrumbItem.astro';
 
 // Navbar Components
-// import * as Navbar from './lib/components/Navbar';
-// export { Navbar };
-// to allow Navbar.Item etc..
-// if it works try this below
 export * as Navbar from './lib/components/Navbar';
 export { default as NavbarCollapse } from './lib/components/NavbarCollapse.astro';
 export { default as NavbarDropdown } from './lib/components/NavbarDropdown.astro';

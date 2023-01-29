@@ -3,17 +3,54 @@ title: Alerts
 description: Provide contextual feedback messages for typical user actions. An example with a close button has been provided.
 docs: https://getbootstrap.com/docs/5.3/components/alerts/
 layout: '@layouts/Component.astro'
-variant: template
+variant: component
 ---
 import Example from '@components/Example.astro'
+import Api from '@components/Api.astro';
 import Dismiss from '@examples/Alert/Dismiss.astro'
 import rawDismiss from '@examples/Alert/Dismiss.astro?raw'
+import Heading from '@examples/Alert/Heading.astro'
+import rawHeading from '@examples/Alert/Heading.astro?raw'
+import Link from '@examples/Alert/Link.astro'
+import rawLink from '@examples/Alert/Link.astro?raw'
+import ManualDismiss from '@examples/Alert/ManualDismiss.astro'
+import rawManualDismiss from '@examples/Alert/ManualDismiss.astro?raw'
 
-While the HTML markup for the alert is quite simple, you need to ensure that you include the required javascript module, if you wish to make the alert dismissable. The easiest way is to create an Astro component for the alert, and include the JS in that component.
+## Examples
+
+### Alert with dismiss
 
 <Example>
   <Dismiss slot="component" />
   <Fragment slot="code" set:html={rawDismiss} />
 </Example>
 
-Component to come soon..
+### Alert with heading
+
+<Example>
+  <Heading slot="component" />
+  <Fragment slot="code" set:html={rawHeading} />
+</Example>
+
+### Alert with link
+
+<Example>
+  <Link slot="component" />
+  <Fragment slot="code" set:html={rawLink} />
+</Example>
+
+### No astro modules
+
+<Example>
+  <ManualDismiss slot="component" />
+  <Fragment slot="code" set:html={rawManualDismiss} />
+</Example>
+
+## Api
+
+### Alert.default
+
+### Alert.Heading
+
+### Alert.Link
+
