@@ -8,12 +8,39 @@ variant: template
 import Example from '@components/Example.astro'
 import Dismiss from '@examples/Alert/Dismiss.astro'
 import rawDismiss from '@examples/Alert/Dismiss.astro?raw'
+import Heading from '@examples/Alert/Heading.astro'
+import rawHeading from '@examples/Alert/Heading.astro?raw'
+import Link from '@examples/Alert/Link.astro'
+import rawLink from '@examples/Alert/Link.astro?raw'
 
-While the HTML markup for the alert is quite simple, you need to ensure that you include the required javascript module, if you wish to make the alert dismissable. The easiest way is to create an Astro component for the alert, and include the JS in that component.
+## Examples
+
+### Alert with dismiss button
 
 <Example>
   <Dismiss slot="component" />
   <Fragment slot="code" set:html={rawDismiss} />
 </Example>
 
-Component to come soon..
+### Alert with heading
+
+<Example>
+  <Heading slot="component" />
+  <Fragment slot="code" set:html={rawHeading} />
+</Example>
+
+### Alert with coloured link
+
+<Example>
+  <Link slot="component" />
+  <Fragment slot="code" set:html={rawLink} />
+</Example>
+
+## Api
+
+### Alert.default
+
+### Alert.Heading
+
+### Alert.Link
+
