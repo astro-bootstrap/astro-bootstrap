@@ -1,7 +1,17 @@
 ---
 title: Carousel
+draft: true
+
 layout: '@layouts/Component.astro'
 variant: template
+description: A slideshow component for cycling through elements—images or slides of text—like a carousel.
 ---
+import Example from '@components/Example.astro';
+import Api from '@components/Api.astro';
+import Basic from '@examples/Carousel/Basic.astro';
+import rawBasic from '@examples/Carousel/Basic.astro?raw';
 
-To add: template for iterating over carousel items and including JS
+<Example>
+  <Basic slot="component" />
+  <Fragment slot="code" set:html={rawBasic} />
+</Example>
