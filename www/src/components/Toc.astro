@@ -1,66 +1,30 @@
 ---
 const { headings } = Astro.props;
-
-export interface Heading {
-  depth: number;
-  slug: string;
-  text: string;
-}
-export interface Props {
-  headings: Heading[];
-}
-
+import type { MarkdownHeading } from 'astro';
 import type { TocItem } from '../util/generateToc';
+export interface Props {
+  headings: MarkdownHeading[];
+}
 
 import generateToc from '../util/generateToc';
-import TocItemLink from './TocItemLink.astro';
+import TocList from './TocList.astro';
 
-const toc: TocItem[] = generateToc(headings);
+const topHeading: MarkdownHeading = {
+  depth: 2,
+  slug: 'overview',
+  text: 'Overview',
+};
+const toc: TocItem[] = generateToc(headings, topHeading);
 ---
 
 <nav class="toc-wrapper py-2">
   <h4 class="h5">On this page</h4>
-  <ul class="toc-root toc list-unstyled" id="js-toc">
-    {toc.map((heading) => <TocItemLink {heading} />)}
-  </ul>
+  <TocList headings={toc} />
 </nav>
-<style>
-  ul.toc {
-    list-style: none;
-    padding: 0;
-  }
-  a.header-link {
-    padding-top: 0.275rem;
-    padding-bottom: 0.275rem;
-
-    display: inline-flex;
-    gap: 0.5em;
-    width: 100%;
-    font: inherit;
-    padding-top: 0.4rem;
-    padding-bottom: 0.4rem;
-    line-height: 1.3;
-    color: var(--theme-text-lighter);
-    text-decoration: none;
-    unicode-bidi: plaintext;
-
-    padding-inline-start: 1rem;
-
-    font-size: 1em;
-    transition: border-inline-start-color 100ms ease-out,
-      background-color 200ms ease-out;
-  }
-</style>
 <script>
   import ScrollSpy from 'bootstrap/js/dist/scrollspy';
   // eslint-disable-next-line no-unused-vars
   const bsScrollSpy = new ScrollSpy(document.body, {
     target: '#js-toc',
-    // offset: 10,
   });
 </script>
-<style is:global>
-  [id] {
-    scroll-margin-top: 4rem;
-  }
-</style>

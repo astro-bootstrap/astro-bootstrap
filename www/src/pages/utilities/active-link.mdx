@@ -1,6 +1,73 @@
 ---
 title: ActiveLink
+description: The ActiveLink component automatically adds a class if the `href` matches the current page's path.
 layout: '@layouts/Component.astro'
 variant: component
+api:
+  active_link:
+    import: "import { ActiveLink } from 'astro-bootstrap'"
+    props:
+    - name: href
+      type: string
+      default:
+      description: Passes string to href property of `<a>` tag.
+      required: true
+    - name: class
+      type: string
+      default: 
+      description: Appends classes to the `<a>` tag.
+    - name: activeClass
+      type: string
+      default: 'active'
+      description: Class to be appended to `<a>` tag if the href matches the current page path.
+    - name: disabledClass
+      type: string
+      default: 'disabled'
+      description: Class to be appended to `<a>` tag if the link is disabled with the next option.
+    - name: disabled
+      type: boolean
+      default: 'false'
+      description: Disables the link - adds disabledClass, sets `tabindex` to `-1`, href is removed and sets css `curser` to `default`
+      
+  
 ---
-Todo: add example of how the astro-bootstrap ActiveLink component can be used
+import Example from '@components/Example.astro';
+import Api from '@components/Api.astro';
+import Basic from '@examples/utils/ActiveLink/Basic.astro';
+import rawBasic from '@examples/utils/ActiveLink/Basic.astro?raw';
+import All from '@examples/utils/ActiveLink/All.astro';
+import rawAll from '@examples/utils/ActiveLink/All.astro?raw';
+
+The ActiveLink checks if the href matches the current page. If true:
+
+- The `activeClass` is added (`active` by default)
+- Sets `aria-current="page"`
+
+If the `disabled` (boolean) property is set:
+
+- The `disabledClass` is added (`disabled` by default)
+- `tabindex="-1"` is added to disable keyboard tabbing.
+- Css `curser` set to default to emulate standard text.
+- The `href` is removed.
+
+## Examples
+
+### Basic Example
+
+<Example>
+  <Basic slot="component" />
+  <Fragment slot="code" set:html={rawBasic} />
+</Example>
+
+### All Options
+
+<Example>
+  <All slot="component" />
+  <Fragment slot="code" set:html={rawAll} />
+</Example>
+
+## API
+
+### ActiveLink
+
+<Api component={frontmatter.api.active_link} />

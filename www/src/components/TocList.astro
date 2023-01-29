@@ -1,0 +1,37 @@
+---
+const { headings } = Astro.props;
+import type { TocItem } from '../util/generateToc';
+export interface Props {
+  headings: TocItem[];
+}
+---
+
+<ul class="toc list-unstyled">
+  {
+    headings.map((h) => (
+      <li>
+        <a
+          class:list={[`header-link depth-${h.depth}`, 'text-decoration-none']}
+          href={`#${h.slug}`}
+        >
+          {h.text}
+        </a>
+        {h.children.length !== 0 && <Astro.self headings={h.children} />}
+      </li>
+    ))
+  }
+</ul>
+<style>
+  .header-link.depth-3 {
+    padding-inline-start: 1rem;
+  }
+  .header-link.depth-4 {
+    padding-inline-start: 2rem;
+  }
+  .header-link.depth-5 {
+    padding-inline-start: 3rem;
+  }
+  .active {
+    background-color: red;
+  }
+</style>

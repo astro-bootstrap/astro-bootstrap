@@ -1,0 +1,54 @@
+---
+title: Marked
+description: Parse a string as markdown
+layout: '@layouts/Component.astro'
+variant: component
+api:
+  marked:
+    import: "import { Marked } from 'astro-bootstrap'"
+    props:
+    - name: children
+      type: string
+      default:
+      description: The code which will be parsed as markdown. A string variable must be parsed as unsafe HTML using `set:html`
+      required: true
+    - name: inline
+      type: boolean
+      default: false
+      description: Enabled inline parsing, which disabled the generation of `<p>` tags.
+    
+  
+---
+import Example from '@components/Example.astro';
+import Api from '@components/Api.astro';
+import Basic from '@examples/utils/Marked/Basic.astro';
+import rawBasic from '@examples/utils/Marked/Basic.astro?raw';
+
+import Inline from '@examples/utils/Marked/Inline.astro';
+import rawInline from '@examples/utils/Marked/Inline.astro?raw';
+
+The `Marked` component utilized the Marked js library to parse text as markdown. An `inline` property is available if you don't wish to generate `<p>` tags.
+
+## Examples
+
+### Basic Example (block)
+
+<Example>
+  <Basic slot="component" />
+  <Fragment slot="code" set:html={rawBasic} />
+</Example>
+
+### Inline parsing
+
+No `<p>` tag generation.
+
+<Example>
+  <Inline slot="component" />
+  <Fragment slot="code" set:html={rawInline} />
+</Example>
+
+## API
+
+### Marked
+
+<Api component={frontmatter.api.marked} /> 

@@ -1,0 +1,44 @@
+---
+const {
+  href,
+  class: className,
+  disabled = false,
+  activeClass = 'active',
+  disabledClass = 'disabled',
+  ...props
+} = Astro.props;
+export interface Props {
+  href: string;
+  class?: string;
+  disabled?: boolean;
+  activeClass?: string;
+  disabledClass?: string;
+  children: any;
+}
+const active: boolean = href === Astro.url.pathname;
+const ariaCurrent = active ? 'page' : undefined;
+const tabIndex: string = disabled ? '-1' : undefined;
+const activeClassStr: string = active ? activeClass : undefined;
+const disabledClassStr: string = disabled ? disabledClass : undefined;
+const hrefStr: string = disabled ? undefined : href;
+---
+
+<a
+  href={hrefStr}
+  class:list={[
+    className,
+    activeClassStr,
+    disabledClassStr,
+    {
+      'cursor-default': disabled,
+    },
+  ]}
+  aria-current={ariaCurrent}
+  tabindex={tabIndex}
+  {...props}><slot /></a
+>
+<style>
+  .cursor-default {
+    cursor: default;
+  }
+</style>

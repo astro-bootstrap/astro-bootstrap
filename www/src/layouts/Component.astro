@@ -1,4 +1,9 @@
 ---
+import { Marked } from 'astro-bootstrap';
+import BaseLayout from './BaseLayout.astro';
+import SideNav from '@components/SideNav.astro';
+import Toc from '@components/Toc.astro';
+
 const { title, description, docs } = Astro.props.frontmatter || Astro.props;
 const { headings } = Astro.props;
 export interface Props {
@@ -7,10 +12,6 @@ export interface Props {
   headings: any;
   frontmatter: any;
 }
-import BaseLayout from './BaseLayout.astro';
-
-import SideNav from '@components/SideNav.astro';
-import Toc from '@components/Toc.astro';
 ---
 
 <BaseLayout {title}>
@@ -19,17 +20,26 @@ import Toc from '@components/Toc.astro';
       <div class="col-xl-8 col-lg-6 col-sm-4 col-12 py-2 px-3">
         <main>
           <h1 id="overview">{title}</h1>
-          {description && <p class="lead">{description}</p>}
           {
-            docs && (
-              <p>
-                View the official docs <a href={docs}>here</a>
-              </p>
+            description && (
+              <>
+                <div class="lead">
+                <Marked inline>{description}</Marked>
+                </div>
+              </>
             )
           }
-          <slot />
         </main>
+        {
+          docs && (
+            <p>
+              View the official docs <a href={docs}>here</a>
+            </p>
+          )
+        }
+        <slot />
       </div>
+
       <div class="col-xl-2 col-lg-3 col-sm-4 col-12 order-sm-first sticky-col">
         <SideNav />
       </div>
@@ -39,6 +49,7 @@ import Toc from '@components/Toc.astro';
     </div>
   </div>
 </BaseLayout>
+
 <style>
   .sticky-col {
     position: sticky;
