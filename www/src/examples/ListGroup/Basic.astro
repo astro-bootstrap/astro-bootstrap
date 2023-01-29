@@ -1,0 +1,14 @@
+---
+// Template example only
+const listItems: string[] = [
+  'An item',
+  'A second item',
+  'A third item',
+  'A fourth item',
+  'And a fifth one',
+];
+---
+
+<ul class="list-group">
+  {listItems.map((item) => <li class="list-group-item">{item}</li>)}
+</ul>

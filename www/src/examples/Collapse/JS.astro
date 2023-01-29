@@ -1,0 +1,20 @@
+---
+// Template example only
+// .collapse-js has been used to avoid conflict with the above data-bs-target
+// normally you can just use .collapse and remove the .collpase-js class
+---
+<p>
+  <button class="btn btn-primary" type="button" aria-expanded="false" aria-controls="collapseExample">
+    Button with JS
+  </button>
+</p>
+<div class="collapse collapse-js" id="collapseExample">
+  <div class="card card-body ">
+    Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+  </div>
+</div>
+<script>
+  import Collapse from 'bootstrap/js/dist/collapse'
+  const collapseElementList = document.querySelectorAll('.collapse-js')
+  const collapseList = [...collapseElementList].map(collapseEl => new Collapse(collapseEl, {toggle: false} )) 
+</script>

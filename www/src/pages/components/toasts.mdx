@@ -1,0 +1,18 @@
+---
+title: Toasts
+layout: '@layouts/Component.astro'
+variant: js
+description: Push notifications to your visitors with a toast, a lightweight and easily customizable alert message.
+---
+import Example from '@components/Example.astro';
+import rawBasic from '@examples/Toasts/Basic.astro?raw';
+import Basic from '@examples/Toasts/Basic.astro';
+
+## Examples
+
+### Basic
+
+<Example>
+  <Basic slot="component" />
+  <Fragment slot="code" set:html={rawBasic} />
+</Example>

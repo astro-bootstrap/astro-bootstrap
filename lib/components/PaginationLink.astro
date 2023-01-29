@@ -1,7 +1,7 @@
 ---
 import ActiveLink from '../utils/ActiveLink.astro';
-
-const { href, disabled, class: className} = Astro.props;
+// className = '' as not using class:list
+const { href, disabled, class: className = '' } = Astro.props;
 export interface Props {
   href: string;
   disabled?: boolean;
@@ -9,7 +9,12 @@ export interface Props {
 }
 ---
 
-<ActiveLink {href} {disabled} disabledClass={' '} class="page-link">
+<ActiveLink
+  {href}
+  {disabled}
+  disabledClass={' '}
+  class={`page-link ${className}`}
+>
   <slot />
 </ActiveLink>
 <!-- class:list={['page-link', className]} -->

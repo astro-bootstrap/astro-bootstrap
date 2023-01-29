@@ -1,17 +1,29 @@
 ---
+const { title, description, docs } = Astro.props.frontmatter || Astro.props;
+const { headings,  url } = Astro.props;
+export interface Props {
+  title: string;
+  description?: string;
+  docs?: string;
+  headings?: any;
+  url?: any;
+  frontmatter?: any;
+}
+
 import { Marked } from 'astro-bootstrap';
 import BaseLayout from './BaseLayout.astro';
 import SideNav from '@components/SideNav.astro';
 import Toc from '@components/Toc.astro';
 
-const { title, description, docs } = Astro.props.frontmatter || Astro.props;
-const { headings } = Astro.props;
-export interface Props {
-  title: string;
-  description: string;
-  headings: any;
-  frontmatter: any;
+let slug: string = '';
+if (url) {
+  const slugs = url.split('/').filter((x) => x);
+  const category: string = slugs[slugs.length - 2];
+  slug = category === 'components' && slugs[slugs.length - 1];
+  slug = docs && docs;
 }
+
+docs ? slug = docs : null;
 ---
 
 <BaseLayout {title}>
@@ -22,22 +34,25 @@ export interface Props {
           <h1 id="overview">{title}</h1>
           {
             description && (
-              <>
-                <div class="lead pb-2">
+              <p class="lead mb-2">
                 <Marked inline>{description}</Marked>
-                </div>
-              </>
+              </p>
             )
           }
+          {
+            slug && (
+              <p>
+                View the official docs{' '}
+                <a
+                  href={`https://getbootstrap.com/docs/5.2/components/${slug}/`}
+                >
+                  here
+                </a>
+              </p>
+            )
+          }
+          <slot />
         </main>
-        {
-          docs && (
-            <p>
-              View the official docs <a href={docs}>here</a>
-            </p>
-          )
-        }
-        <slot />
       </div>
 
       <div class="col-xl-2 col-lg-3 col-sm-4 col-12 order-sm-first sticky-col">
@@ -57,5 +72,10 @@ export interface Props {
     height: calc(100vh - 4rem);
     overflow-x: hidden;
     overflow-y: auto;
+  }
+</style>
+<style is:global>
+  .text-astro {
+    color: #ff5d01;
   }
 </style>

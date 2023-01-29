@@ -1,0 +1,31 @@
+---
+title: Collapse
+layout: '@layouts/Component.astro'
+variant: js
+description: Toggle the visibility of content across your project with a few classes and a Bootstrap JS plugin.
+---
+import Example from '@components/Example.astro';
+import Api from '@components/Api.astro';
+import rawData from '@examples/Collapse/Data.astro?raw';
+import Data from '@examples/Collapse/Data.astro';
+import rawJS from '@examples/Collapse/JS.astro?raw';
+import JS from '@examples/Collapse/JS.astro';
+
+## Examples
+
+### Via data-attribute
+
+<Example>
+  <Data slot="component" />
+  <Fragment slot="code" set:html={rawData} />
+</Example>
+
+{/* 
+### Via JavaScript
+
+<Example>
+  <JS slot="component" />
+  <Fragment slot="code" set:html={rawJS} />
+</Example>
+
+*/}

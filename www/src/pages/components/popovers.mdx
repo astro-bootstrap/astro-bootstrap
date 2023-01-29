@@ -1,0 +1,18 @@
+---
+title: Popovers
+layout: '@layouts/Component.astro'
+variant: js
+description: Documentation and examples for adding Bootstrap popovers, like those found in iOS, to any element on your site.
+---
+import Example from '@components/Example.astro';
+import rawBasic from '@examples/Popover/Basic.astro?raw';
+import Basic from '@examples/Popover/Basic.astro';
+
+## Examples
+
+### Basic
+
+<Example>
+  <Basic slot="component" />
+  <Fragment slot="code" set:html={rawBasic} />
+</Example>

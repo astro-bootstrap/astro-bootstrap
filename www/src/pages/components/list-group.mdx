@@ -2,6 +2,22 @@
 title: List Group
 layout: '@layouts/Component.astro'
 variant: template
+draft: false
+docs: https://getbootstrap.com/docs/5.2/components/list-group/
+description: List groups are a flexible and powerful component for displaying a series of content. Modify and extend them to support just about any content within.
 ---
+import Example from '@components/Example.astro';
+import rawBasic from '@examples/ListGroup/Basic.astro?raw';
+import Basic from '@examples/ListGroup/Basic.astro';
 
-To add: template for iterating over list-group items, including pulling in from markdown
+## Examples
+
+### Basic
+
+To keep your code dry, you can iterate over data to eliminate repetition in your code.
+
+<Example>
+  <Basic slot="component" />
+  <Fragment slot="code" set:html={rawBasic} />
+</Example>
+

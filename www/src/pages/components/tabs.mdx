@@ -2,24 +2,57 @@
 title: Tabs
 variant: component
 layout: '@layouts/Component.astro'
+docs: navs-tabs
+api:
+  tabs:
+    import: "import { Tabs } from 'astro-bootstrap'"
+    props:
+      - name: tabs
+        type: '{ title: string; body: string; active: boolean}[]'
+        default: ''
+        description: Data for populating tabs.
+        required: true
+      - name: id
+        type: string
+        default: ''
+        description: Append `id` to `tab` div.
+      - name: fade
+        type: boolean
+        default: true
+        description: Enable fade transition between tabs.
+      - name: listClass
+        type: string
+        default: ''
+        description: Append `class` to `nav-tabs` div. (`Tabs.List` component)
+      - name: itemClass
+        type: string
+        default: ''
+        description: Append `class` to `nav-item` div.
+      - name: contentClass
+        type: string
+        default: ''
+        description: Append `class` to `nav-content` div.
+      - name: paneClass
+        type: string
+        default: ''
+        description: Append `class` to `nav-pane` div.
 ---
-import Example from '@components/Example.astro';
-import Standard from '@examples/Tabs/Standard.astro';
-import rawStandard from '@examples/Tabs/Standard.astro?raw'
 
-Make sure you set one of your Tabs to active via your data.
+import Example from '@components/Example.astro';
+import Api from '@components/Api.astro';
+import Basic from '@examples/Tabs/Basic.astro';
+import rawBasic from '@examples/Tabs/Basic.astro?raw';
+
+The `Tabs` component makes light work of creating a tabbed interface with the Bootstrap JavaScript plugin built in.Make sure you set one of your Tabs to `active` via your data.
 
 <Example>
-  <Standard slot="component"/>
-  <Fragment slot="code" set:html={rawStandard} />
+  <Basic slot="component" />
+  <Fragment slot="code" set:html={rawBasic} />
 </Example>
 
-```  
-id and class are optional
-class adds a class to the tab content pane
-omit fade if you don't want a fade transition between content panes
 
-```
+## API
 
+### Tabs
 
-
+<Api component={frontmatter.api.tabs} />

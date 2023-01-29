@@ -1,7 +1,18 @@
 ---
 title: Scrollspy
 layout: '@layouts/Component.astro'
-variant: template
+variant: js
+description: Automatically update Bootstrap navigation or list group components based on scroll position to indicate which link is currently active in the viewport.
 ---
+import Example from '@components/Example.astro';
+import rawBasic from '@examples/Scrollspy/Basic.astro?raw';
+import Basic from '@examples/Scrollspy/Basic.astro';
 
-To add: example, include JS 
+## Examples
+
+### Basic
+
+<Example>
+  <Basic slot="component" />
+  <Fragment slot="code" set:html={rawBasic} />
+</Example>
