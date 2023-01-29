@@ -17,7 +17,7 @@ import Toc from '@components/Toc.astro';
 
 let slug: string = '';
 if (url) {
-  const slugs = url.split('/').filter((x) => x);
+  const slugs = url.split('/').filter((x: string) => x);
   const category: string = slugs[slugs.length - 2];
   slug = category === 'components' && slugs[slugs.length - 1];
   slug = docs && docs;
