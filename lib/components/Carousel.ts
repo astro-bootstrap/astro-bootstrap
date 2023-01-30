@@ -1,10 +1,10 @@
 import Carousel from './CarouselDefault.astro';
-import CarouselControls from './CarouselControls.astro';
-import CarouselControl from './CarouselControl.astro';
-import CarouselIndicators from './CarouselIndicators.astro';
+import Controls from './CarouselControls.astro';
+import Control from './CarouselControl.astro';
+import Indicators from './CarouselIndicators.astro';
 
 export default Object.assign(Carousel, {
-  Controls: CarouselControls,
-  Control: CarouselControl,
-  Indicators: CarouselIndicators,
+  Controls,
+  Control,
+  Indicators,
 });
