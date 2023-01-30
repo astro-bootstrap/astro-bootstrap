@@ -1,3 +1,5 @@
-export { default } from './AlertDefault.astro';
-export { default as Heading } from './AlertHeading.astro';
-export { default as Link } from './AlertLink.astro';
+import Alert from './AlertDefault.astro';
+import Heading  from './AlertHeading.astro';
+import Link  from './AlertLink.astro';
+
+export default Object.assign(Alert, {Heading, Link});
