@@ -2,12 +2,12 @@
 const { slides, class: className, id } = Astro.props;
 
 export interface Props {
-  slides: Slide[];
+  slides: CarouselSlideType[];
   class?: string;
   id: string;
 }
 
-import type { Slide } from './Carousel';
+import type { CarouselSlideType} from './CarouselSlide';
 ---
 
 <div class="carousel-indicators">

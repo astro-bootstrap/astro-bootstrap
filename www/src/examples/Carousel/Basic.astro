@@ -1,7 +1,7 @@
 ---
 import { Carousel } from 'astro-bootstrap';
-
-const slides: Carousel.Slide[] = [
+import type { CarouselSlideType } from 'astro-bootstrap';
+const slides: CarouselSlideType[] = [
   { img: '/img/placeholder1.jpg', alt: 'First placeholder', active: true },
   { img: '/img/placeholder2.jpg', alt: 'Second placeholder' },
   { img: '/img/placeholder3.jpg', alt: 'Third placeholder' },
@@ -10,7 +10,7 @@ const slides: Carousel.Slide[] = [
 const id = 'carouselExampleBasic';
 ---
 
-<Carousel.default {id} fade>
+<Carousel {id} fade>
   <Carousel.Indicators {id} {slides} />
   <div class="carousel-inner">
     {
@@ -26,4 +26,4 @@ const id = 'carouselExampleBasic';
     }
   </div>
   <Carousel.Controls id={id} />
-</Carousel.default>
+</Carousel>
