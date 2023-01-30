@@ -1,3 +1,6 @@
+content collections - force frontmatter schema
+
+
 offcanvas: child dropdown js not functioning
 
 add the following js controlled components:
