@@ -3,7 +3,7 @@ import { Modal } from 'astro-bootstrap';
 const id = 'modalDemo';
 ---
 <!-- Button to trigger -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalDemo">
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target={`#${id}`}>
   Launch demo modal
 </button>
 
