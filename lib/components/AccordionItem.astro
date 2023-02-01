@@ -1,25 +1,8 @@
 ---
-// const {
-//   index: i,
-//   alwaysOpen,
-//   id,
-//   header,
-//   body,
-//   show = false,
-//   itemClass,
-//   headerClass,
-//   bodyClass,
-//   data,
-// } = Astro.props;
-
-// import type { AccordionInterface, Data } from './Accordion.astro';
-
-// // merge in data
-// interface Props extends AccordionInterface, Data {
-//   index: number;
-//   data: boolean;
-// }
 const { class: className } = Astro.props;
+export interface Props {
+  class?: string;
+}
 ---
 
 <div class:list={['accordion-item', className]}>

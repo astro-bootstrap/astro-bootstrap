@@ -1,5 +1,7 @@
 ---
-const { id, text, class: className, index: i, show } = Astro.props;
+const { id, class: className, index: i, show } = Astro.props;
+import type { AccordionCommon } from './AccordionBody.astro';
+export interface Props extends AccordionCommon {}
 ---
 
 <h2 class:list={['accordion-header', className]} id={`${id}-heading-${i}`}>

@@ -1,6 +1,15 @@
 ---
 const { id, index: i, show, alwaysOpen, class: className } = Astro.props;
 const dataBsParent = alwaysOpen ? null : `#${id}`;
+export interface Props extends AccordionCommon {
+  alwaysOpen?: boolean;
+}
+export interface AccordionCommon {
+  id: string;
+  index: number;
+  show?: boolean;
+  class: string;
+}
 ---
 
 <div
