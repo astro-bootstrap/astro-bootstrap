@@ -41,6 +41,9 @@ export { default as NavbarDropdown } from './lib/components/NavbarDropdown.astro
 export { default as NavbarItem } from './lib/components/NavbarItem.astro';
 export { default as NavbarToggler } from './lib/components/NavbarToggler.astro';
 
+// Modal
+export { default as Modal } from './lib/components/Modal';
+
 // Pagination
 export { default as Pagination } from './lib/components/Pagination.astro';
 
