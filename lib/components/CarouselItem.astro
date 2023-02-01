@@ -1,0 +1,10 @@
+---
+const { class: className, active } = Astro.props;
+export interface Props {
+  class?: string;
+  active?: boolean;
+}
+---
+<div class:list={['carousel-item', className, { active }]}>
+  <slot />
+</div>

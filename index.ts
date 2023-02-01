@@ -13,6 +13,7 @@ export { default as AlertLink } from './lib/components/AlertLink.astro';
 
 // Accordion
 export { default as Accordion } from './lib/components/Accordion.astro';
+export { AccordionType } from './lib/components/Accordion.astro';
 export { default as AccordionBody } from './lib/components/AccordionBody.astro';
 export { default as AccordionHeader } from './lib/components/AccordionHeader.astro';
 export { default as AccordionItem } from './lib/components/AccordionItem.astro';
@@ -24,11 +25,12 @@ export { default as BreadcrumbItem } from './lib/components/BreadcrumbItem.astro
 // Carousel
 export { default as Carousel } from './lib/components/Carousel';
 export type { CarouselSlideType } from './lib/components/CarouselSlide';
-// Can be access from Carousel
+// Can be accessed from Carousel
 export { default as CarouselDefault } from './lib/components/CarouselDefault.astro';
 export { default as CarouselControls } from './lib/components/CarouselControls.astro';
 export { default as CarouselControl } from './lib/components/CarouselControl.astro';
 export { default as CarouselIndicators } from './lib/components/CarouselIndicators.astro';
+export { default as CarouselItem } from './lib/components/CarouselItem.astro';
 
 // Navbar Components
 export * as Navbar from './lib/components/Navbar';
