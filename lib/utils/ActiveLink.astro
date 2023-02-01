@@ -1,4 +1,5 @@
 ---
+import type { HTMLAttributes } from 'astro/types'
 const {
   href,
   class: className,
@@ -7,9 +8,9 @@ const {
   disabledClass = 'disabled',
   ...props
 } = Astro.props;
-export interface Props {
-  href: string;
-  class?: string;
+export interface Props extends HTMLAttributes<'a'> {
+  // href: string;
+  // class?: string;
   disabled?: boolean;
   activeClass?: string;
   disabledClass?: string;
