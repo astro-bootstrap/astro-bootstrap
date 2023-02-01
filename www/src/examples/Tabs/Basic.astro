@@ -1,10 +1,11 @@
 ---
 import { Tabs } from 'astro-bootstrap';
-const tabs = [
+import type { TabType } from 'astro-bootstrap'
+const tabs: TabType[] = [
   { title: 'Tab 1', body: 'Tab 1 text', active: true },
   { title: 'Tab 2', body: 'Tab 2 text' },
   { title: 'Tab 3', body: 'Tab 3 text' },
 ];
 ---
 
-<Tabs {tabs} id="exampleTabs" contentClass="p-3" fade />
+<Tabs tabs={tabs} id="exampleTabs" contentClass="p-3" fade />

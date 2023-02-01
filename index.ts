@@ -13,7 +13,7 @@ export { default as AlertLink } from './lib/components/AlertLink.astro';
 
 // Accordion
 export { default as Accordion } from './lib/components/Accordion.astro';
-export { AccordionType } from './lib/components/Accordion.astro';
+export type { AccordionType } from './lib/components/Accordion.astro';
 export { default as AccordionBody } from './lib/components/AccordionBody.astro';
 export { default as AccordionHeader } from './lib/components/AccordionHeader.astro';
 export { default as AccordionItem } from './lib/components/AccordionItem.astro';
@@ -46,6 +46,7 @@ export { default as Pagination } from './lib/components/Pagination.astro';
 
 // Tabs
 export { default as Tabs} from './lib/components/Tabs';
+export type { TabType } from './lib/components/TabsDefault.astro';
 // Accessible from Tabs
 export { default as TabsDefault } from './lib/components/TabsDefault.astro';
 export { default as TabsList } from './lib/components/TabsList.astro';

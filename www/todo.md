@@ -1,5 +1,5 @@
 check for modal compatibiity with a component
-
+pagination tpe for 'page'
 
 content collections - force frontmatter schema
 
