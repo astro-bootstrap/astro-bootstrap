@@ -1,6 +1,12 @@
 ---
+import { Marked } from 'astro-bootstrap';
+import BaseLayout from './BaseLayout.astro';
+import SideNav from '@components/SideNav.astro';
+import Toc from '@components/Toc.astro';
+import { Alert } from 'astro-bootstrap';
+
 const { title, description, docs } = Astro.props.frontmatter || Astro.props;
-const { headings,  url } = Astro.props;
+const { headings, url } = Astro.props;
 export interface Props {
   title: string;
   description?: string;
@@ -10,10 +16,9 @@ export interface Props {
   frontmatter?: any;
 }
 
-import { Marked } from 'astro-bootstrap';
-import BaseLayout from './BaseLayout.astro';
-import SideNav from '@components/SideNav.astro';
-import Toc from '@components/Toc.astro';
+const warningText = `\
+This component is still under development. Please only use the snippets provided below to avoid breaking changes.
+`;
 
 let slug: string = '';
 if (url) {
@@ -23,13 +28,13 @@ if (url) {
   slug = docs && docs;
 }
 
-docs ? slug = docs : null;
+docs ? (slug = docs) : null;
 ---
 
 <BaseLayout {title}>
   <div class="container-fluid">
     <div class="row flex-class">
-      <div class="col-xl-8 col-lg-6 col-sm-4 col-12 py-2 px-3">
+      <div class="py-2 px-3 col-main">
         <main>
           <h1 id="overview">{title}</h1>
           {
@@ -39,6 +44,7 @@ docs ? slug = docs : null;
               </p>
             )
           }
+          <Alert variant="danger">{warningText}</Alert>
           {
             slug && (
               <p>
@@ -55,10 +61,10 @@ docs ? slug = docs : null;
         </main>
       </div>
 
-      <div class="col-xl-2 col-lg-3 col-sm-4 col-12 order-sm-first sticky-col">
+      <div class="order-sm-first col-nav">
         <SideNav />
       </div>
-      <div class="col-xl-2 col-lg-3 col-sm-4 d-none d-sm-block sticky-col">
+      <div class="col-toc">
         {headings && <Toc {headings} />}
       </div>
     </div>
@@ -66,12 +72,37 @@ docs ? slug = docs : null;
 </BaseLayout>
 
 <style>
-  .sticky-col {
-    position: sticky;
-    top: 4rem; /* needs to be set even though everything has been pushed down 4rem */
-    height: calc(100vh - 4rem);
-    overflow-x: hidden;
-    overflow-y: auto;
+  /* xs and up */
+  .col-main {
+    width: 100%;
+  }
+  /* sm and up */
+  @media (min-width: 576px) {
+    .col-main {
+      width: calc(100% - 13rem);
+    }
+    .col-toc, .col-nav {
+      /* enable scroll on sm-up for sidebar */
+      position: sticky;
+      top: 4rem; /* needs to be set even though everything has been pushed down 4rem */
+      height: calc(100vh - 4rem);
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+    .col-nav {
+      display: block;
+      width: 13rem;
+    }
+  }
+  /* md and up */
+  @media (min-width: 768px) {
+    .col-main {
+      width: calc(100% - 24rem);
+    }
+    .col-toc {
+      display: block;
+      width: 11rem;
+    }
   }
 </style>
 <style is:global>
