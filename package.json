@@ -53,7 +53,6 @@
     "dompurify": "^2.4.3",
     "marked": "^4.2.12",
     "nanoid": "^4.0.0",
-    "title-case": "^3.0.3",
-    "xss": "^1.0.14"
+    "title-case": "^3.0.3"
   }
 }

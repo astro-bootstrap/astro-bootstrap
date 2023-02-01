@@ -4,6 +4,7 @@ import BaseLayout from './BaseLayout.astro';
 import SideNav from '@components/SideNav.astro';
 import Toc from '@components/Toc.astro';
 import { Alert } from 'astro-bootstrap';
+import type { MarkdownHeading, MarkdownLayoutProps  } from 'astro';
 
 const { title, description, docs } = Astro.props.frontmatter || Astro.props;
 const { headings, url } = Astro.props;
@@ -11,9 +12,9 @@ export interface Props {
   title: string;
   description?: string;
   docs?: string;
-  headings?: any;
+  headings?: MarkdownHeading[];
   url?: any;
-  frontmatter?: any;
+  frontmatter: any; 
 }
 
 const warningText = `\
