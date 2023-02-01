@@ -15,13 +15,13 @@ const id = 'carouselExampleBasic';
   <div class="carousel-inner">
     {
       slides.map((slide) => (
-        <div class:list={['carousel-item', { active: slide.active }]}>
+        <Carousel.Item active={slide.active}>
           <img
             src={slide.img}
             class="d-block w-100 img-fluid"
             alt={slide.alt}
           />
-        </div>
+        </Carousel.Item>
       ))
     }
   </div>
