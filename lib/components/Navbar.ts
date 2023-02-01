@@ -1,4 +1,17 @@
-export { default as Collapse } from './NavbarCollapse.astro';
-export { default as Dropdown } from './NavbarDropdown.astro';
-export { default as Item } from './NavbarItem.astro';
-export { default as Toggler } from './NavbarToggler.astro';
+import Collapse  from './NavbarCollapse.astro';
+import Dropdown  from './NavbarDropdown.astro';
+import Item  from './NavbarItem.astro';
+import Toggler  from './NavbarToggler.astro';
+export default Object.assign({
+  Collapse, 
+  Dropdown, 
+  Item, 
+  Toggler,
+})
+
+import type { Child } from './NavbarDropdown.astro';
+export interface NavbarType {
+  title: string;
+  href?: string;
+  children?: Child[];
+}

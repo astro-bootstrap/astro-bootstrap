@@ -1,8 +1,9 @@
 ---
 import { Navbar } from 'astro-bootstrap';
+import type { NavbarType } from 'astro-bootstrap';
 // demonstration data
 const siteTitle = 'Astro site'; // pull this in from a config file
-const items = [
+const items: NavbarType[] = [
   // pull this in from a config file
   { title: 'Home', href: '#' },
   { title: 'About', href: '#' },

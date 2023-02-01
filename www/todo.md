@@ -1,3 +1,6 @@
+check for modal compatibiity with a component
+
+
 content collections - force frontmatter schema
 
 

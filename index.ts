@@ -33,7 +33,9 @@ export { default as CarouselIndicators } from './lib/components/CarouselIndicato
 export { default as CarouselItem } from './lib/components/CarouselItem.astro';
 
 // Navbar Components
-export * as Navbar from './lib/components/Navbar';
+export { default as Navbar } from './lib/components/Navbar';
+export type { NavbarType } from './lib/components/Navbar';
+// Accessible in Navbar
 export { default as NavbarCollapse } from './lib/components/NavbarCollapse.astro';
 export { default as NavbarDropdown } from './lib/components/NavbarDropdown.astro';
 export { default as NavbarItem } from './lib/components/NavbarItem.astro';
