@@ -5,8 +5,8 @@ export const MAIN_MENU: NavbarItemType[] = [
   { title: 'Home', href: '/' },
   { title: 'Getting Started', href: '/getting-started' },
   { title: 'Components', href: '/components' },
-  {
-    title: 'parent',
-    subItems: [{ title: 'child', href: '/' }, { divider: true }, { title: 'child2', href: '/' }],
-  },
+  // {
+  //   title: 'parent',
+  //   subItems: [{ title: 'child', href: '/' }, { divider: true }, { title: 'child2', href: '/' }],
+  // },
 ];
