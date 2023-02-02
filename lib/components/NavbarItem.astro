@@ -1,12 +1,14 @@
 ---
-const { href, title } = Astro.props;
-import ActiveLink from '../utils/ActiveLink.astro';
+import Navbar from './Navbar';
+const { item } = Astro.props;
+
+import type { Props as NavbarDropdownType } from './NavbarDropdown.astro';
+import type {Props as NavbarLinkType } from './NavbarLink.astro'
+
 export interface Props {
-  href: string;
-  title: string;
+  item: NavbarItemType;
 }
+export interface NavbarItemType extends NavbarDropdownType, NavbarLinkType {}
 ---
 
-<li class="nav-item">
-  <ActiveLink {href} class="nav-link">{title}</ActiveLink>
-</li>
+{item.subItems ? <Navbar.Dropdown {...item} /> : <Navbar.Link {...item} />}

@@ -1,4 +1,5 @@
-check for modal compatibiity with a component
+fix navbar so it works
+change structure so the components can be used individually
 pagination tpe for 'page'
 
 content collections - force frontmatter schema

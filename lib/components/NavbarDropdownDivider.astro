@@ -1,0 +1,7 @@
+---
+const {class: className} = Astro.props;
+export interface Props {
+  class?: string;
+}
+---
+<hr class:list={['dropdown-divider', className]} />

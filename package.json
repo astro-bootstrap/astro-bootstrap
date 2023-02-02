@@ -50,6 +50,7 @@
     "bootstrap": "5.x"
   },
   "dependencies": {
+    "astro": "^2.0.5",
     "dompurify": "^2.4.3",
     "marked": "^4.2.12",
     "nanoid": "^4.0.0",
