@@ -34,12 +34,20 @@ export { default as CarouselItem } from './lib/components/CarouselItem.astro';
 
 // Navbar Components
 export { default as Navbar } from './lib/components/Navbar';
-export type { Props as NavbarItemType } from './lib/components/NavbarItem.astro';
+
 // Accessible in Navbar
 export { default as NavbarCollapse } from './lib/components/NavbarCollapse.astro';
-export { default as NavbarDropdown } from './lib/components/NavbarDropdown.astro';
-export { default as NavbarItem } from './lib/components/NavbarItem.astro';
 export { default as NavbarToggler } from './lib/components/NavbarToggler.astro';
+export { default as NavbarDropdown } from './lib/components/NavbarDropdown.astro';
+export type { Props as NavbarDropdownType } from './lib/components/NavbarDropdown.astro';
+export { default as NavbarDropdownLink } from './lib/components/NavbarDropdownLink.astro';
+export type { Props as NavbarDropdownLinkType } from './lib/components/NavbarDropdownLink.astro';
+export { default as NavbarDropdownDivider } from './lib/components/NavbarDropdownDivider.astro';
+export { default as NavbarItem } from './lib/components/NavbarItem.astro';
+export type { Props as NavbarItemType } from './lib/components/NavbarItem.astro';
+export { default as NavbarItems } from './lib/components/NavbarItems.astro';
+export type { Props as NavbarItemsType } from './lib/components/NavbarItems.astro';
+
 
 // Modal
 export { default as Modal } from './lib/components/Modal';
