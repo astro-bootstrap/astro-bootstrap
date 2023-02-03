@@ -4,7 +4,7 @@ import BaseLayout from './BaseLayout.astro';
 import SideNav from '@components/SideNav.astro';
 import Toc from '@components/Toc.astro';
 import { Alert } from 'astro-bootstrap';
-import type { MarkdownHeading, MarkdownLayoutProps  } from 'astro';
+import type { MarkdownHeading, MarkdownLayoutProps } from 'astro';
 
 const { title, description, docs } = Astro.props.frontmatter || Astro.props;
 const { headings, url } = Astro.props;
@@ -14,22 +14,25 @@ export interface Props {
   docs?: string;
   headings?: MarkdownHeading[];
   url?: any;
-  frontmatter: any; 
+  frontmatter: any;
 }
 
 const warningText = `\
 This component is still under development. Please only use the snippets provided below to avoid breaking changes.
 `;
 
+let category: string = '';
 let slug: string = '';
 if (url) {
+  // split path into an array
   const slugs = url.split('/').filter((x: string) => x);
-  const category: string = slugs[slugs.length - 2];
-  slug = category === 'components' && slugs[slugs.length - 1];
-  slug = docs && docs;
+  // get first element in path array
+  category = slugs[0];
+  // get last element in path array
+  slug = slugs[slugs.length-1];
 }
 
-docs ? (slug = docs) : null;
+const isComponent = category === 'components' ? true : false;
 ---
 
 <BaseLayout {title}>
@@ -45,17 +48,20 @@ docs ? (slug = docs) : null;
               </p>
             )
           }
-          <Alert variant="danger">{warningText}</Alert>
+
           {
-            slug && (
-              <p>
-                View the official docs{' '}
-                <a
-                  href={`https://getbootstrap.com/docs/5.2/components/${slug}/`}
-                >
-                  here
-                </a>
-              </p>
+            isComponent && (
+              <>
+                <Alert variant="danger">{warningText}</Alert>
+                <p>
+                  View the official docs{' '}
+                  <a
+                    href={`https://getbootstrap.com/docs/5.2/components/${slug}/`}
+                  >
+                    here
+                  </a>
+                </p>
+              </>
             )
           }
           <slot />
@@ -82,7 +88,8 @@ docs ? (slug = docs) : null;
     .col-main {
       width: calc(100% - 13rem);
     }
-    .col-toc, .col-nav {
+    .col-toc,
+    .col-nav {
       /* enable scroll on sm-up for sidebar */
       position: sticky;
       top: 4rem; /* needs to be set even though everything has been pushed down 4rem */
@@ -104,10 +111,5 @@ docs ? (slug = docs) : null;
       display: block;
       width: 11rem;
     }
-  }
-</style>
-<style is:global>
-  .text-astro {
-    color: #ff5d01;
   }
 </style>
