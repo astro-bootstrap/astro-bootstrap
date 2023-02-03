@@ -10,7 +10,7 @@ export interface Props {
 ---
 
 <li class:list={['nav-item', className]}>
-  <ActiveLink href={href} class:list={['nav-link', anchorClass]} {...props}>
+  <ActiveLink href={href} class:list={['nav-link', anchorClass]} class={`nav-link ${anchorClass}`} {...props}>
     <slot>{title}</slot>
   </ActiveLink>
 </li>
