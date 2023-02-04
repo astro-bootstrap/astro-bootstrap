@@ -4,7 +4,7 @@ import BaseLayout from './BaseLayout.astro';
 import SideNav from '@components/SideNav.astro';
 import Toc from '@components/Toc.astro';
 import { Alert } from 'astro-bootstrap';
-import type { MarkdownHeading, MarkdownLayoutProps } from 'astro';
+import type { MarkdownHeading } from 'astro';
 
 const { title, description, docs } = Astro.props.frontmatter || Astro.props;
 const { headings, url } = Astro.props;
@@ -29,8 +29,10 @@ if (url) {
   // get first element in path array
   category = slugs[0];
   // get last element in path array
-  slug = slugs[slugs.length-1];
+  slug = slugs[slugs.length - 1];
 }
+
+docs && (slug = docs);
 
 const isComponent = category === 'components' ? true : false;
 ---
@@ -113,3 +115,155 @@ const isComponent = category === 'components' ? true : false;
     }
   }
 </style>
+<style is:global>
+  .btn-copy {
+    display: block;
+    padding: 0.5em;
+    line-height: 1;
+    color: var(--bs-body-color);
+    background-color: transparent;
+    border: 0;
+    border-radius: 0.25rem;
+  }
+
+  .copy-button-wrapper {
+    position: relative;
+  }
+  .copy-button-wrapper .btn-copy.overlay {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+</style>
+<script>
+  import Tooltip from 'bootstrap/js/dist/tooltip';
+  import Clipboard from 'clipboard';
+  (() => {
+    'use strict';
+
+    const btnTitle = 'Copy to clipboard';
+    const btnHtml = `
+  <div class="copy-button-wrapper">
+  <button type="button" class="btn-copy overlay">
+    <div class="svg-clipboard">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-clipboard"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"
+        ></path>
+        <path
+          d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"
+        ></path>
+      </svg>
+    </div>
+    <div class="svg-clipboard-check d-none">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-clipboard-check"
+        viewBox="0 0 16 16"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"
+        ></path>
+        <path
+          d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"
+        ></path>
+        <path
+          d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"
+        ></path>
+      </svg>
+    </div>
+  </button>
+</div>
+`;
+
+
+    // wrap programmatically code blocks and add copy btn.
+    document.querySelectorAll('.astro-code').forEach((element) => {
+      if (!element.closest('.example-container')) {
+        // Ignore examples made by Example.astro component
+        element.insertAdjacentHTML('beforebegin', btnHtml);
+        element.previousElementSibling.append(element);
+      }
+    });
+
+        /**
+     * @description adds tooltip to a div
+     * @param {string} selector
+     * @param {string} title
+     */
+     function snippetButtonTooltip(selector: string, title: string) {
+      document.querySelectorAll(selector).forEach((btn) => {
+        Tooltip.getOrCreateInstance(btn, { title: title, placement: 'top' });
+      });
+    }
+    snippetButtonTooltip('.btn-copy', btnTitle);
+
+    const clipboard = new Clipboard('.btn-copy', {
+      target: (trigger) =>
+        trigger.closest('.copy-button-wrapper').querySelector('.astro-code'),
+    });
+
+    clipboard.on('success', (event) => {
+      const tooltipBtn = Tooltip.getInstance(event.trigger);
+      if (tooltipBtn) {
+        // toggle tooltip title
+        tooltipBtn.setContent({ '.tooltip-inner': 'Copied!' });
+        // toggle back
+        event.trigger.addEventListener(
+          'hidden.bs.tooltip',
+          () => {
+            tooltipBtn.setContent({ '.tooltip-inner': btnTitle });
+          },
+          { once: true },
+        );
+    
+      }
+      // deselect text that was selected by clipboard.js
+      event.clearSelection();
+
+      // toggle visibility of two icons
+      event.trigger.querySelector('.svg-clipboard').classList.toggle('d-none');
+      event.trigger
+        .querySelector('.svg-clipboard-check')
+        .classList.toggle('d-none');
+      // toggle back with timer
+      setTimeout(() => {
+        event.trigger
+          .querySelector('.svg-clipboard')
+          .classList.toggle('d-none');
+        event.trigger
+          .querySelector('.svg-clipboard-check')
+          .classList.toggle('d-none');
+        tooltipBtn.hide();
+      }, 2000);
+    });
+
+    clipboard.on('error', (event) => {
+      // display 'press Ctrl-c to copy message on error'
+      const modifierKey = /mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-';
+      const fallbackMsg = `Press ${modifierKey}C to copy`;
+      const tooltipBtn = Tooltip.getInstance(event.trigger);
+      if (tooltipBtn) {
+        tooltipBtn.setContent({ '.tooltip-inner': fallbackMsg });
+        event.trigger.addEventListener(
+          'hidden.bs.tooltip',
+          () => {
+            tooltipBtn.setContent({ '.tooltip-inner': btnTitle });
+          },
+          { once: true },
+        );
+      }
+    });
+  })();
+</script>

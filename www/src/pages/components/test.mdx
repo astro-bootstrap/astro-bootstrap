@@ -1,5 +1,5 @@
 ---
-title: Accordion
+title: Test
 description: Build vertically collapsing accordions with an integrated JS module.
 layout: '@layouts/Component.astro'
 variant: component
@@ -54,59 +54,7 @@ import rawAlwaysOpen from '@examples/Accordion/AlwaysOpen.astro?raw';
 import IdAndClasses from '@examples/Accordion/IdAndClasses.astro';
 import rawIdAndClasses from '@examples/Accordion/IdAndClasses.astro?raw';
 
-## Examples
 
-The following examples show how to implement the accordion with minimal code.
-
-### Basic Example
-
-<Example>
-  <Standard slot="component" />
-  <Fragment slot="code" set:html={rawStandard} />
-</Example>
-
-### Fully Collapsed State
-
-If you want your `Accordion` to start in a fully-collapsed state, then simply don't add a `show: true` prop to any of the data elements.
-
-<Example>
-  <Collapsed slot="component" />
-  <Fragment slot="code" set:html={rawCollapsed} />
-</Example>
-
-### Flush
-
-Add `flush` to remove the default background-color, some borders, and some rounded corners to render accordions edge-to-edge with their parent container.
-
-<Example>
-  <Flush slot="component" />
-  <Fragment slot="code" set:html={rawFlush} />
-</Example>
-
-### Always open
-
-You can make accordion items stay open when another item is opened by using the `alwaysOpen` prop. If you're looking to
-control the component, you must use an array of strings for `activeKey` or `defaultActiveKey`.
-
-<Example>
-  <AlwaysOpen slot="component" />
-  <Fragment slot="code" set:html={rawAlwaysOpen} />
-</Example>
-
-### Set ID and classes
-
-The following properties are available:
-
-- `id` to add an id to the parent `accordion` div.
-- `class` to append a class to the parent `accordion` div.
-- `itemClass` to append a class to the `accordion-item` div.
-- `headerClass` to append a class to the `accordion-header` div.
-- `bodyClass` to append a class to the `accordion-body` div.
-
-<Example>
-  <IdAndClasses slot="component" />
-  <Fragment slot="code" set:html={rawIdAndClasses} />
-</Example>
 
 
 ## API

@@ -1,10 +1,9 @@
 ---
-// const codeSlot = await Astro.slots.render('code')
 import { Code } from 'astro/components';
 const codeSlot = await Astro.slots.render('code');
 ---
 
-<div class="container-fluid border rounded g-0 mb-3 example__container">
+<div class="container-fluid border rounded g-0 mb-3 example-container copy-button-wrapper">
   {
     Astro.slots.has('component') && (
       <div class="row p-3">
@@ -17,7 +16,7 @@ const codeSlot = await Astro.slots.render('code');
   <div class="row">
     <div class="col">
       <div
-        class="example__code-header bg-dark text-white border-top border-bottom d-flex align-items-center ps-3 pe-2 py-1"
+        class="bg-dark text-white border-top border-bottom d-flex align-items-center ps-3 pe-2 py-1"
       >
         <small class="font-monospace text-muted text-uppercase"
           >Astro file</small
@@ -68,7 +67,7 @@ const codeSlot = await Astro.slots.render('code');
     </div>
   </div>
   <div class="row">
-    <div class="col example__code">
+    <div class="col">
       <Code code={codeSlot} lang="astro" />
     </div>
   </div>
@@ -83,91 +82,5 @@ const codeSlot = await Astro.slots.render('code');
     margin-bottom: 0;
   }
 </style>
-<style is:global>
-  .btn-copy {
-    display: block;
-    padding: 0.5em;
-    line-height: 1;
-    color: var(--bs-body-color);
-    background-color: transparent;
-    border: 0;
-    border-radius: 0.25rem;
-  }
-</style>
-<script>
-  import Tooltip from 'bootstrap/js/dist/tooltip';
-  import Clipboard from 'clipboard';
-  (() => {
-    'use strict';
 
-    const btnTitle = 'Copy to clipboard';
-  /**
-     * @description toggles class d-none for two div's
-     * @param {string} selector
-     * @param {string} title
-     */
-    function swapIcons(selector1, selector2) {
-      document.querySelector(selector1).classList.toggle('d-none');
-      document.querySelector(selector2).classList.toggle('d-none');
-    }
-    /**
-     * @description adds tooltip to a div
-     * @param {string} selector
-     * @param {string} title
-     */
-    function snippetButtonTooltip(selector: string, title: string) {
-      document.querySelectorAll(selector).forEach((btn) => {
-        Tooltip.getOrCreateInstance(btn, { title, placement: 'left' });
-      });
-    }
-    snippetButtonTooltip('.btn-copy', btnTitle);
 
-    const clipboard = new Clipboard('.btn-copy', {
-      target: (trigger) =>
-        trigger.closest('.example__container').querySelector('.astro-code'),
-    });
-
-    clipboard.on('success', (event) => {
-      const tooltipBtn = Tooltip.getInstance(event.trigger);
-      if (tooltipBtn) {
-        // toggle tooltip title
-        tooltipBtn.setContent({ '.tooltip-inner': 'Copied!' });
-        // toggle back
-        event.trigger.addEventListener(
-          'hidden.bs.tooltip',
-          () => {
-            tooltipBtn.setContent({ '.tooltip-inner': btnTitle });
-          },
-          { once: true },
-        );
-        // delect text that was selected by clipboard.js
-        event.clearSelection();
-
-        // toggle visibility of two icons
-        swapIcons('.svg-clipboard', '.svg-clipboard-check');
-        // toggle back with timer
-        setTimeout(() => {
-          swapIcons('.svg-clipboard', '.svg-clipboard-check');
-          tooltipBtn.hide();
-        }, 2000);
-      }
-    });
-
-    clipboard.on('error', (event) => {
-      // display 'press Ctrl-c to copy message on error'
-      const modifierKey = /mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-';
-      const fallbackMsg = `Press ${modifierKey}C to copy`;
-      const tooltipBtn = Tooltip.getInstance(event.trigger);
-      if (tooltipBtn) {
-        tooltipBtn.setContent({ '.tooltip-inner': fallbackMsg });
-        event.trigger.addEventListener(
-          'hidden.bs.tooltip',
-          () => {
-            tooltipBtn.setContent({ '.tooltip-inner': btnTitle });
-          },
-          { once: true },
-        );
-      }
-    });
-  })();
-</script>

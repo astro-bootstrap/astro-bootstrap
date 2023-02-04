@@ -1,0 +1,109 @@
+---
+import { Icon } from 'astro-icon';
+const { width, height, class: className, ...props } = Astro.props;
+export interface Props {
+  width?: string;
+  height?: string;
+  class?: string;
+}
+---
+
+<div class:list={[className]}>
+  <input
+    class="toggle-checkbox"
+    type="checkbox"
+    id="darkmode-toggle"
+    aria-label="Toggle user interface mode"
+    {...props}
+  />
+  <label for="darkmode-toggle">
+    <Icon name="bi:sun-fill" class="sun" />
+    <Icon name="bi:moon-fill" class="moon" />
+  </label>
+  <small class="d-lg-none ms-2">Switch Theme</small>
+</div>
+
+<style lang="scss">
+  /* hide the "default" checkbox/appearance */
+  .toggle-checkbox {
+    display: none;
+  }
+
+  $width: 55px;
+  $height: 24px;
+  $bg-dark: #242424;
+  $bg-light: #ebebeb;
+  $circleDiameter: calc($height * 0.9);
+  $circlePadding: calc(calc($height - $circleDiameter) / 2);
+  $svgDiameter: calc($circleDiameter * 0.8);
+  $svgPadding: calc(calc($height - $svgDiameter) / 2);
+
+  label {
+    width: $width;
+    height: $height;
+    position: relative;
+    display: inline-block;
+    background: $bg-light;
+    border-radius: $height;
+    box-shadow: inset 0px 5px 15px rgba(0, 0, 0, 0.4),
+      inset 0px -5px 15px rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+  }
+
+  label:after {
+    content: '';
+    width: $circleDiameter;
+    height: $circleDiameter;
+    position: absolute;
+    top: $circlePadding;
+    left: $circlePadding;
+    background: linear-gradient(180deg, #ffcc89, #d8860b);
+    border-radius: $circleDiameter;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  }
+  input {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+  }
+  input:checked + label {
+    background: $bg-dark;
+  }
+  input:checked + label:after {
+    left: calc($width - $circlePadding);
+    transform: translateX(-100%);
+    background: linear-gradient(180deg, #777, #3a3a3a);
+  }
+  label,
+  label:after {
+    transition: 0.3s;
+  }
+
+  label:active:after {
+    width: calc($circleDiameter * 1.5);
+  }
+
+  label svg {
+    position: absolute;
+    width: $svgDiameter;
+    top: $svgPadding;
+    z-index: 100;
+  }
+  label svg.sun {
+    left: $svgPadding;
+    fill: #fff;
+    transition: 0.3s;
+  }
+  label svg.moon {
+    // left: 40px;
+    right: $svgPadding;
+    fill: #7e7e7e;
+    transition: 0.3s;
+  }
+  input:checked + label svg.sun {
+    fill: #7e7e7e;
+  }
+  input:checked + label svg.moon {
+    fill: #fff;
+  }
+</style>
