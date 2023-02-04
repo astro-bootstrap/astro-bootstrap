@@ -1,29 +1,43 @@
 ---
+import { Icon } from 'astro-icon';
 import { Navbar } from 'astro-bootstrap';
 import { SITE_TITLE, MAIN_MENU } from '../config';
+const navId = 'siteNav';
+import DarkModeToggle from './DarkModeToggle.astro';
 ---
 
 <nav class="navbar navbar-expand-lg bg-primary fixed-top" data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">{SITE_TITLE}</a>
-    <Navbar.Toggler controls="navbarSupportedContent" />
-    <Navbar.Collapse id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        {
-          MAIN_MENU.map((item) =>
-            item.children ? (
-              <Navbar.Dropdown {...item} />
-            ) : (
-              <Navbar.Item {...item} />
-            ),
-          )
-        }
+    <Navbar.Toggler controls={navId} />
+    <Navbar.Collapse id={navId}>
+      <Navbar.Items items={MAIN_MENU} class="me-auto mb-2 mb-lg-0" />
+      <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
+        <li class="nav-item col-6 col-lg-auto">
+          <a
+            class="nav-link d-flex py-2 px-0 px-lg-2 "
+            href="http://github.com/astro-bootstrap/astro-bootstrap"
+            target="_blank"
+            rel="noopener"
+          >
+            <Icon name="bi:github" class="navbar-nav-svg" />
+            <small class="d-lg-none ms-2">GitHub</small>
+          </a>
+        </li>
+        <li class="nav-item col-6 col-lg-auto">
+          <DarkModeToggle class="nav-link d-flex"/>
+        </li>
       </ul>
     </Navbar.Collapse>
+   
   </div>
 </nav>
-<style>
-  .navbar {
-    height: 4rem;
+<style lang="scss">
+  .navbar-nav-svg {
+    display: inline-block;
+    vertical-align: -0.125rem;
+    height: 1.5rem;
+    width: 1.5rem;
   }
 </style>
+<script></script>

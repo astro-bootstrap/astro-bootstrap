@@ -1,0 +1,64 @@
+---
+title: Test
+description: Build vertically collapsing accordions with an integrated JS module.
+layout: '@layouts/Component.astro'
+variant: component
+api:
+  accordion:
+    import: "import { Accordion } from 'astro-bootstrap'"
+    props:
+    - name: data
+      type: "{ header: string; body: string; show?: boolean;}[]"
+      default: ''
+      description: Data to display in accordion, including the `show` property.
+      required: true
+    - name: flush
+      type: boolean
+      default: "false"
+      description: Adds the 'accordion-flush' class to the accordion.
+    - name: alwaysOpen
+      type: boolean
+      default: "false"
+      description: Prevents Accordion Items from closing when another one is opened
+    - name: id
+      type: string
+      default: 'null'
+      description: Set the `id` on the `accordion` div.
+    - name: class
+      type: string
+      default: 'null'
+      description: Appends a class to the `accordion` div.
+    - name: itemClass
+      type: string
+      default: 'null'
+      description: Appends a class to the `accordion-item` div.
+    - name: headerClass
+      type: string
+      default: 'null'
+      description: Appends a class to the `accordion-header` div.
+    - name: bodyClass
+      type: string
+      default: 'null'
+      description: Appends a class to the `accordion-body` div.
+---
+import Example from '@components/Example.astro';
+import Api from '@components/Api.astro';
+import Standard from '@examples/Accordion/Standard.astro';
+import rawStandard from '@examples/Accordion/Standard.astro?raw';
+import Collapsed from '@examples/Accordion/Collapsed.astro';
+import rawCollapsed from '@examples/Accordion/Collapsed.astro?raw';
+import Flush from '@examples/Accordion/Flush.astro';
+import rawFlush from '@examples/Accordion/Flush.astro?raw';
+import AlwaysOpen from '@examples/Accordion/AlwaysOpen.astro';
+import rawAlwaysOpen from '@examples/Accordion/AlwaysOpen.astro?raw';
+import IdAndClasses from '@examples/Accordion/IdAndClasses.astro';
+import rawIdAndClasses from '@examples/Accordion/IdAndClasses.astro?raw';
+
+
+
+
+## API
+
+### Accordion 
+
+<Api component={frontmatter.api.accordion} />

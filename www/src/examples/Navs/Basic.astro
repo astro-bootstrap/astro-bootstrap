@@ -1,12 +1,17 @@
 ---
 // Template example only
 import { ActiveLink } from 'astro-bootstrap';
-const navs = [
+const navs: Nav[] = [
   { href: '/', text: 'Home' },
   { href: '#', text: 'Link' },
   { href: '/components/navs', text: 'Active' },
   { href: '/hidden', text: 'Disabled', disabled: true },
 ];
+export interface Nav {
+  href?: string;
+  text?: string;
+  disabled?: boolean;
+}
 ---
 
 <ul class="nav">

@@ -6,6 +6,7 @@ variant: template
 ---
 import Standard from '@examples/Card/Standard.astro';
 import rawStandard from '@examples/Card/Standard.astro?raw';
+import rawCard from '@examples/Card/Card.astro?raw';
 import Example from '@components/Example.astro'
 
 If displaying multiple cards, the code can be simplified by creating a card component. Add the data to an array of objects, and iterating over it e.g.
@@ -18,16 +19,7 @@ If displaying multiple cards, the code can be simplified by creating a card comp
 
 **Card.astro**
 
-```astro title="Card.astro"
----
-const {img, alt, title, text, href, linkText} = Astro.props;
----
-<div class="card" style="width: 18rem;">
-  <img src={img} class="card-img-top" alt={alt}>
-  <div class="card-body">
-    <h5 class="card-title">{title}</h5>
-    <p class="card-text">{text}</p>
-    <a href={href} class="btn btn-primary">{linkText}</a>
-  </div>
-</div>
-```
+
+<Example>
+  <Fragment slot="code" set:html={rawCard} />
+</Example>

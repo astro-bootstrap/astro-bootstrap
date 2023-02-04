@@ -1,8 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import HomeCard from '@components/HomeCard.astro';
+
 const {cards} = Astro.props.frontmatter;
-import Card from '@components/Card.astro';
-import type {Props as CardData} from '@components/Card.astro';
+import type {Props as CardData} from '@components/HomeCard.astro';
 ---
 
 <BaseLayout title="Welcome to Astro.">
@@ -27,12 +28,12 @@ import type {Props as CardData} from '@components/Card.astro';
         </div>
       </div>
     </div>
-    <div class="container">
-      <div class="row row-cols-3">
+    <div class="container-md">
+      <div class="row row-cols-1 row-cols-sm-3">
         {
           cards.map((card: CardData) => (
             <div class="col">
-              <Card {...card} />
+              <HomeCard {...card} />
             </div>
           ))
         }

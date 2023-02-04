@@ -1,18 +1,19 @@
 ---
 // Template example only
+const id = 'offcanvasExample';
 ---
 <!-- launch with button examples -->
 <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
   Link with href
 </a>
-<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target={`#${id}`} aria-controls={id}>
   Button with data-bs-target
 </button>
 
 <!-- Offcanvas -->
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+<div class="offcanvas offcanvas-start" tabindex="-1" id={id} aria-labelledby={`${id}-label`}>
   <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+    <h5 class="offcanvas-title" id={`${id}-label`}>Offcanvas</h5>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">

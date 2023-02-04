@@ -4,6 +4,7 @@ import { Code } from 'astro/components';
 import ApiTable from './ApiTable.astro';
 import type { ApiProps } from './ApiTable.astro';
 
+
 export interface Props {
   component: Component;
 }
@@ -13,6 +14,5 @@ export interface Component {
   props: ApiProps[];
 }
 ---
-
-<Code code={component.import} />
+<Code code={component.import} lang="js"/>
 <ApiTable props={component.props} />

@@ -1,6 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 const { title } = Astro.props.frontmatter || Astro.props;
+
+export interface Props {
+  title: string;
+}
 ---
 
 <BaseLayout {title}>

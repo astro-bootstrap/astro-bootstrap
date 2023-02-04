@@ -13,8 +13,55 @@ const titleText = isHome ? `${SITE_TITLE}` : `${title} - ${SITE_TITLE}`;
 ---
 
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en" data-bs-theme="auto">
   <head>
+    <script is:inline>
+      (() => {
+        'use strict';
+        const isDarkMode = () => {
+          return localStorage.getItem('theme') === 'dark' ? true : false;
+        }
+        // check if theme has been set, otherwise get OS/browser setting if browser supports
+        const getPreferredTheme = () => {
+          if (isDarkMode() != null ) {
+            return isDarkMode();
+          }
+          return window.matchMedia('(prefers-color-scheme: dark)').matches;
+        };
+
+        const setTheme = function (isDark) {
+          isDark
+            ? document.documentElement.setAttribute('data-bs-theme', 'dark')
+            : document.documentElement.setAttribute('data-bs-theme', 'light');
+        };
+        setTheme(getPreferredTheme());
+
+        //update theme if browser/OS setting is changed
+        window
+          .matchMedia('(prefers-color-scheme: dark)')
+          .addEventListener('change', (e) => {
+            setTheme(e.matches);
+          });
+
+        // enable theme switching, on DOMContentLoaded
+        window.addEventListener('DOMContentLoaded', () => {
+          const toggle = document.getElementById('darkmode-toggle');
+          if (isDarkMode() !== toggle.checked) {
+            toggle.checked = !toggle.checked;
+          }
+          toggle &&
+            toggle.addEventListener('change', (event) => {
+              if (event.currentTarget.checked === true) {
+                setTheme(true);
+                localStorage.setItem('theme', 'dark');
+              } else {
+                setTheme(false);
+                localStorage.setItem('theme', 'light');
+              }
+            });
+        });
+      })();
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/ab64x64.png" />
@@ -32,7 +79,7 @@ const titleText = isHome ? `${SITE_TITLE}` : `${title} - ${SITE_TITLE}`;
   body {
     height: 100vh;
     /* for bs scrollSpy */
-    position: relative;
+    /* position: relative; */
   }
   .content {
     position: absolute;
@@ -42,9 +89,9 @@ const titleText = isHome ? `${SITE_TITLE}` : `${title} - ${SITE_TITLE}`;
   }
 </style>
 <style is:global>
-    [id] {
+  [id] {
     scroll-margin-top: 4rem;
-    }
+  }
   .text-astro {
     color: #ff5d01;
   }

@@ -1,24 +1,37 @@
 ---
 // Template example only
 ---
+
 <!-- Button to trigger -->
 <button type="button" class="btn btn-primary" id="js-showModal">
   Launch demo modal
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="js-exampleModal" tabindex="-1" aria-labelledby="jsExampleModalLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="js-exampleModal"
+  tabindex="-1"
+  aria-labelledby="jsExampleModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="jsExampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"></button>
       </div>
       <div class="modal-body">
         Woo-hoo, you're reading this text in a modal!
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+          >Close</button
+        >
         <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
@@ -26,9 +39,9 @@
 </div>
 <script>
   import Modal from 'bootstrap/js/dist/modal';
-  const myModal = new Modal('#js-exampleModal')
-  const button = document.getElementById('js-showModal')
-  document.addEventListener(onclick, button, function(
-    myModal().toggle;
-  ))
+  const myModal = new Modal('#js-exampleModal');
+  const button = document.getElementById('js-showModal');
+  // document.addEventListener(onclick, button, function () {
+  //   // myModal().toggle;
+  // });
 </script>

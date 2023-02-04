@@ -1,16 +1,14 @@
 ---
-import ActiveLink from '../utils/ActiveLink.astro';
-const { title, children } = Astro.props;
-
+import Navbar from './Navbar';
+import type { Props as NavbarDropdownLinkType } from './NavbarDropdownLink.astro';
+const { title, subItems, class: className } = Astro.props;
+export interface Child extends NavbarDropdownLinkType {
+  divider?: boolean;
+}
 export interface Props {
   title: string;
-  children: Child[];
-}
-
-export interface Child {
-  divider?: boolean;
-  title?: string;
-  href?: string;
+  subItems: Child[];
+  class?: string;
 }
 ---
 
@@ -24,16 +22,14 @@ export interface Child {
   >
     {title}
   </a>
-  <ul class="dropdown-menu">
+  <ul class:list={['dropdown-menu', className ]}>
     {
-      children.map((child) => (
+      subItems.map((child) => (
         <li>
           {child.divider ? (
-            <hr class="dropdown-divider" />
+            <Navbar.DropdownDivider />
           ) : (
-            <ActiveLink href={child.href} class="dropdown-item">
-              {child.title}
-            </ActiveLink>
+            <Navbar.DropdownLink {...child} />
           )}
         </li>
       ))

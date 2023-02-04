@@ -8,7 +8,7 @@
     "bootstrap",
     "components"
   ],
-  "version": "0.3.0",
+  "version": "0.4.0",
   "type": "module",
   "exports": {
     ".": "./index.ts"
@@ -50,10 +50,10 @@
     "bootstrap": "5.x"
   },
   "dependencies": {
+    "astro": "^2.0.5",
     "dompurify": "^2.4.3",
     "marked": "^4.2.12",
     "nanoid": "^4.0.0",
-    "title-case": "^3.0.3",
-    "xss": "^1.0.14"
+    "title-case": "^3.0.3"
   }
 }

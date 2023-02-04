@@ -1,0 +1,17 @@
+---
+import Navbar from './Navbar';
+const { items, class: className } = Astro.props;
+import type { Props as NavbarItemType } from './NavbarItem.astro';
+export interface Props {
+  items: NavbarItemType[];
+  class?: string;
+}
+---
+
+<ul class:list={['navbar-nav', className ]}>
+  {
+    items.map((item) =>
+     <Navbar.Item {item} />
+    )
+  }
+</ul>

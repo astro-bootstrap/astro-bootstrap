@@ -16,14 +16,14 @@ const {
 
 const id = userId || `tabs-${nanoid(8)}`;
 
-export interface TabInterface {
+export interface TabType {
   title: string;
   body: string;
   active?: boolean;
 }
 
 export interface TabContentInterface {
-  tabs?: TabInterface[];
+  tabs?: TabType[];
   id?: string;
   fade?: boolean;
   listClass?: string;

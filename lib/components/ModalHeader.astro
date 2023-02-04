@@ -1,0 +1,15 @@
+---
+const { parent: id, h = 5, class: className} = Astro.props;
+export interface Props {
+  parent: string;
+  h?: number;
+  class?: string;
+}
+const Heading = `h${h}`
+---
+<div class:list={['modal-header', className]}>
+  <Heading class="modal-title" id={`${id}-label`}><slot /></Heading>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+
+

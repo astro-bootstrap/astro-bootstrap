@@ -1,0 +1,18 @@
+---
+const { id, class: className, fade } = Astro.props;
+export interface Props {
+  id?: string;
+  class?: string;
+  fade?: boolean;
+}
+---
+<div class:list={['modal', className, {fade}]} id={id} tabindex="-1" aria-labelledby={`${id}-label`} aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <slot />
+    </div>
+  </div>
+</div>
+<script>
+  import 'bootstrap/js/dist/modal';
+</script>

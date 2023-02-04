@@ -1,5 +1,8 @@
 ---
-const buttons = [{ text: 'Left' }, { text: 'Center' }, { text: 'Right' }];
+const buttons: Button[] = [{ text: 'Left' }, { text: 'Center' }, { text: 'Right' }];
+export interface Button {
+  text: string;
+}
 ---
 
 <div class="btn-group" role="group" aria-label="Basic example">
