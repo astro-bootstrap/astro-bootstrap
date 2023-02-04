@@ -1,10 +1,19 @@
 ---
 import { Icon } from 'astro-icon';
-const { width, height, class: className, ...props } = Astro.props;
+const {
+  width = '50px',
+  height = '24px',
+  bgDark = '#242424',
+  bgLight = '#ebebeb',
+  class: className,
+  ...props
+} = Astro.props;
 export interface Props {
   width?: string;
   height?: string;
   class?: string;
+  bgDark?: string;
+  bgLight?: string;
 }
 ---
 
@@ -23,16 +32,16 @@ export interface Props {
   <small class="d-lg-none ms-2">Switch Theme</small>
 </div>
 
-<style lang="scss">
+<style lang="scss" define:vars={{ width, height, bgDark, bgLight }}>
   /* hide the "default" checkbox/appearance */
   .toggle-checkbox {
     display: none;
   }
 
-  $width: 55px;
-  $height: 24px;
-  $bg-dark: #242424;
-  $bg-light: #ebebeb;
+  $width: var(--width);
+  $height: var(--height);
+  $bg-dark: var(--bgDark);
+  $bg-light: var(--bgLight);
   $circleDiameter: calc($height * 0.9);
   $circlePadding: calc(calc($height - $circleDiameter) / 2);
   $svgDiameter: calc($circleDiameter * 0.8);

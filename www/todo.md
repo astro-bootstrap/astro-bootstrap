@@ -1,9 +1,9 @@
-fix navbar so it works
-change structure so the components can be used individually
-pagination tpe for 'page'
+
+change structure so the components can be used individually, create examples of usage
+pagination type for 'page'
+type for { markdown } = Astro.props
 
 content collections - force frontmatter schema
-
 
 offcanvas: child dropdown js not functioning
 
