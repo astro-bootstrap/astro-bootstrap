@@ -67,6 +67,15 @@ const titleText = isHome ? `${SITE_TITLE}` : `${title} - ${SITE_TITLE}`;
     <link rel="icon" type="image/svg+xml" href="/ab64x64.png" />
     <meta name="generator" content={Astro.generator} />
     <title>{titleText}</title>
+    <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RM02DLH2VE"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-RM02DLH2VE');
+  </script>
   </head>
   <body>
     <Navbar />
