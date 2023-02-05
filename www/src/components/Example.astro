@@ -23,7 +23,7 @@ const codeSlot = await Astro.slots.render('code');
         >
         <div class="d-flex ms-auto">
           <button type="button" class="btn-copy">
-            <div class="svg-clipboard">
+            <div class="svg-clipboard code-svg">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -40,7 +40,7 @@ const codeSlot = await Astro.slots.render('code');
                 ></path>
               </svg>
             </div>
-            <div class="svg-clipboard-check d-none">
+            <div class="svg-clipboard-check d-none code-svg">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -80,6 +80,9 @@ const codeSlot = await Astro.slots.render('code');
   }
   .breadcrumb {
     margin-bottom: 0;
+  }
+  .code-svg {
+    color: white;
   }
 </style>
 
