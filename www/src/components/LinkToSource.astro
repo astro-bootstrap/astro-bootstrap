@@ -2,10 +2,10 @@
 const { name: component } = Astro.props;
 // import { version } from '../../../package.json';
 import { Icon } from 'astro-icon';
-const linkToComponentOnGitHub = `http://https://github.com/astro-bootstrap/astro-bootstrap/tree/master/lib/components/${component}.astro`;
+const linkToComponentOnGitHub = `https://github.com/astro-bootstrap/astro-bootstrap/tree/master/lib/components/${component}.astro`;
 const title = "View source file"
 ---
-<a href={linkToComponentOnGitHub} data-bs-toggle="tooltip" data-bs-original-title={title}>
+<a href={linkToComponentOnGitHub} data-bs-toggle="tooltip" data-bs-title={title} target="_blank">
   <div class="link-svg">
     <Icon name="bi:code-slash" />
   </div> 
