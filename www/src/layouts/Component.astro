@@ -5,6 +5,7 @@ import SideNav from '@components/SideNav.astro';
 import Toc from '@components/Toc.astro';
 import { Alert } from 'astro-bootstrap';
 import type { MarkdownHeading } from 'astro';
+import OfficalDocsLink from '@components/OfficalDocsLink.astro';
 
 const { title, description, docs } = Astro.props.frontmatter || Astro.props;
 const { headings, url } = Astro.props;
@@ -16,6 +17,8 @@ export interface Props {
   url?: any;
   frontmatter: any;
 }
+
+
 
 const warningText = `\
 This component is still under development. Please only use the snippets provided below to avoid breaking changes.
@@ -55,14 +58,7 @@ const isComponent = category === 'components' ? true : false;
             isComponent && (
               <>
                 <Alert variant="danger">{warningText}</Alert>
-                <p>
-                  View the official docs{' '}
-                  <a
-                    href={`https://getbootstrap.com/docs/5.2/components/${slug}/`}
-                  >
-                    here
-                  </a>
-                </p>
+                <OfficalDocsLink slug={slug} />
               </>
             )
           }
@@ -145,7 +141,7 @@ const isComponent = category === 'components' ? true : false;
     const btnHtml = `
   <div class="copy-button-wrapper">
   <button type="button" class="btn-copy overlay">
-    <div class="svg-clipboard">
+    <div class="svg-clipboard code-svg">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="16"
@@ -162,7 +158,7 @@ const isComponent = category === 'components' ? true : false;
         ></path>
       </svg>
     </div>
-    <div class="svg-clipboard-check d-none">
+    <div class="svg-clipboard-check d-none code-svg">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="16"
@@ -267,3 +263,4 @@ const isComponent = category === 'components' ? true : false;
     });
   })();
 </script>
+
