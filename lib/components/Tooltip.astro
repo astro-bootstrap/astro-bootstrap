@@ -1,0 +1,47 @@
+---
+const {
+  title,
+  placement,
+  animation,
+  delay,
+  html,
+  trigger,
+  customClass,
+} = Astro.props;
+export interface Props {
+  title: string;
+  placement?: 'top' | 'bottom' | 'left' | 'right' | 'auto';
+  animation?: boolean;
+  delay?: number;
+  html?: boolean;
+  trigger?: 'click' | 'hover' | 'focus' | 'click hover' | 'click focus' | 'click hover focus' | 'hover focus';
+  customClass?: string;
+}
+---
+
+<tooltip-wrapper>
+  <span
+    data-bs-toggle="tooltip"
+    data-bs-title={title}
+    data-bs-placement={placement}
+    data-bs-animation={animation}
+    data-bs-delay={delay}
+    data-bs-html={html}
+    data-bs-trigger={trigger}
+    data-bs-custom-class={customClass}
+  >
+    <slot />
+  </span>
+</tooltip-wrapper>
+
+<script>
+  import Tooltip from 'bootstrap/js/dist/tooltip';
+  class AstroBootstrapTooltip extends HTMLElement {
+    constructor() {
+      super();
+      const span = this.querySelector('span');
+      new Tooltip(span);
+    }
+  }
+  customElements.define('tooltip-wrapper', AstroBootstrapTooltip);
+</script>

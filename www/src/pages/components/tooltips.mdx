@@ -1,0 +1,68 @@
+---
+title: Tooltips
+layout: '@layouts/Component.astro'
+variant: component
+description: Documentation and examples for adding custom Bootstrap tooltips with CSS and JavaScript using CSS3 for animations and data-bs-attributes for local title storage.
+api:
+  tooltip:
+    import: "import { Tooltip } from 'astro-bootstrap'"
+    props:
+      - name: title
+        type: string
+        default: ''
+        description: Tooltip title
+        required: true
+      - name: Placement
+        type: string
+        default: 'top'
+        description: Tooltip position - top, bottom, left or right
+      - name: Animation
+        type: boolean
+        default: 'true'
+        description: Disable/Enable animation
+      - name: Delay
+        type: number
+        default: ''
+        description: Delay in ms to show tooltip
+      - name: html
+        type: boolean
+        default: 'false'
+        description: Enable html in tooltip
+      - name: Trigger
+        type: string
+        default: ''
+        description: Mouse event which triggers tooltip. click, hover, focus or a combination separated by spaces.
+      - name: customClass
+        type: string
+        default: ''
+        description: Add a css class to the tooltip
+---
+
+import Example from '@components/Example.astro';
+import Api from '@components/Api.astro';
+import rawBasic from '@examples/Tooltips/Basic.astro?raw';
+import Basic from '@examples/Tooltips/Basic.astro';
+import rawManual from '@examples/Tooltips/Manual.astro?raw';
+import Manual from '@examples/Tooltips/Manual.astro';
+
+## Examples
+
+### Basic
+
+<Example>
+  <Basic slot="component" />
+  <Fragment slot="code" set:html={rawBasic} />
+</Example>
+
+### No components
+
+<Example>
+  <Manual slot="component" />
+  <Fragment slot="code" set:html={rawManual} />
+</Example>
+
+## API
+
+### Tooltip
+
+<Api component={frontmatter.api.tooltip} />

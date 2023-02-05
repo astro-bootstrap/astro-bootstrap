@@ -1,35 +1,17 @@
 ---
-// Template example only
+import { Tooltip } from 'astro-bootstrap';
 ---
 
 <p class="muted">
-  Placeholder text to demonstrate some <a
-    href="#"
-    data-bs-toggle="tooltip"
-    data-bs-title="Default tooltip">inline links</a
-  > with tooltips. This is now just filler, no killer. Content placed here just to
-  mimic the presence of <a
-    href="#"
-    data-bs-toggle="tooltip"
-    data-bs-title="Another tooltip">real text</a
-  >. And all that just to give you an idea of how tooltips would look when used
-  in real-world situations. So hopefully you've now seen how <a
-    href="#"
-    data-bs-toggle="tooltip"
-    data-bs-title="Another one here too">these tooltips on links</a
-  > can work in practice, once you use them on <a
-    href="#"
-    data-bs-toggle="tooltip"
-    data-bs-title="The last tip!">your own</a
-  > site or project.
+  Placeholder text to demonstrate some <Tooltip title="Default tooltip">
+    <a href="#">inline links</a>
+  </Tooltip> with tooltips. This is now just filler, no killer. Content placed here
+  just to mimic the presence of <Tooltip title="Another tooltip">
+    <a href="#">real text</a>
+  </Tooltip>. And all that just to give you an idea of how tooltips would look
+  when used in real-world situations. So hopefully you've now seen how <Tooltip
+    title="Another one here too"
+  >
+    <a href="#">these tooltips on links</a>
+  </Tooltip> can work in practice, once you use them on your own site or project.
 </p>
-<script>
-  import Tooltip from 'bootstrap/js/dist/tooltip';
-  const tooltipTriggerList = document.querySelectorAll(
-    '[data-bs-toggle="tooltip"]',
-  );
-  /* eslint-disable-next-line  no-unused-vars*/ // only required if using es-lint
-  const tooltipList = [...tooltipTriggerList].map(
-    (tooltipTriggerEl) => new Tooltip(tooltipTriggerEl),
-  );
-</script>
