@@ -3,6 +3,7 @@ const { component } = Astro.props;
 import { Code } from 'astro/components';
 import ApiTable from './ApiTable.astro';
 import type { ApiProps } from './ApiTable.astro';
+import LinkToSource from './LinkToSource.astro';
 
 
 export interface Props {
@@ -10,9 +11,18 @@ export interface Props {
 }
 
 export interface Component {
+  name: string;
   import: string;
   props: ApiProps[];
 }
 ---
+<!-- <h3 id={`${component.name}-component`}>{component.name}</h3> -->
+<div class="d-flex ">
+  <div class="ms-auto">
+    <LinkToSource name="Accordion" />
+  </div>
+
+</div>
+
 <Code code={component.import} lang="js"/>
 <ApiTable props={component.props} />
