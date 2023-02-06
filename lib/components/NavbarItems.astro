@@ -1,17 +1,41 @@
 ---
+import Dropdown from './Dropdown';
+import Nav from './Nav';
 import Navbar from './Navbar';
-const { items, class: className } = Astro.props;
-import type { Props as NavbarItemType } from './NavbarItem.astro';
+import type { Props as NavItemType } from './NavItem.astro';
+import type { Props as DropdownItemType } from './DropdownItem.astro';
+import type { Props as DropdownDividerType } from './DropdownDivider.astro';
+export interface DropdownType extends DropdownItemType, DropdownDividerType {
+  divider?: boolean;
+}
+export interface NavbarItemType extends NavItemType {
+  subItems?: DropdownType[];
+}
 export interface Props {
   items: NavbarItemType[];
-  class?: string;
 }
+const { items } = Astro.props;
 ---
 
-<ul class:list={['navbar-nav', className ]}>
+<Navbar.Nav>
   {
     items.map((item) =>
-     <Navbar.Item {item} />
+      item.subItems ? (
+        <Dropdown nav>
+          <Dropdown.Link nav>{item.text}</Dropdown.Link>
+          <Dropdown.Menu>
+            {item.subItems.map((subItem) =>
+              subItem.divider ? (
+                <Dropdown.Divider />
+              ) : (
+                <Dropdown.Item {...subItem} />
+              ),
+            )}
+        </Dropdown.Menu>
+        </Dropdown>
+      ) : (
+        <Nav.Item {...item} />
+      )
     )
   }
-</ul>
+</Navbar.Nav>

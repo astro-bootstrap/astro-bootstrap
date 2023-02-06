@@ -1,0 +1,17 @@
+---
+import ActiveLink from '../utils/ActiveLink.astro';
+
+const { class: className, href, disabled, text, linkClass, ...props } = Astro.props;
+export interface Props {
+  class?: string | string[];
+  href?: string;
+  disabled?: boolean;
+  text?: string
+  linkClass?: string;
+}
+---
+<li class:list={['nav-item', className]}>
+  <ActiveLink href={href} class={['nav-link', linkClass]} {...props} disabled={disabled}>
+    <slot>{text}</slot>
+  </ActiveLink>
+</li>

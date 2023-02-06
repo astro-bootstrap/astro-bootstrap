@@ -1,27 +1,19 @@
 ---
-// Template example only
-import { ActiveLink } from 'astro-bootstrap';
-const navs: Nav[] = [
+import { Nav } from 'astro-bootstrap';
+import type { NavItemType } from 'astro-bootstrap';
+const navs: NavItemType[] = [
   { href: '/', text: 'Home' },
   { href: '#', text: 'Link' },
   { href: '/components/navs', text: 'Active' },
   { href: '/hidden', text: 'Disabled', disabled: true },
 ];
-export interface Nav {
-  href?: string;
-  text?: string;
+export interface NavType {
+  href: string;
+  text: string;
   disabled?: boolean;
 }
 ---
 
-<ul class="nav">
-  {
-    navs.map((nav) => (
-      <li class="nav-item">
-        <ActiveLink href={nav.href} class="nav-link" disabled={nav.disabled}>
-          {nav.text}
-        </ActiveLink>
-      </li>
-    ))
-  }
-</ul>
+<Nav>
+  {navs.map((nav) => <Nav.Item {...nav} />)}
+</Nav>

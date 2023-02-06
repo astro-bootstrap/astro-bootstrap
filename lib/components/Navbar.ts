@@ -1,19 +1,12 @@
+import Navbar from './NavbarDefault.astro';
 import Collapse  from './NavbarCollapse.astro';
-import Dropdown  from './NavbarDropdown.astro';
-import DropdownLink  from './NavbarDropdownLink.astro';
-import DropdownDivider  from './NavbarDropdownDivider.astro';
 import Items from './NavbarItems.astro';
-import Item  from './NavbarItem.astro';
-import Link from './NavbarLink.astro'
+import Nav  from './NavbarNav.astro';
 import Toggler  from './NavbarToggler.astro';
-export default Object.assign({
+export default Object.assign(Navbar,{
   Collapse, 
-  Dropdown, 
-  DropdownLink,
-  DropdownDivider,
-  Item, 
+  Nav, 
   Items,
-  Link,
   Toggler,
 })
 

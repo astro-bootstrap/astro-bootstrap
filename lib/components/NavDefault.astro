@@ -1,0 +1,13 @@
+---
+const { class: className, tabs, pills, justified, fill} = Astro.props;
+export interface Props {
+  class?: string;
+  tabs?: boolean;
+  pills?: boolean;
+  justified?: boolean;
+  fill?: boolean;
+}
+---
+<ul class:list={['nav', className, {'nav-tabs': tabs, 'nav-pills': pills, 'nav-justified': justified, 'nav-fill': fill}]}>
+  <slot />
+</ul>

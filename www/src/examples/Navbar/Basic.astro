@@ -5,27 +5,28 @@ import type { NavbarItemType } from 'astro-bootstrap';
 const siteTitle = 'Astro site'; // pull this in from a config file
 const items: NavbarItemType[] = [
   // pull this in from a config file
-  { title: 'Home', href: '#' },
-  { title: 'About', href: '#' },
+  { text: 'Home', href: '#' },
+  { text: 'About', href: '#' },
   {
-    title: 'Dropdown',
+    text: 'Dropdown',
     subItems: [
-      { title: 'First child', href: '#' },
+      { text: 'First child', href: '#' },
       { divider: true },
-      { title: 'Second child', href: '#' },
+      { text: 'Second child', href: '#' },
     ],
   },
 ];
 
 const id = 'navbarDemo'
 ---
-
-<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+<Navbar class="navbar-expand-lg bg-primary" data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">{siteTitle}</a>
     <Navbar.Toggler controls={id} />
     <Navbar.Collapse id={id}>
-      <Navbar.Items items={items} class="me-auto mb-2 mb-lg-0" />
+      <Navbar.Nav class="me-auto mb-2 mb-lg-0">
+        <Navbar.Items items={items}  />
+      </Navbar.Nav>
     </Navbar.Collapse>
   </div>
-</nav>
+</Navbar>

@@ -1,4 +1,12 @@
 
+can navs be reused in Tabs components? (not examples)
+
+add nav variants to docs
+  tabs?: boolean;
+  pills?: boolean;
+  justified?: boolean;
+  fill?: boolean;
+
 change structure so the components can be used individually, create examples of usage
 pagination type for 'page'
 type for { markdown } = Astro.props

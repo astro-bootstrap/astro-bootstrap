@@ -1,0 +1,18 @@
+---
+const { class: className, variant, text } = Astro.props;
+export interface Props {
+  class?: string;
+  variant: string;
+  text?: string;
+}
+const btnVariant = `btn-${variant}`;
+---
+
+<button
+  class:list={['btn', btnVariant, className, 'dropdown-toggle']}
+  type="button"
+  data-bs-toggle="dropdown"
+  aria-expanded="false"
+>
+  <slot>{text}</slot>
+</button>

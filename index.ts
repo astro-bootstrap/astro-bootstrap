@@ -32,21 +32,25 @@ export { default as CarouselControl } from './lib/components/CarouselControl.ast
 export { default as CarouselIndicators } from './lib/components/CarouselIndicators.astro';
 export { default as CarouselItem } from './lib/components/CarouselItem.astro';
 
-// Navbar Components
-export { default as Navbar } from './lib/components/Navbar';
+// Dropdown
 
-// Accessible in Navbar
-export { default as NavbarCollapse } from './lib/components/NavbarCollapse.astro';
-export { default as NavbarToggler } from './lib/components/NavbarToggler.astro';
-export { default as NavbarDropdown } from './lib/components/NavbarDropdown.astro';
-export type { Props as NavbarDropdownType } from './lib/components/NavbarDropdown.astro';
-export { default as NavbarDropdownLink } from './lib/components/NavbarDropdownLink.astro';
-export type { Props as NavbarDropdownLinkType } from './lib/components/NavbarDropdownLink.astro';
-export { default as NavbarDropdownDivider } from './lib/components/NavbarDropdownDivider.astro';
-export { default as NavbarItem } from './lib/components/NavbarItem.astro';
-export type { Props as NavbarItemType } from './lib/components/NavbarItem.astro';
-export { default as NavbarItems } from './lib/components/NavbarItems.astro';
-export type { Props as NavbarItemsType } from './lib/components/NavbarItems.astro';
+export { default as Dropdown } from './lib/components/Dropdown';
+
+// Nav
+export { default as Nav } from './lib/components/Nav';
+export type { Props as NavType } from './lib/components/NavDefault.astro';
+export type { Props as NavItemType } from './lib/components/NavItem.astro';
+
+// Navbar 
+export { default as Navbar } from './lib/components/Navbar';
+export type { NavbarItemType } from './lib/components/NavbarItems.astro';
+
+
+// Change to NavDropdown
+export type { Props as DropdownType } from './lib/components/Dropdown.astro';
+export type { Props as DropdownItemType } from './lib/components/NavbarDropdownItem.astro';
+
+
 
 
 // Modal

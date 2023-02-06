@@ -17,18 +17,13 @@ export interface Props {
   trigger?: 'click' | 'hover' | 'focus' | 'click hover' | 'click focus' | 'click hover focus' | 'hover focus';
   customClass?: string;
 }
+const config = { title, placement, animation, delay, html, trigger, customClass}
 ---
 
 <tooltip-wrapper>
   <span
     data-bs-toggle="tooltip"
-    data-bs-title={title}
-    data-bs-placement={placement}
-    data-bs-animation={animation}
-    data-bs-delay={delay}
-    data-bs-html={html}
-    data-bs-trigger={trigger}
-    data-bs-custom-class={customClass}
+    data-bs-config={JSON.stringify(config)}
   >
     <slot />
   </span>
