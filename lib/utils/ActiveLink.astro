@@ -6,11 +6,13 @@ const {
   disabled = false,
   activeClass = 'active',
   disabledClass = 'disabled',
+  text,
   ...props
 } = Astro.props;
-export interface Props extends HTMLAttributes<'a'> {
-  // href: string;
-  // class?: string;
+export interface Props {
+  href: string;
+  class?: string | string[];
+  text?: string;
   disabled?: boolean;
   activeClass?: string;
   disabledClass?: string;
@@ -36,7 +38,7 @@ const hrefStr: string = disabled ? undefined : href;
   ]}
   aria-current={ariaCurrent}
   tabindex={tabIndex}
-  {...props}><slot /></a
+  {...props}><slot>{text}</slot></a
 >
 <style>
   .cursor-default {

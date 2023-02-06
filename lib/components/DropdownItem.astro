@@ -1,0 +1,13 @@
+---
+import ActiveLink from '../utils/ActiveLink.astro';
+const { href, text, class: className, ...props} = Astro.props;
+export interface Props {
+  href?: string;
+  text?: string;
+  class?: string;
+  title?: string;
+}
+---
+<ActiveLink href={href} class={['dropdown-item', className ]} {...props}>
+  <slot>{text}</slot>
+</ActiveLink>

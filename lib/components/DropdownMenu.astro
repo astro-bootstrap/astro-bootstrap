@@ -1,0 +1,10 @@
+---
+const {class: className } = Astro.props;
+
+export interface Props {
+  class?: string;
+}
+---
+<ul class:list={['dropdown-menu', className  ]}>
+  <slot />
+</ul>

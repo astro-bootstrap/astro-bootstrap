@@ -1,0 +1,9 @@
+---
+const { class: className, ...props } = Astro.props;
+export interface Props {
+  class?: string;
+}
+---
+<nav class:list={['navbar', className]} {...props}>
+  <slot />
+</nav>

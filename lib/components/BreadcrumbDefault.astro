@@ -1,5 +1,5 @@
 ---
-import BreadcrumbItem from './BreadcrumbItem.astro';
+import Breadcrumb from './Breadcrumb';
 
 const {
   id,
@@ -48,9 +48,9 @@ slugs.forEach((slug) => {
     <slot>
       {
         parts.map(({ text, href }) => (
-          <BreadcrumbItem {href} class={itemClass}>
+          <Breadcrumb.Item {href} class={itemClass}>
             {text}
-          </BreadcrumbItem>
+          </Breadcrumb.Item>
         ))
       }
     </slot>

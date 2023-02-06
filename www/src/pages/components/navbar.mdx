@@ -63,16 +63,16 @@ api:
 ---
 import Example from '@components/Example.astro';
 import Api from '@components/Api.astro';
-import Standard from '@examples/Navbar/Standard.astro';
-import rawStandard from '@examples/Navbar/Standard.astro?raw';
+import Basic from '@examples/Navbar/Basic.astro';
+import rawBasic from '@examples/Navbar/Basic.astro?raw';
 
 ## Examples
 
 ### Basic
 
 <Example>
-  <Standard slot="component" />
-  <Fragment slot="code" set:html={rawStandard} />
+  <Basic slot="component" />
+  <Fragment slot="code" set:html={rawBasic} />
 </Example>
 
 ## API

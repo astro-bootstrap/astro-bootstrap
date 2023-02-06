@@ -1,7 +1,7 @@
 ---
 title: Dropdowns
 layout: '@layouts/Component.astro'
-variant: js
+variant: component
 docs: https://getbootstrap.com/docs/5.2/components/collapse/
 description: Toggle the visibility of content across your project with a few classes and a Bootstrap JS plugin.
 ---
@@ -13,7 +13,7 @@ import Basic from '@examples/Dropdowns/Basic.astro';
 
 ### Basic
 
-You can keep your code dry by generating dropdown items with `map`. Make sure you include the required js plugin.
+You can keep your code dry by generating dropdown items with `map`. When a dropdown is used inside a `<Nav>` component, make sure you enable the `nav` option.
 
 <Example>
   <Basic slot="component" />

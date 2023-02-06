@@ -1,4 +1,5 @@
 ---
+import { Dropdown } from 'astro-bootstrap';
 const dropdowns: Dropdown[] = [
   {
     text: 'Action',
@@ -19,27 +20,13 @@ export interface Dropdown {
 }
 ---
 
-<div class="dropdown">
-  <button
-    class="btn btn-secondary dropdown-toggle"
-    type="button"
-    data-bs-toggle="dropdown"
-    aria-expanded="false"
-  >
-    Dropdown button
-  </button>
-  <ul class="dropdown-menu">
+<Dropdown>
+  <Dropdown.Button variant="secondary">Dropdown button</Dropdown.Button>
+  <Dropdown.Menu>
     {
       dropdowns.map((dropdown) => (
-        <li>
-          <a class="dropdown-item" href={dropdown.href}>
-            {dropdown.text}
-          </a>
-        </li>
+        <Dropdown.Item href={dropdown.href}>{dropdown.text}</Dropdown.Item>
       ))
     }
-  </ul>
-</div>
-<script>
-  import 'bootstrap/js/dist/dropdown';
-</script>
+  </Dropdown.Menu>
+</Dropdown>

@@ -1,0 +1,16 @@
+---
+const {class: className, nav = false } = Astro.props;
+
+export interface Props {
+  class?: string;
+  nav?: boolean;
+}
+const Tag = nav ? 'li' : 'div'
+---
+
+<Tag class:list={['dropdown', className, {'nav-item': nav}]}>
+  <slot />
+</Tag>
+<script>
+  import 'bootstrap/js/dist/dropdown';
+</script>
