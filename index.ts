@@ -6,21 +6,20 @@
 
 // Alert
 export { default as Alert } from './lib/components/Alert';
-// Available from Alert
-export { default as AlertDefault } from './lib/components/AlertDefault.astro';
-export { default as AlertHeading } from './lib/components/AlertHeading.astro';
-export { default as AlertLink } from './lib/components/AlertLink.astro';
+export type { Props as AlertType } from './lib/components/AlertDefault.astro';
+export type { Props as AlertHeadingType } from './lib/components/AlertHeading.astro';
+export type { Props as AlertLinkType } from './lib/components/AlertLink.astro';
 
 // Accordion
 export { default as Accordion } from './lib/components/Accordion.astro';
 export type { AccordionType } from './lib/components/Accordion.astro';
-export { default as AccordionBody } from './lib/components/AccordionBody.astro';
-export { default as AccordionHeader } from './lib/components/AccordionHeader.astro';
-export { default as AccordionItem } from './lib/components/AccordionItem.astro';
+export type { Props as AccordionBodyType } from './lib/components/AccordionBody.astro';
+export type { Props as AccordionHeaderType } from './lib/components/AccordionHeader.astro';
+export type { Props as AccordionItemType } from './lib/components/AccordionItem.astro';
 
 // Breadcrumb
-export { default as Breadcrumb } from './lib/components/Breadcrumb.astro';
-export { default as BreadcrumbItem } from './lib/components/BreadcrumbItem.astro';
+export { default as Breadcrumb } from './lib/components/Breadcrumb';
+
 
 // Carousel
 export { default as Carousel } from './lib/components/Carousel';

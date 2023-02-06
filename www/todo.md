@@ -1,4 +1,6 @@
 
+create barrel imports for all component groups e.g. accordion
+
 can navs be reused in Tabs components? (not examples)
 
 add nav variants to docs
