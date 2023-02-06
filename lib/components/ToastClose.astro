@@ -1,0 +1,7 @@
+---
+const { class: className } = Astro.props;
+export interface PRops {
+  class?: string;
+}
+---
+<button type="button" class:list={['btn-close', className]} data-bs-dismiss="toast" aria-label="Close"></button>

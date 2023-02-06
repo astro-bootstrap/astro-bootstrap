@@ -1,12 +1,75 @@
 ---
 title: Toasts
 layout: '@layouts/Component.astro'
-variant: js
+variant: component
 description: Push notifications to your visitors with a toast, a lightweight and easily customizable alert message.
+
+api:
+  toast:
+    import: "import { Toast } from 'astro-bootstrap'"
+    props:
+      - name: id
+        type: string
+        default: ''
+        description: Toast Id for showing with JS.
+        required: true
+      - name: class
+        type: string
+        default: ''
+        description: Append class(es) to toast `div`
+      - name: animation
+        type: boolean
+        default: 'true'
+        description: Switch on/off animation effect.
+      - name: autohide
+        type: boolean
+        default: 'true'
+        description: Toast Id for showing with JS.
+      - name: delay
+        type: number
+        default: 5000
+        description: Delay in ms before autohide takes place.
+  toastContainer:
+    import: "import { Toast } from 'astro-bootstrap'"
+    props:
+      - name: class
+        type: string
+        default: ''
+        description: Append class(es) to `toast` `div`
+  toastHeader:
+    import: "import { Toast } from 'astro-bootstrap'"
+    props:
+      - name: class
+        type: string
+        default: ''
+        description: Append class(es) to `toast-container` `div`
+  toastBody:
+    import: "import { Toast } from 'astro-bootstrap'"
+    props:
+      - name: class
+        type: string
+        default: ''
+        description: Append class(es) to `toast-body` `div`
+  toastClose:
+    import: "import { Toast } from 'astro-bootstrap'"
+    props:
+      - name: class
+        type: string
+        default: ''
+        description: Append class(es) to close button `div`
+     
+
+
 ---
 import Example from '@components/Example.astro';
+import Api from '@components/Api.astro';
+
 import rawBasic from '@examples/Toasts/Basic.astro?raw';
 import Basic from '@examples/Toasts/Basic.astro';
+import rawAll from '@examples/Toasts/All.astro?raw';
+import All from '@examples/Toasts/All.astro';
+import rawManual from '@examples/Toasts/Manual.astro?raw';
+import Manual from '@examples/Toasts/Manual.astro';
 
 ## Examples
 
@@ -16,3 +79,39 @@ import Basic from '@examples/Toasts/Basic.astro';
   <Basic slot="component" />
   <Fragment slot="code" set:html={rawBasic} />
 </Example>
+
+### All options (on Toast)
+
+<Example>
+  <All slot="component" />
+  <Fragment slot="code" set:html={rawAll} />
+</Example>
+
+### No components
+
+<Example>
+  <Manual slot="component" />
+  <Fragment slot="code" set:html={rawManual} />
+</Example>
+
+## API
+
+### Toast
+
+<Api component={frontmatter.api.toast} />
+
+### Toast.Container
+
+<Api component={frontmatter.api.toastContainer} />
+
+### Toast.Header
+
+<Api component={frontmatter.api.toastHeader} />
+
+### Toast.Body
+
+<Api component={frontmatter.api.toastBody} />
+
+### Toast.Close
+
+<Api component={frontmatter.api.toastClose} />
