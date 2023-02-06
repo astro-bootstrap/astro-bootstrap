@@ -1,0 +1,25 @@
+---
+const { id, class: className, animation = true, autohide = true, delay=5000 } = Astro.props;
+export interface Props {
+  id: string;
+  class?: string;
+  animation?: boolean;
+  autohide?: boolean;
+  delay?: number;
+}
+const config = {delay, animation, autohide}
+---
+
+<div
+  {id}
+  class:list={['toast', className]}
+  role="alert"
+  aria-live="assertive"
+  aria-atomic="true"
+  data-bs-config={JSON.stringify(config)}
+>
+  <slot />
+</div>
+<script>
+   
+</script>

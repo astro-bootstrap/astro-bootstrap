@@ -2,11 +2,11 @@
 import {Toast}  from 'astro-bootstrap';
 ---
 <!-- button to trigger -->
-<button type="button" class="btn btn-primary" id="toastBasicDemoBtn">Show basic demo toast</button>
+<button type="button" class="btn btn-primary" id="toastAllDemoBtn">Show basic demo toast</button>
 <!-- toast -->
 
-<Toast.Container class="position-fixed bottom-0 end-0 p-3" >
-  <Toast id="toastBasicDemo">
+<Toast.Container class="position-fixed top-0 end-0 p-3" >
+  <Toast id="toastAllDemo" animation={false} autohide={true} delay={3000}>
     <Toast.Header>
       <img src="/ab64x64.png" class="rounded me-2" alt="..." width="25" height="25">
       <strong class="me-auto">Bootstrap</strong>
@@ -20,11 +20,11 @@ import {Toast}  from 'astro-bootstrap';
 </Toast.Container>
 <script>
   import Toast from 'bootstrap/js/dist/Toast';
-  const toastBasicTrigger = document.getElementById('toastBasicDemoBtn')
-  const toastBasicDemo = document.getElementById('toastBasicDemo')
-  if (toastBasicTrigger) {
-    toastBasicTrigger.addEventListener('click', () => {
-      const toast = new Toast(toastBasicDemo)
+  const toastAllTrigger = document.getElementById('toastAllDemoBtn')
+  const toastAllDemo = document.getElementById('toastAllDemo')
+  if (toastAllTrigger) {
+    toastAllTrigger.addEventListener('click', () => {
+      const toast = new Toast(toastAllDemo)
       toast.show()
     })
   }

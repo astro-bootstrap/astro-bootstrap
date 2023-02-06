@@ -1,0 +1,9 @@
+---
+const { class: className } = Astro.props;
+export interface PRops {
+  class?: string;
+}
+---
+<div class:list={['toast-body', className]}>
+ <slot />
+</div>

@@ -1,0 +1,9 @@
+---
+const { class: className } = Astro.props;
+export interface Props {
+  class?: string;
+}
+---
+<div class:list={['toast-container', className]}>
+  <slot />
+</div>

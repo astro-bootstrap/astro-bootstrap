@@ -59,6 +59,9 @@ export { default as Pagination } from './lib/components/Pagination.astro';
 export { default as Tabs} from './lib/components/Tabs';
 export type { TabType } from './lib/components/TabsDefault.astro';
 
+// Toasts
+export { default as Toast } from './lib/components/Toast';
+
 // Tooltip
 export {default as Tooltip} from './lib/components/Tooltip.astro';
 // Accessible from Tabs
