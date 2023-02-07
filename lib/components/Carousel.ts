@@ -1,4 +1,4 @@
-import Carousel from './CarouselDefault.astro';
+import Carousel from './Carousel.astro';
 import Controls from './CarouselControls.astro';
 import Control from './CarouselControl.astro';
 import Indicators from './CarouselIndicators.astro';

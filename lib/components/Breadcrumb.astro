@@ -1,6 +1,8 @@
 ---
 import Breadcrumb from './Breadcrumb';
-
+import { BreadcrumbItemType } from '../../index';
+// process item
+import { titleCase } from 'title-case';
 const {
   id,
   class: className,
@@ -9,12 +11,12 @@ const {
 } = Astro.props;
 
 const path: string = Astro.url.pathname;
+
 const slugs: string[] = path.split('/').filter((x) => x);
 let currentPath: string = '';
 
-interface Parts {
+interface Parts extends Omit<BreadcrumbItemType, 'children'> {
   text: string;
-  href: string | undefined;
 }
 
 interface Props {
@@ -41,17 +43,21 @@ slugs.forEach((slug) => {
     href,
   });
 });
----
 
+
+---
 <nav aria-label={ariaLabel} {id}>
   <ol class="breadcrumb" class={className}>
     <slot>
       {
-        parts.map(({ text, href }) => (
-          <Breadcrumb.Item {href} class={itemClass}>
-            {text}
+        parts && parts.map(({ text, href }) => { 
+          const active: boolean = path === href;
+          
+          return(
+          <Breadcrumb.Item {href} class={itemClass} {active}>
+            {titleCase(text)}
           </Breadcrumb.Item>
-        ))
+        )})
       }
     </slot>
   </ol>

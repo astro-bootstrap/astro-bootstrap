@@ -1,17 +1,17 @@
 ---
 
-import {Accordion, AccordionItem, AccordionHeader, AccordionBody } from 'astro-bootstrap';
+import {Accordion  } from 'astro-bootstrap';
 const id = 'demoAccordion';
 ---
 
 <Accordion id={id}  >
-  <AccordionItem >
-    <AccordionHeader id={id} index={0}>
+  <Accordion.Item >
+    <Accordion.Header id={id} index={0}>
       Header 1 Text
-    </AccordionHeader>
-    <AccordionBody id={id} index={0}>
+    </Accordion.Header>
+    <Accordion.Body id={id} index={0}>
       Body 1 Text <strong>header and body can include HTML</strong>
-    </AccordionBody>
-  </AccordionItem>
+    </Accordion.Body>
+  </Accordion.Item>
 
 </Accordion>

@@ -1,18 +1,13 @@
 ---
-import { titleCase } from 'title-case';
-const { href, class: className } = Astro.props;
+const { href, class: className, active } = Astro.props;
+export interface Props {
+  href: string;
+  class?: string;
+  active?: boolean;
+  children: any;
+}
 
-// import type { HTMLAttributes } from 'astro/types';
-// // or extend with an `interface`
-// interface Props extends HTMLAttributes<'li'> {
-//   ariaCurrent: 'page' | undefined;
-//   active: boolean;
-//   href: string;
-//   text: string;
-// }
-const path = Astro.url.pathname;
-const active = path === href;
-const ariaCurrent = active && 'page';
+const ariaCurrent = active ? 'page' : undefined;
 const modHref = active ? null : href;
 const slot = await Astro.slots.render('default');
 ---
@@ -21,5 +16,5 @@ const slot = await Astro.slots.render('default');
   class:list={['breadcrumb-item', className, { active }]}
   aria-current={ariaCurrent}
 >
-  {modHref ? <a href={modHref}>{titleCase(slot)}</a> : <>{titleCase(slot)}</>}
+  {modHref ? <a href={modHref}>{slot}</a> : <>{slot}</>}
 </li>
