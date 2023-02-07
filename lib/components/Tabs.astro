@@ -1,0 +1,61 @@
+---
+import { Tab } from '../../index';
+import { nanoid } from 'nanoid';
+
+const {
+  tabs,
+  id: userId,
+  listClass,
+  itemClass,
+  linkClass,
+  contentClass,
+  paneClass,
+  fade = false,
+} = Astro.props;
+
+const id = userId || `tabs-${nanoid(8)}`;
+
+export interface TabsType {
+  title: string;
+  body: string;
+  active?: boolean;
+}
+
+export interface Props {
+  tabs?: TabsType[];
+  id?: string;
+  fade?: boolean;
+  listClass?: string;
+  itemClass?: string;
+  linkClass?: string;
+  contentClass?: string;
+  paneClass?: string;
+}
+---
+
+<Tab.List {id} class={listClass}>
+  {
+    tabs &&
+      tabs.map((tab, index: number) => (
+        <Tab.Item
+          {index}
+          {id}
+          active={tab.active}
+          class={itemClass}
+          {linkClass}
+        >
+          {tab.title}
+        </Tab.Item>
+      ))
+  }
+</Tab.List>
+<Tab.Content class={contentClass} {id}>
+  {
+    tabs &&
+      tabs.map((tab, index: number) => (
+        <Tab.Pane {index} {fade} {id} active={tab.active} class={paneClass}>
+          {tab.body}
+        </Tab.Pane>
+      ))
+  }
+</Tab.Content>

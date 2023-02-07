@@ -59,8 +59,13 @@ export { default as Modal } from './lib/components/Modal';
 export { default as Pagination } from './lib/components/Pagination.astro';
 
 // Tabs
-export { default as Tabs} from './lib/components/Tabs';
-export type { TabType } from './lib/components/TabsDefault.astro';
+export { default as Tabs} from './lib/components/Tabs.astro';
+export type { TabsType } from './lib/components/Tabs.astro';
+// Tab
+export { default as Tab } from './lib/components/Tab';
+export type { TabItemType } from './lib/components/TabsItem.astro';
+export type { TabPaneType } from './lib/components/Tabsastro';
+, 
 
 // Toasts
 export { default as Toast } from './lib/components/Toast';

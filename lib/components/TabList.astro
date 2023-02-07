@@ -1,9 +1,9 @@
 ---
-const { id, class: className = '' } = Astro.props;
+const { id, class: className } = Astro.props;
 
 export interface Props {
   id: string;
-  class: string;
+  class?: string;
 }
 ---
 

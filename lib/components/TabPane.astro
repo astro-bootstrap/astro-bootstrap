@@ -1,7 +1,7 @@
 ---
 const {
   index,
-  class: className = '',
+  class: className,
   active = false,
   fade = false,
   id,
@@ -10,11 +10,11 @@ const {
 const show = fade && active;
 
 export interface Props {
+  id: string;
+  class?: string;
   index: number;
   active?: boolean;
-  fade: boolean;
-  id: string;
-  class: string;
+  fade?: boolean;
 }
 ---
 
