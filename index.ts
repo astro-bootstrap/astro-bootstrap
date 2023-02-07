@@ -15,7 +15,7 @@ export type { Props as AccordionItemType } from './lib/components/AccordionItem.
 
 // Alert
 export { default as Alert } from './lib/components/Alert';
-export type { Props as AlertType } from './lib/components/AlertDefault.astro';
+export type { Props as AlertType } from './lib/components/Alert.astro';
 export type { Props as AlertHeadingType } from './lib/components/AlertHeading.astro';
 export type { Props as AlertLinkType } from './lib/components/AlertLink.astro';
 
@@ -24,20 +24,34 @@ export { default as Breadcrumb } from './lib/components/Breadcrumb';
 export type { Props as BreadcrumbType } from './lib/components/Breadcrumb.astro';
 export type { Props as BreadcrumbItemType } from './lib/components/BreadcrumbItem.astro';
 
+// Button (incomplete)
+export { default as Button } from './lib/components/Button.astro';
+export type { Props as ButtonType } from './lib/components/Button.astro';
 
 // Carousel
 export { default as Carousel } from './lib/components/Carousel';
 export type { CarouselSlideType } from './lib/components/CarouselSlide';
-// Can be accessed from Carousel
-// export { default as CarouselDefault } from './lib/components/Carousel.astro';
-// export { default as CarouselControls } from './lib/components/CarouselControls.astro';
-// export { default as CarouselControl } from './lib/components/CarouselControl.astro';
-// export { default as CarouselIndicators } from './lib/components/CarouselIndicators.astro';
-// export { default as CarouselItem } from './lib/components/CarouselItem.astro';
+export type { Prop as CarouselType } from './lib/components/Carousel.astro';
+export type { Prop as CarouselControlsType } from './lib/components/CarouselControls.astro';
+export type { Prop as CarouselControlType } from './lib/components/CarouselControl.astro';
+export type { Prop as CarouselIndicatorType } from './lib/components/CarouselIndicator.astro';
+export type { Prop as CarouselIndicatorsType } from './lib/components/CarouselIndicators.astro';
+export type { Prop as CarouselItemType } from './lib/components/CarouselItem.astro';
 
-// Dropdown
-
+// Dropdowns
 export { default as Dropdown } from './lib/components/Dropdown';
+export type { Props as DropdownType } from './lib/components/Dropdown.astro';
+export type { Props as DropdownDividerType } from './lib/components/DropdownDivider.astro';
+export type { Props as DropdownItemType } from './lib/components/DropdownItem.astro';
+export type { Props as DropdownLinkType } from './lib/components/DropdownLink.astro';
+export type { Props as DropdownMenuType } from './lib/components/DropdownMenu.astro';
+
+// Modal
+export { default as Modal } from './lib/components/Modal';
+export type { Props as ModalBodyType } from './lib/components/ModalBody.astro';
+export type { Props as ModalFooterType } from './lib/components/ModalFooter.astro';
+export type { Props as ModalHeaderType } from './lib/components/ModalHeader.astro';
+
 
 // Nav
 export { default as Nav } from './lib/components/Nav';
@@ -46,21 +60,23 @@ export type { Props as NavItemType } from './lib/components/NavItem.astro';
 
 // Navbar 
 export { default as Navbar } from './lib/components/Navbar';
+export type { Props as NavbarCollapseType } from './lib/components/NavbarCollapse.astro';
+export type { Props as NavbarItemsType } from './lib/components/NavbarItems.astro';
+export type { Props as NavbarType } from './lib/components/Navbar.astro';
 export type { NavbarItemType } from './lib/components/NavbarItems.astro';
+export type { Props as NavbarNavType } from './lib/components/NavbarNav.astro';
+export type { Props as NavbarTogglerType } from './lib/components/NavbarToggler.astro';
 
 
-// Change to NavDropdown
-export type { Props as DropdownType } from './lib/components/Dropdown.astro';
-export type { Props as DropdownItemType } from './lib/components/NavbarDropdownItem.astro';
-
-
-
-
-// Modal
-export { default as Modal } from './lib/components/Modal';
 
 // Pagination
-export { default as Pagination } from './lib/components/Pagination.astro';
+export { default as Pagination } from './lib/components/Pagination';
+export type { Props as PaginationType } from './lib/components/Pagination';
+export type { Props as PaginationItemType } from './lib/components/PaginationItem';
+export type { Props as PaginationLinkType } from './lib/components/PaginationLink';
+
+
+// Fix up type exports from here on
 
 // Tabs
 export { default as Tabs} from './lib/components/Tabs.astro';

@@ -1,4 +1,4 @@
-import Toast from './ToastDefault.astro';
+import Toast from './Toast.astro';
 import Body from './ToastBody.astro';
 import Close from './ToastClose.astro';
 import Container from './ToastContainer.astro';

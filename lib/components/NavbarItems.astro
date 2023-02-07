@@ -13,29 +13,29 @@ export interface NavbarItemType extends NavItemType {
 }
 export interface Props {
   items: NavbarItemType[];
+  class?: string;
 }
-const { items } = Astro.props;
+const { items, class: className} = Astro.props;
 ---
-
-<Navbar.Nav>
-  {
-    items.map((item) =>
-      item.subItems ? (
-        <Dropdown nav>
-          <Dropdown.Link nav>{item.text}</Dropdown.Link>
-          <Dropdown.Menu>
-            {item.subItems.map((subItem) =>
-              subItem.divider ? (
-                <Dropdown.Divider />
-              ) : (
-                <Dropdown.Item {...subItem} />
-              ),
-            )}
+<Navbar.Nav class={className}>
+{
+  items.map((item) =>
+    item.subItems ? (
+      <Dropdown nav>
+        <Dropdown.Link nav>{item.text}</Dropdown.Link>
+        <Dropdown.Menu>
+          {item.subItems.map((subItem) =>
+            subItem.divider ? (
+              <Dropdown.Divider />
+            ) : (
+              <Dropdown.Item {...subItem} />
+            ),
+          )}
         </Dropdown.Menu>
-        </Dropdown>
-      ) : (
-        <Nav.Item {...item} />
-      )
-    )
-  }
+      </Dropdown>
+    ) : (
+      <Nav.Item {...item} />
+    ),
+  )
+}
 </Navbar.Nav>

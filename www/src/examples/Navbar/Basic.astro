@@ -17,16 +17,15 @@ const items: NavbarItemType[] = [
   },
 ];
 
-const id = 'navbarDemo'
+const id = 'navbarDemo';
 ---
+
 <Navbar class="navbar-expand-lg bg-primary" data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">{siteTitle}</a>
     <Navbar.Toggler controls={id} />
-    <Navbar.Collapse id={id}>
-      <Navbar.Nav class="me-auto mb-2 mb-lg-0">
-        <Navbar.Items items={items}  />
-      </Navbar.Nav>
+    <Navbar.Collapse {id}>
+      <Navbar.Items {items} class="me-auto mb-2 mb-lg-0" />
     </Navbar.Collapse>
   </div>
 </Navbar>

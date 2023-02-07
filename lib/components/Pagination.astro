@@ -1,7 +1,5 @@
 ---
-// todo: limit number of pagination results and display elipsis ... indead of excessive numbers, but keep last number?
-import PaginationItem from './PaginationItem.astro';
-import PaginationLink from './PaginationLink.astro';
+import Pagination from './Pagination';
 const {
   page,
   'aria-label': ariaLabel = 'Page pagination control',
@@ -70,38 +68,57 @@ const pages = pagination(currentPage, lastPage);
       className,
       { 'pagination-sm': size === 'sm', 'pagination-lg': size === 'lg' },
     ]}
-    id={id}
+    {id}
   >
-    <PaginationItem disabled={prev == null} class={itemClass}>
-      <PaginationLink disabled={prev == null} href={prev} class={linkClass}>
-        Previous
-      </PaginationLink>
-    </PaginationItem>
-    {
-      pages.map((page) => {
-        let href = '';
-        let disabled = false;
-        if (page === 1) {
-          href = baseURL;
-        } else if (page === '...') {
-          href = null;
-          disabled = true;
-        } else {
-          href = `${baseURL}/${page}`;
-        }
-        return (
-          <PaginationItem class={itemClass}>
-            <PaginationLink href={href} disabled={disabled}>
-              {page}
-            </PaginationLink>
-          </PaginationItem>
-        );
-      })
-    }
-    <PaginationItem disabled={next == null} class={itemClass}>
-      <PaginationLink disabled={next == null} href={next} class={linkClass}>
-        Next
-      </PaginationLink>
-    </PaginationItem>
+    <slot>
+      {
+        pages && (
+          <Pagination.Item disabled={prev == null} class={itemClass}>
+            <Pagination.Link
+              disabled={prev == null}
+              href={prev}
+              class={linkClass}
+            >
+              Previous
+            </Pagination.Link>
+          </Pagination.Item>
+        )
+      }
+      {
+        pages &&
+          pages.map((page) => {
+            let href = '';
+            let disabled = false;
+            if (page === 1) {
+              href = baseURL;
+            } else if (page === '...') {
+              href = null;
+              disabled = true;
+            } else {
+              href = `${baseURL}/${page}`;
+            }
+            return (
+              <Pagination.Item class={itemClass}>
+                <Pagination.Link href={href} disabled={disabled}>
+                  {page}
+                </Pagination.Link>
+              </Pagination.Item>
+            );
+          })
+      }
+      {
+        pages && (
+          <Pagination.Item disabled={next == null} class={itemClass}>
+            <Pagination.Link
+              disabled={next == null}
+              href={next}
+              class={linkClass}
+            >
+              Next
+            </Pagination.Link>
+          </Pagination.Item>
+        )
+      }
+    </slot>
   </ul>
 </nav>

@@ -1,6 +1,7 @@
 ---
-import { Dropdown } from 'astro-bootstrap';
-const dropdowns: Dropdown[] = [
+import { Dropdown, Button } from 'astro-bootstrap';
+import type { DropdownItemType } from 'astro-bootstrap';
+const items: DropdownItemType[] = [
   {
     text: 'Action',
     href: '#',
@@ -14,18 +15,14 @@ const dropdowns: Dropdown[] = [
     href: '#',
   },
 ];
-export interface Dropdown {
-  text: string;
-  href: string;
-}
 ---
 
 <Dropdown>
-  <Dropdown.Button variant="secondary">Dropdown button</Dropdown.Button>
+  <Button variant="secondary" dropdown>Dropdown button</Button>
   <Dropdown.Menu>
     {
-      dropdowns.map((dropdown) => (
-        <Dropdown.Item href={dropdown.href}>{dropdown.text}</Dropdown.Item>
+      items.map((item) => (
+        <Dropdown.Item href={item.href}>{item.text}</Dropdown.Item>
       ))
     }
   </Dropdown.Menu>

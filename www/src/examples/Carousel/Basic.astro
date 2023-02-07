@@ -12,7 +12,7 @@ const id = 'carouselExampleBasic';
 
 <Carousel {id} fade>
   <Carousel.Indicators {id} {slides} />
-  <div class="carousel-inner">
+  <Carousel.Inner>
     {
       slides.map((slide) => (
         <Carousel.Item active={slide.active}>
@@ -24,6 +24,6 @@ const id = 'carouselExampleBasic';
         </Carousel.Item>
       ))
     }
-  </div>
+  </Carousel.Inner>
   <Carousel.Controls id={id} />
 </Carousel>

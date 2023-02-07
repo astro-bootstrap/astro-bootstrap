@@ -1,0 +1,26 @@
+---
+const {
+  class: className,
+  id,
+  index,
+  active,
+  'aria-current': ariaCurrent,
+  'aria-label': ariaLabel,
+} = Astro.props;
+export interface Props {
+  class?: string;
+  id: string;
+  index: number;
+  active?: boolean;
+  'aria-current': 'page' | undefined;
+  'aria-label'?: string;
+}
+---
+
+<button
+  type="button"
+  data-bs-target={`#${id}`}
+  data-bs-slide-to={index}
+  class:list={[className, { active }]}
+  aria-current={ariaCurrent}
+  aria-label={ariaLabel}></button>

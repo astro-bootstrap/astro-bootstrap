@@ -1,9 +1,7 @@
-import Button from './DropdownButton.astro';
 import Divider from './DropdownDivider.astro';
 import Item from './DropdownItem.astro';
 import Link from './DropdownLink.astro';
 import Menu from './DropdownMenu.astro';
-import Nav from './DropdownDefault.astro';
+import Dropdown from './Dropdown.astro';
 
-
-export default Object.assign(Nav, {Button, Divider, Item, Link, Menu});
+export default Object.assign(Dropdown, { Divider, Item, Link, Menu });

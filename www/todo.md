@@ -1,4 +1,10 @@
 
+react-bootstrap splits nav-item into nav item/link, is this worth it?
+
+should rename dropdown.Link to Header? then make dropdown.Item contain a link by default, option of adding Button as a child to override?
+
+add split button, check where its needed e.g. dropdown, nav dropdown. Automatically add <span class="visually-hidden">Toggle Dropdown</span> to split dropdown button
+
 create barrel imports for all component groups e.g. accordion
 
 can navs be reused in Tabs components? (not examples)

@@ -1,0 +1,33 @@
+---
+const { class: className, dropdown = false, variant, text, size } = Astro.props;
+export interface Props {
+  class?: string;
+  dropdown?: boolean;
+  href?: string;
+  variant: string;
+  text?: string;
+  size?: 'sm' | 'lg'
+}
+let dropdownProps = {};
+if (dropdown) {
+  dropdownProps = { 'data-bs-toggle': 'dropdown', 'aria-expanded': 'false' };
+}
+let sizeClass = '';
+if (size) {
+  sizeClass = `btn-${size}`;
+}
+---
+
+<button
+  class:list={[
+    'btn',
+    `btn-${variant}`,
+    className,
+    sizeClass,
+    { 'dropdown-toggle': dropdown },
+  ]}
+  type="button"
+  {...dropdownProps}
+>
+  <slot>{text}</slot>
+</button>
