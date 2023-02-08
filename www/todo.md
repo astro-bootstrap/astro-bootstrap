@@ -1,3 +1,5 @@
+add markdown support and <slot>{text} default see alert/accordion
+
 
 react-bootstrap splits nav-item into nav item/link, is this worth it?
 
