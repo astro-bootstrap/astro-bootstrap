@@ -1,4 +1,9 @@
 ---
-
+import Marked from '../utils/Marked.astro';
+const {text, h=4, class:className} = Astro.props;
+export interface Props {
+  text?: string;
+  h?: number;
+}
 ---
-<div class="alert-heading h4"><slot /></div>
+<div class:list={['alert-heading', `h-${h}`, className]}><Marked inline><slot><Fragment set:html={text} /></slot></Marked></div>

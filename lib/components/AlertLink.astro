@@ -1,7 +1,13 @@
 ---
-const {href} = Astro.props;
+import Marked from '../utils/Marked.astro';
+const { href, text, class: className } = Astro.props;
 export interface Props {
   href: string;
+  text?: string;
+  class?: string;
 }
 ---
-<a href={href} class="alert-link"><slot/></a>
+
+<a {href} class:list={['alert-link', className]}
+  ><Marked inline><slot><Fragment set:html={text} /></slot></Marked></a
+>
