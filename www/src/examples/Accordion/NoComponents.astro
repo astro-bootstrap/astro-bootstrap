@@ -1,0 +1,40 @@
+---
+const items = [
+  { header: 'Title 1', body: 'Text block 1', show: true },
+  { header: 'Title 2', body: 'Text block 2' },
+  { header: 'Title 3', body: 'Text block 3' },
+];
+const accordionId = 'accordionExample';
+---
+
+<div class="accordion" id={accordionId}>
+{
+  items.map((item, index: number) => {
+    <div class="accordion-item">
+      <h2 class="accordion-header" id={`heading-${index}`}>
+        <button
+          class="accordion-button"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target={`collapse-${index}`}
+          aria-expanded="true"
+          aria-controls={`collapse-${index}`}
+        >
+          {item.header}
+        </button>
+      </h2>
+      <div
+        id={`collapse-${index}`}
+        class={`accordion-collapse collapse ${item.show}`}
+        aria-labelledby={`heading-${index}`}
+        data-bs-parent={`#${accordionId}`}
+      >
+        <div class="accordion-body">{item.body}</div>
+      </div>
+    </div>;
+  })
+}
+</div>
+<script>
+  import 'bootstrap/js/dist/collapse';
+</script>

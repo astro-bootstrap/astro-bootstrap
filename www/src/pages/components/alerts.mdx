@@ -12,8 +12,8 @@ import Heading from '@examples/Alert/Heading.astro'
 import rawHeading from '@examples/Alert/Heading.astro?raw'
 import Link from '@examples/Alert/Link.astro'
 import rawLink from '@examples/Alert/Link.astro?raw'
-import ManualDismiss from '@examples/Alert/ManualDismiss.astro'
-import rawManualDismiss from '@examples/Alert/ManualDismiss.astro?raw'
+import NoComponents from '@examples/Alert/NoComponents.astro'
+import rawNoComponents from '@examples/Alert/NoComponents.astro?raw'
 
 ## Examples
 
@@ -38,11 +38,11 @@ import rawManualDismiss from '@examples/Alert/ManualDismiss.astro?raw'
   <Fragment slot="code" set:html={rawLink} />
 </Example>
 
-### No astro modules
+### No astro components
 
 <Example>
-  <ManualDismiss slot="component" />
-  <Fragment slot="code" set:html={rawManualDismiss} />
+  <NoComponents slot="component" />
+  <Fragment slot="code" set:html={rawNoComponents} />
 </Example>
 
 ## Api

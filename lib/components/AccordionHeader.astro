@@ -1,11 +1,12 @@
 ---
-const { id, class: className, index: i, show } = Astro.props;
-
+import Marked from '../utils/Marked.astro';
+const { id, class: className, index: i, show, text } = Astro.props;
 export interface Props {
  id: string;
  class?: string;
  index: number;
  show?: boolean;
+ text?: string;
 }
 ---
 
@@ -18,6 +19,6 @@ export interface Props {
     aria-expanded={show}
     aria-controls={`${id}-collapse-${i}`}
   >
-    <slot />
+  <Marked inline><slot><Fragment set:html={text} /></slot></Marked>
   </button>
 </h2>

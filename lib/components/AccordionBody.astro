@@ -1,10 +1,12 @@
 ---
+import Marked from '../utils/Marked.astro';
 const {
   id,
   index: i,
   show,
   alwaysOpen = false,
   class: className,
+  text,
 } = Astro.props;
 const dataBsParent = alwaysOpen ? null : `#${id}`;
 export interface Props {
@@ -13,6 +15,7 @@ export interface Props {
   index: number;
   show?: boolean;
   class?: string;
+  text?: string;
 }
 ---
 
@@ -23,6 +26,6 @@ export interface Props {
   data-bs-parent={dataBsParent}
 >
   <div class:list={['accordion-body', className]}>
-    <slot />
+    <Marked><slot><Fragment set:html={text} /></slot></Marked>
   </div>
 </div>
