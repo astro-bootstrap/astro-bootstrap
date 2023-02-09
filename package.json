@@ -36,24 +36,24 @@
   "devDependencies": {
     "@types/dompurify": "^2.4.0",
     "@types/marked": "^4.0.8",
-    "@typescript-eslint/eslint-plugin": "^5.48.2",
-    "@typescript-eslint/parser": "^5.48.2",
-    "eslint": "^8.32.0",
+    "@typescript-eslint/eslint-plugin": "^5.51.0",
+    "@typescript-eslint/parser": "^5.51.0",
+    "eslint": "^8.33.0",
     "eslint-config-prettier": "^8.6.0",
-    "eslint-plugin-astro": "^0.21.1",
+    "eslint-plugin-astro": "^0.23.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.8.3",
-    "prettier-plugin-astro": "^0.7.2"
+    "prettier": "^2.8.4",
+    "prettier-plugin-astro": "^0.8.0"
   },
   "peerDependencies": {
     "astro": "1.x",
     "bootstrap": "5.x"
   },
   "dependencies": {
-    "astro": "^2.0.5",
+    "astro": "^2.0.10",
     "dompurify": "^2.4.3",
     "marked": "^4.2.12",
-    "nanoid": "^4.0.0",
+    "nanoid": "^4.0.1",
     "title-case": "^3.0.3"
   }
 }

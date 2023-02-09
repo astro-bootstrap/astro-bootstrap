@@ -1,4 +1,6 @@
-add markdown support and <slot>{text} default see alert/accordion
+add utilities landing page with same explanation at bottom
+explain that these utilties were used in the creation of this page
+explain that components include non component usage insturctions, and manual usage if component include auto generation logic
 
 
 react-bootstrap splits nav-item into nav item/link, is this worth it?

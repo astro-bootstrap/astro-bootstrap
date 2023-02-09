@@ -1,0 +1,56 @@
+---
+title: VanishLink
+description: Anchor tag turns into a Span if no href is passed
+layout: '@layouts/Component.astro'
+variant: component
+api:
+  marked:
+    import: "import { VanishLink } from 'astro-bootstrap'"
+    props:
+    - name: children
+      type: string
+      default:
+      description: The code which will be parsed as markdown. A string variable must be parsed as unsafe HTML using `set:html`
+      required: true
+    - name: inline
+      type: boolean
+      default: false
+      description: Enabled inline parsing, which disabled the generation of `<p>` tags.
+    
+  
+---
+import Example from '@components/Example.astro';
+import Api from '@components/Api.astro';
+import Basic from '@examples/utils/Marked/Basic.astro';
+import rawBasic from '@examples/utils/Marked/Basic.astro?raw';
+
+import Inline from '@examples/utils/Marked/Inline.astro';
+import rawInline from '@examples/utils/Marked/Inline.astro?raw';
+
+Use the `VanishLink` component just as you would use a `<a>` tag. Pass it all the same properties. If you don't pass a href property, a `<span>` will be generated, rather than an `<a>` tag.
+
+{/* 
+## Examples
+
+### Basic Example (block)
+
+<Example>
+  <Basic slot="component" />
+  <Fragment slot="code" set:html={rawBasic} />
+</Example>
+
+### Inline parsing
+
+No `<p>` tag generation.
+
+<Example>
+  <Inline slot="component" />
+  <Fragment slot="code" set:html={rawInline} />
+</Example>
+
+## API
+
+### Marked
+
+<Api component={frontmatter.api.marked} /> 
+*/}

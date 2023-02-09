@@ -1,0 +1,21 @@
+---
+import Component from '@layouts/Component.astro';
+const title = 'Custom Utilities';
+const plural = 'Utilities';
+---
+
+<Component {title}>
+  <p>
+    These utiltiies were used in the creation of this website, and have been
+    provided for your convenience.
+  </p>
+  <p>Select an item from the list</p>
+  <p>
+    {plural} with <sup class="astro-component text-astro">.astro</sup> utilize native
+    astro components
+  </p>
+  <p>
+    {plural} with <sup class="astro-component text-warning">JS</sup> utilize an astro
+    implementation of a bootstrap JS plugin.
+  </p>
+</Component>
