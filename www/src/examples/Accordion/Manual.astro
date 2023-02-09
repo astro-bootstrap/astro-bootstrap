@@ -1,0 +1,25 @@
+---
+import { Accordion } from 'astro-bootstrap';
+const id = 'manualAccordion'
+---
+
+<Accordion id={id}>
+  <Accordion.Item>
+    <Accordion.Header parent={id} index={0}>Accordion Item #1</Accordion.Header>
+    <Accordion.Body parent={id} index={0} show>
+      This is the first item's accordion body. It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the .accordion-body, though the transition does limit overflow.
+    </Accordion.Body>
+  </Accordion.Item>
+  <Accordion.Item>
+    <Accordion.Header parent={id} index={1}>Accordion Item #2</Accordion.Header>
+    <Accordion.Body parent={id} index={1}>
+      This is the second item's accordion body. It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the .accordion-body, though the transition does limit overflow.
+    </Accordion.Body>
+  </Accordion.Item>
+  <Accordion.Item>
+    <Accordion.Header parent={id} index={2}>Accordion Item #3</Accordion.Header>
+    <Accordion.Body parent={id} index={2}>
+      This is the third item's accordion body. It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the .accordion-body, though the transition does limit overflow.
+    </Accordion.Body>
+  </Accordion.Item>
+</Accordion>

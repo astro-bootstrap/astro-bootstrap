@@ -53,6 +53,8 @@ import AlwaysOpen from '@examples/Accordion/AlwaysOpen.astro';
 import rawAlwaysOpen from '@examples/Accordion/AlwaysOpen.astro?raw';
 import IdAndClasses from '@examples/Accordion/IdAndClasses.astro';
 import rawIdAndClasses from '@examples/Accordion/IdAndClasses.astro?raw';
+import Manual from '@examples/Accordion/Manual.astro';
+import rawManual from '@examples/Accordion/Manual.astro?raw';
 import NoComponents from '@examples/Accordion/NoComponents.astro';
 import rawNoComponents from '@examples/Accordion/NoComponents.astro?raw';
 
@@ -110,7 +112,14 @@ The following properties are available:
   <Fragment slot="code" set:html={rawIdAndClasses} />
 </Example>
 
-### No Astro components
+### Manual Usage
+
+<Example>
+  <Manual slot="component" />
+  <Fragment slot="code" set:html={rawManual} />
+</Example>
+
+### No components
 
 <Example>
   <NoComponents slot="component" />
