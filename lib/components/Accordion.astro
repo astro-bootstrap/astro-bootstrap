@@ -1,8 +1,6 @@
 ---
 import Accordion from './Accordion';
-
 import { nanoid } from 'nanoid';
-
 
 const {
   flush,
@@ -14,13 +12,11 @@ const {
   itemClass,
   bodyClass,
 } = Astro.props;
-
 export interface AccordionDataType {
   header: string;
   body: string;
   show?: boolean;
 }
-
 interface Props {
   alwaysOpen?: boolean;
   id?: string;
@@ -41,11 +37,11 @@ const id = userId || `accordion-${nanoid(8)}`;
       data &&
         data.map((item, index: number) => (
           <Accordion.Item class={itemClass}>
-            <Accordion.Header {id} {index} class={headerClass} show={item.show}>
+            <Accordion.Header parent={id} {index} class={headerClass} show={item.show}>
               <Fragment set:html={item.header} />
             </Accordion.Header>
             <Accordion.Body
-              {id}
+              parent={id}
               {index}
               class={bodyClass}
               show={item.show}
