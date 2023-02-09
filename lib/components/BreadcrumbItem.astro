@@ -1,20 +1,16 @@
 ---
-const { href, class: className, active } = Astro.props;
+const { class: className, active } = Astro.props;
 export interface Props {
-  href: string;
   class?: string;
   active?: boolean;
-  children: any;
+  children?: any;
 }
-
 const ariaCurrent = active ? 'page' : undefined;
-const modHref = active ? null : href;
-const slot = await Astro.slots.render('default');
 ---
 
 <li
   class:list={['breadcrumb-item', className, { active }]}
   aria-current={ariaCurrent}
->
-  {modHref ? <a href={modHref}>{slot}</a> : <>{slot}</>}
+  >
+  <slot />
 </li>

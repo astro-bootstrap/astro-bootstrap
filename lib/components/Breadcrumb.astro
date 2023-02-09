@@ -1,64 +1,24 @@
 ---
-import Breadcrumb from './Breadcrumb';
-import { BreadcrumbItemType } from '../../index';
-// process item
-import { titleCase } from 'title-case';
+import BreadcrumbItemIterate from './BreadcrumbItemIterate.astro';
+
 const {
   id,
   class: className,
   itemClass,
   'aria-label': ariaLabel = 'Breadcrumb',
 } = Astro.props;
-
-const path: string = Astro.url.pathname;
-
-const slugs: string[] = path.split('/').filter((x) => x);
-let currentPath: string = '';
-
-interface Parts extends Omit<BreadcrumbItemType, 'children'> {
-  text: string;
-}
-
 interface Props {
   id?: string;
   class?: string;
   itemClass?: string;
   'aria-label'?: string;
 }
-
-let parts: Parts[] = [
-  {
-    text: 'Home',
-    href: path !== '/' ? '/' : undefined,
-  },
-];
-
-slugs.forEach((slug) => {
-  const text: string = slug.replace(/[-_]/g, ' ');
-  currentPath = `${currentPath}/${slug}`;
-  const href = currentPath;
-
-  parts.push({
-    text: text,
-    href,
-  });
-});
-
-
 ---
+
 <nav aria-label={ariaLabel} {id}>
   <ol class="breadcrumb" class={className}>
     <slot>
-      {
-        parts && parts.map(({ text, href }) => { 
-          const active: boolean = path === href;
-          
-          return(
-          <Breadcrumb.Item {href} class={itemClass} {active}>
-            {titleCase(text)}
-          </Breadcrumb.Item>
-        )})
-      }
+      <BreadcrumbItemIterate class={itemClass} />
     </slot>
   </ol>
 </nav>

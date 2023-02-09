@@ -1,5 +1,4 @@
 ---
-import Marked from '../utils/Marked.astro';
 const { href, text, class: className } = Astro.props;
 export interface Props {
   href: string;
@@ -9,5 +8,5 @@ export interface Props {
 ---
 
 <a {href} class:list={['alert-link', className]}
-  ><Marked inline><slot><Fragment set:html={text} /></slot></Marked></a
+  ><slot><Fragment set:html={text} /></slot></a
 >

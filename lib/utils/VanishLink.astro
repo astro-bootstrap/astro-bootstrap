@@ -1,0 +1,15 @@
+---
+const {href, class: className, text, ...props} = Astro.props;
+export interface Props {
+  href?: string;
+  class?: string | string[];
+  text?: string;
+}
+let Tag = '';
+if (href) {
+  Tag = 'a'
+} else {
+  Tag = 'span'
+}
+---
+<Tag href={href} class:list={className} {...props}><slot>{text}</slot></Tag>

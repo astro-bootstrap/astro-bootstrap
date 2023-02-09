@@ -9,20 +9,39 @@ api:
     props:
     - name: aria-label
       type: string
-      default: Breadcrumb
+      default: "'Breadcrumb'"
       description: Set the `aria-label` property value on the "breadcrumb" div.
     - name: id
       type: string
-      default: 'null'
+      default: 
       description: Set the `id` on the "breadcrumb" div.
     - name: class
       type: string
-      default: 'null'
+      default: 
       description: Set the `class` on the "breadcrumb" div.
     - name: itemClass
       type: string
-      default: 'null'
+      default: 
+      description: Set the `class` on the "breadcrumb-item" div. Does not function if children are passed to this component.
+    - name: children
+      type: node | string
+      default:
+      description: Passing children disabled auto generation of breadcrumbs
+  breadcrumbItem:
+    import: "import { Breadcrumb } from 'astro-bootstrap'"
+    props:
+    - name: class
+      type: string
+      default:
       description: Set the `class` on the "breadcrumb-item" div.
+    - name: active
+      type: boolean
+      default: 'false'
+      description: Add's and `active` class.
+    - name: children
+      type: node | string
+      default:
+      description: Passing children disabled auto generation of breadcrumbs
 ---
 import Example from '@components/Example.astro';
 import Api from '@components/Api.astro';
@@ -30,6 +49,9 @@ import rawStandard from '@examples/Breadcrumb/Standard.astro?raw';
 import Standard from '@examples/Breadcrumb/Standard.astro';
 import rawProps from '@examples/Breadcrumb/Props.astro?raw';
 import Props from '@examples/Breadcrumb/Props.astro';
+import rawManual from '@examples/Breadcrumb/Manual.astro?raw';
+import Manual from '@examples/Breadcrumb/Manual.astro';
+
 
 ## Examples
 
@@ -47,8 +69,19 @@ import Props from '@examples/Breadcrumb/Props.astro';
   <Fragment slot="code" set:html={rawProps} />
 </Example>
 
+### Manual usage
+
+<Example>
+  <Manual slot="component"/>
+  <Fragment slot="code" set:html={rawManual} />
+</Example>
+
 ## API
 
 ### Breadcrumb
 
 <Api component={frontmatter.api.breadcrumb} />
+
+### Breadcrumb.Item
+
+<Api component={frontmatter.api.breadcrumbItem} />

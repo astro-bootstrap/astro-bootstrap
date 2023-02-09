@@ -99,5 +99,6 @@ export {default as Tooltip} from './lib/components/Tooltip.astro';
 // Utils
 //
 export { default as ActiveLink } from './lib/utils/ActiveLink.astro';
+export { default as VanishLink } from './lib/utils/VanishLink.astro';
 export { default as Marked } from './lib/utils/Marked.astro';
 export { default as InlineCode } from './lib/utils/InlineCode.astro';

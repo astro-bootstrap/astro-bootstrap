@@ -1,0 +1,22 @@
+---
+import Breadcrumb from './Breadcrumb';
+import createParts from '../utils/createBreadcrumbItems';
+import VanishLink from '../utils/VanishLink.astro';
+const { class: className} = Astro.props;
+export interface Props {
+  class?: string;
+}
+
+const path: string = Astro.url.pathname;
+const parts = createParts(path);
+
+---
+
+{parts.map(({ text, href }) => { 
+  const active: boolean = path === href;
+  const link = active ? undefined : href;
+  return(
+  <Breadcrumb.Item class={className} {active}>
+    <VanishLink href={link} class={className}>{text}</VanishLink>
+  </Breadcrumb.Item>
+)})}

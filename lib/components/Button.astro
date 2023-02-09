@@ -6,15 +6,11 @@ export interface Props {
   href?: string;
   variant: string;
   text?: string;
-  size?: 'sm' | 'lg'
+  size?: 'sm' | 'lg';
 }
 let dropdownProps = {};
 if (dropdown) {
   dropdownProps = { 'data-bs-toggle': 'dropdown', 'aria-expanded': 'false' };
-}
-let sizeClass = '';
-if (size) {
-  sizeClass = `btn-${size}`;
 }
 ---
 
@@ -23,8 +19,11 @@ if (size) {
     'btn',
     `btn-${variant}`,
     className,
-    sizeClass,
-    { 'dropdown-toggle': dropdown },
+    {
+      'dropdown-toggle': dropdown,
+      'btn-sm': size === 'sm',
+      'btn-lg': size === 'lg',
+    },
   ]}
   type="button"
   {...dropdownProps}

@@ -1,5 +1,5 @@
 ---
-import type { HTMLAttributes } from 'astro/types'
+import VanishLink from './VanishLink.astro';
 const {
   href,
   class: className,
@@ -20,28 +20,16 @@ export interface Props {
 }
 const active: boolean = href === Astro.url.pathname;
 const ariaCurrent = active ? 'page' : undefined;
-const tabIndex: string = disabled ? '-1' : undefined;
 const activeClassStr: string = active ? activeClass : undefined;
 const disabledClassStr: string = disabled ? disabledClass : undefined;
 const hrefStr: string = disabled ? undefined : href;
 ---
 
-<a
+<VanishLink
   href={hrefStr}
-  class:list={[
-    className,
-    activeClassStr,
-    disabledClassStr,
-    {
-      'cursor-default': disabled,
-    },
-  ]}
+  class={[className, activeClassStr, disabledClassStr]}
   aria-current={ariaCurrent}
-  tabindex={tabIndex}
-  {...props}><slot>{text}</slot></a
+  {...props}
 >
-<style>
-  .cursor-default {
-    cursor: default;
-  }
-</style>
+  <slot>{text}</slot>
+</VanishLink>
