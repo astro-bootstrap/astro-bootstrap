@@ -1,5 +1,6 @@
 ---
 import VanishLink from './VanishLink.astro';
+import { clsx } from 'clsx';
 const {
   href,
   class: className,
@@ -7,29 +8,40 @@ const {
   activeClass = 'active',
   disabledClass = 'disabled',
   text,
+  parent,
   ...props
 } = Astro.props;
 export interface Props {
   href: string;
-  class?: string | string[];
+  class?: string;
   text?: string;
   disabled?: boolean;
   activeClass?: string;
   disabledClass?: string;
   children: any;
+  parent?: boolean;
 }
-const active: boolean = href === Astro.url.pathname;
+let active: boolean = href === Astro.url.pathname;
 const ariaCurrent = active ? 'page' : undefined;
-const activeClassStr: string = active ? activeClass : undefined;
+const activeClassStr: string = active ? `${activeClass}` : undefined;
 const disabledClassStr: string = disabled ? disabledClass : undefined;
-const hrefStr: string = disabled ? undefined : href;
+const classCompiled = clsx([activeClassStr, disabledClassStr, className]);
+
+// if parent set, set active if page is child of link
+// does not get aria-current
+if (parent) {
+  if (Astro.url.pathname.includes(href)) {
+    active = true;
+  }
+}
 ---
 
-<VanishLink
-  href={hrefStr}
-  class={[className, activeClassStr, disabledClassStr]}
+<a
+  href={disabled ? undefined : href}
+  correct-class={classCompiled}
+  class={classCompiled}
   aria-current={ariaCurrent}
   {...props}
 >
   <slot>{text}</slot>
-</VanishLink>
+</a>

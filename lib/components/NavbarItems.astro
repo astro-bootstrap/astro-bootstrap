@@ -22,7 +22,7 @@ const { items, class: className} = Astro.props;
   items.map((item) =>
     item.subItems ? (
       <Dropdown nav>
-        <Dropdown.Link nav>{item.text}</Dropdown.Link>
+        <Dropdown.Header nav>{item.text}</Dropdown.Header>
         <Dropdown.Menu>
           {item.subItems.map((subItem) =>
             subItem.divider ? (

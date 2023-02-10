@@ -3,51 +3,51 @@ title: Alerts
 description: Provide contextual feedback messages for typical user actions. An example with a close button has been provided.
 layout: '@layouts/Component.astro'
 variant: component
+api:
+  alert:
+    import: "import { Alert } from 'astro-bootstrap'"
+    props:
+    - name: variant
+      type: string
+      default: ''
+      description: Bootstrap color variant
+      required: true
+    - name: class
+      type: string
+      default: ''
+      description: Append class
+    - name: dissmissable
+      type: boolean
+      default: ''
+      description: Creates a dismiss button
+ 
 ---
 import Example from '@components/Example.astro'
 import Api from '@components/Api.astro';
-import Dismiss from '@examples/Alert/Dismiss.astro'
-import rawDismiss from '@examples/Alert/Dismiss.astro?raw'
-import Heading from '@examples/Alert/Heading.astro'
-import rawHeading from '@examples/Alert/Heading.astro?raw'
-import Link from '@examples/Alert/Link.astro'
-import rawLink from '@examples/Alert/Link.astro?raw'
-import NoComponents from '@examples/Alert/NoComponents.astro'
-import rawNoComponents from '@examples/Alert/NoComponents.astro?raw'
 
 ## Examples
 
 ### Alert with dismiss
 
-<Example>
-  <Dismiss slot="component" />
-  <Fragment slot="code" set:html={rawDismiss} />
-</Example>
+<Example component="Alert" variant="Dismiss" />
+
 
 ### Alert with heading
 
-<Example>
-  <Heading slot="component" />
-  <Fragment slot="code" set:html={rawHeading} />
-</Example>
+<Example component="Alert" variant="Heading" />
 
 ### Alert with link
 
-<Example>
-  <Link slot="component" />
-  <Fragment slot="code" set:html={rawLink} />
-</Example>
+<Example component="Alert" variant="Link" />
 
 ### No components
 
-<Example>
-  <NoComponents slot="component" />
-  <Fragment slot="code" set:html={rawNoComponents} />
-</Example>
+<Example component="Alert" variant="NoComponents" />
 
 ## Api
 
-### Alert
+### Alert 
+<Api component={frontmatter.api.alert} />
 
 ### Alert.Heading
 

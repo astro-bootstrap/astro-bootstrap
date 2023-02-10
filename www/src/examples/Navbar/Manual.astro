@@ -1,0 +1,27 @@
+---
+import { Navbar, Nav, Dropdown } from 'astro-bootstrap';
+// demonstration data
+const siteTitle = 'Astro site'; // pull this in from a config file
+const id = 'navbarDemo';
+---
+
+<Navbar class="navbar-expand-lg bg-primary" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">{siteTitle}</a>
+    <Navbar.Toggler controls={id} />
+    <Navbar.Collapse {id}>
+      <Navbar.Nav class="me-auto mb-2 mb-lg-0">
+        <Nav.Item href="#">Home</Nav.Item>
+        <Nav.Item href="#">About</Nav.Item>
+        <Dropdown nav>
+          <Dropdown.Header nav>Dropdown</Dropdown.Header>
+          <Dropdown.Menu>
+            <Dropdown.Item href="#">First Child</Dropdown.Item>
+            <Dropdown.Divider />
+            <Dropdown.Item href="#">Second Child</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+      </Navbar.Nav>
+    </Navbar.Collapse>
+  </div>
+</Navbar>

@@ -1,5 +1,6 @@
-add utilities landing page with same explanation at bottom
-explain that these utilties were used in the creation of this page
+update <Example> to new usage, and then update its code to remove old usage
+
+use active link for side menu on left
 explain that components include non component usage insturctions, and manual usage if component include auto generation logic
 
 

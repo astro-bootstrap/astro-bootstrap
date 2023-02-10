@@ -1,76 +1,109 @@
 ---
 import { Code } from 'astro/components';
+
+const { component, variant, code = true, render = true } = Astro.props;
+export interface Props {
+  component?: string;
+  variant?: string;
+  code?: boolean;
+  render?: boolean;
+}
+
 const codeSlot = await Astro.slots.render('code');
+const hasCodeSlot = Astro.slots.has('code')
+const componentSlot = await Astro.slots.render('component');
+const hasComponentSlot = Astro.slots.has('component')
+
+let shouldImport = false;
+if (component && variant ) {
+  shouldImport = true;
+}
+let ExampleComponent
+let ExampleRaw
+if (shouldImport) {
+  ExampleComponent = (await import(`../examples/${component}/${variant}.astro`)).default;
+  ExampleRaw = (await import(`../examples/${component}/${variant}.astro?raw`)).default;
+}
+
+let showRender = true;
+if (render === false ) {
+  showRender = false
+}
+
+let showCode = true;
+if (code === false ) {
+  showCode = false
+}
 ---
 
-<div class="container-fluid border rounded g-0 mb-3 example-container copy-button-wrapper">
+<div
+  class="container-fluid border rounded g-0 mb-3 example-container copy-button-wrapper"
+>
   {
-    Astro.slots.has('component') && (
+    showRender && (
       <div class="row p-3">
         <div class="col example__rendered">
-          <slot name="component" />
+          { hasComponentSlot && <Fragment set:html={componentSlot} />}
+          { (shouldImport && render) && <ExampleComponent />}
         </div>
       </div>
     )
   }
-  <div class="row">
-    <div class="col">
-      <div
-        class="bg-dark border-top border-bottom d-flex align-items-center ps-3 pe-2 py-1"
-      >
-        <small class="text-light font-monospace text-uppercase"
-          >Astro file</small
-        >
-        <div class="d-flex ms-auto">
-          <button type="button" class="btn-copy">
-            <div class="svg-clipboard code-svg">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-clipboard"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"
-                ></path>
-                <path
-                  d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"
-                ></path>
-              </svg>
+  {
+    showCode && (
+      <>
+        <div class="row">
+          <div class="col">
+            <div class="bg-dark border-top border-bottom d-flex align-items-center ps-3 pe-2 py-1">
+              <small class="text-light font-monospace text-uppercase">
+                Astro file
+              </small>
+              <div class="d-flex ms-auto">
+                <button type="button" class="btn-copy">
+                  <div class="svg-clipboard code-svg">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-clipboard"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                      <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+                    </svg>
+                  </div>
+                  <div class="svg-clipboard-check d-none code-svg">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-clipboard-check"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"
+                      />
+                      <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                      <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+                    </svg>
+                  </div>
+                </button>
+              </div>
             </div>
-            <div class="svg-clipboard-check d-none code-svg">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-clipboard-check"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"
-                ></path>
-                <path
-                  d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"
-                ></path>
-                <path
-                  d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"
-                ></path>
-              </svg>
-            </div>
-          </button>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <Code code={codeSlot} lang="astro" />
-    </div>
-  </div>
+        <div class="row">
+          <div class="col">
+            { hasCodeSlot && <Code code={codeSlot} lang="astro" /> }
+            { (shouldImport && code ) &&   <Code code={ExampleRaw} lang="astro" />}
+          </div>
+        </div>
+      </>
+    )
+  }
 </div>
 <style is:global>
   /* has to be global as without, is scoped to only this component */
@@ -85,5 +118,3 @@ const codeSlot = await Astro.slots.render('code');
     color: white;
   }
 </style>
-
-

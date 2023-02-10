@@ -1,15 +1,17 @@
 ---
-const {href, class: className, text, ...props} = Astro.props;
+const { href, class: className, text, ...props } = Astro.props;
 export interface Props {
   href?: string;
-  class?: string | string[];
+  class?: string;
   text?: string;
 }
 let Tag = '';
 if (href) {
-  Tag = 'a'
+  Tag = 'a';
 } else {
-  Tag = 'span'
+  Tag = 'span';
 }
+console.log(`href: ${href} class: ${className}`)
 ---
-<Tag href={href} class:list={className} {...props}><slot>{text}</slot></Tag>
+
+<Tag href={href} class={className} {...props}><slot>{text}</slot></Tag>

@@ -51,6 +51,7 @@
   },
   "dependencies": {
     "astro": "^2.0.10",
+    "clsx": "^1.2.1",
     "dompurify": "^2.4.3",
     "marked": "^4.2.12",
     "nanoid": "^4.0.1",

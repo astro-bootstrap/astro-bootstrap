@@ -1,4 +1,5 @@
 ---
+import { ActiveLink } from 'astro-bootstrap';
 import { Marked } from 'astro-bootstrap';
 import BaseLayout from './BaseLayout.astro';
 import SideNav from '@components/SideNav.astro';
@@ -51,6 +52,7 @@ const isComponent = category === 'components' ? true : false;
             description && (
               <p class="lead mb-2">
                 <Marked inline>{description}</Marked>
+                <ActiveLink href="/components/accordion" >Accordion link test</ActiveLink>
               </p>
             )
           }

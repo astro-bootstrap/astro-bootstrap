@@ -43,20 +43,6 @@ api:
 ---
 import Example from '@components/Example.astro';
 import Api from '@components/Api.astro';
-import Standard from '@examples/Accordion/Standard.astro';
-import rawStandard from '@examples/Accordion/Standard.astro?raw';
-import Collapsed from '@examples/Accordion/Collapsed.astro';
-import rawCollapsed from '@examples/Accordion/Collapsed.astro?raw';
-import Flush from '@examples/Accordion/Flush.astro';
-import rawFlush from '@examples/Accordion/Flush.astro?raw';
-import AlwaysOpen from '@examples/Accordion/AlwaysOpen.astro';
-import rawAlwaysOpen from '@examples/Accordion/AlwaysOpen.astro?raw';
-import IdAndClasses from '@examples/Accordion/IdAndClasses.astro';
-import rawIdAndClasses from '@examples/Accordion/IdAndClasses.astro?raw';
-import Manual from '@examples/Accordion/Manual.astro';
-import rawManual from '@examples/Accordion/Manual.astro?raw';
-import NoComponents from '@examples/Accordion/NoComponents.astro';
-import rawNoComponents from '@examples/Accordion/NoComponents.astro?raw';
 
 ## Examples
 
@@ -64,38 +50,26 @@ The following examples show how to implement the accordion with minimal code.
 
 ### Basic Example
 
-<Example>
-  <Standard slot="component" />
-  <Fragment slot="code" set:html={rawStandard} />
-</Example>
+<Example component="Accordion" variant="Standard" />
 
 ### Fully Collapsed State
 
 If you want your `Accordion` to start in a fully-collapsed state, then simply don't add a `show: true` prop to any of the data elements.
 
-<Example>
-  <Collapsed slot="component" />
-  <Fragment slot="code" set:html={rawCollapsed} />
-</Example>
+<Example component="Accordion" variant="Collapsed" />
 
 ### Flush
 
 Add `flush` to remove the default background-color, some borders, and some rounded corners to render accordions edge-to-edge with their parent container.
 
-<Example>
-  <Flush slot="component" />
-  <Fragment slot="code" set:html={rawFlush} />
-</Example>
+<Example component="Accordion" variant="Flush" />
 
 ### Always open
 
 You can make accordion items stay open when another item is opened by using the `alwaysOpen` prop. If you're looking to
 control the component, you must use an array of strings for `activeKey` or `defaultActiveKey`.
 
-<Example>
-  <AlwaysOpen slot="component" />
-  <Fragment slot="code" set:html={rawAlwaysOpen} />
-</Example>
+<Example component="Accordion" variant="AlwaysOpen" />
 
 ### Set ID and classes
 
@@ -107,24 +81,15 @@ The following properties are available:
 - `headerClass` to append a class to the `accordion-header` div.
 - `bodyClass` to append a class to the `accordion-body` div.
 
-<Example>
-  <IdAndClasses slot="component" />
-  <Fragment slot="code" set:html={rawIdAndClasses} />
-</Example>
+<Example component="Accordion" variant="IdAndClasses" />
 
 ### Manual Usage
 
-<Example>
-  <Manual slot="component" />
-  <Fragment slot="code" set:html={rawManual} />
-</Example>
+<Example component="Accordion" variant="Manual" />
 
 ### No components
 
-<Example>
-  <NoComponents slot="component" />
-  <Fragment slot="code" set:html={rawNoComponents} />
-</Example>
+<Example component="Accordion" variant="NoComponents" />
 
 
 ## API

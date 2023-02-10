@@ -1,5 +1,6 @@
 ---
 import SideNavSuffix from './SideNavSuffix.astro';
+import { ActiveLink } from 'astro-bootstrap';
 const { elements } = Astro.props;
 // export interface Props {
 //   elements:
@@ -18,10 +19,10 @@ const { elements } = Astro.props;
     }
     return (
       <li>
-        <a href={element.url} class="text-decoration-none">
+        <ActiveLink href={element.url} class="text-decoration-none">
           {element.frontmatter.title}
           {suffix && <SideNavSuffix {...suffix} />}
-        </a>
+        </ActiveLink>
       </li>
     );
   })

@@ -12,6 +12,6 @@ const filtered = (posts => posts.filter((post) => !post.frontmatter.draft)) ;
   </ul>
   <h3 class="h5" id="sideUtilities">Utilities</h3>
   <ul class="list-unstyled ps-2">
-    <SideNavItems elements={utilities} />
+    <SideNavItems elements={filtered(utilities)} />
   </ul>
 </nav>
