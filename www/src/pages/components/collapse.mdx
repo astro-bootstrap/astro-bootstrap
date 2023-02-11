@@ -6,19 +6,13 @@ description: Toggle the visibility of content across your project with a few cla
 ---
 import Example from '@components/Example.astro';
 import Api from '@components/Api.astro';
-import rawData from '@examples/Collapse/Data.astro?raw';
-import Data from '@examples/Collapse/Data.astro';
-import rawJS from '@examples/Collapse/JS.astro?raw';
-import JS from '@examples/Collapse/JS.astro';
+
 
 ## Examples
 
 ### Via data-attribute
 
-<Example>
-  <Data slot="component" />
-  <Fragment slot="code" set:html={rawData} />
-</Example>
+<Example  component="Collapse" variant="Data" />
 
 {/* 
 ### Via JavaScript

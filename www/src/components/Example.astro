@@ -1,12 +1,13 @@
 ---
 import { Code } from 'astro/components';
 
-const { component, variant, code = true, render = true } = Astro.props;
+const { component, util, variant, code = true, render = true } = Astro.props;
 export interface Props {
   component?: string;
   variant?: string;
   code?: boolean;
   render?: boolean;
+  util?: string;
 }
 
 const codeSlot = await Astro.slots.render('code');
@@ -15,23 +16,39 @@ const componentSlot = await Astro.slots.render('component');
 const hasComponentSlot = Astro.slots.has('component')
 
 let shouldImport = false;
-if (component && variant ) {
+if ((component || util) && variant ) {
   shouldImport = true;
 }
+
+let parentDir = '';
+let type;
+if (component) {
+  parentDir = 'components';
+  type = component;
+} else {
+  parentDir = 'utils'
+  type = util;
+}
+
+
 let ExampleComponent
 let ExampleRaw
-if (shouldImport) {
-  ExampleComponent = (await import(`../examples/${component}/${variant}.astro`)).default;
-  ExampleRaw = (await import(`../examples/${component}/${variant}.astro?raw`)).default;
+if (shouldImport && render) {
+
+  ExampleComponent = (await import(`../examples/${parentDir}/${type}/${variant}.astro`)).default;
+}
+
+if (shouldImport && code) {
+  ExampleRaw = (await import(`../examples/${parentDir}/${type}/${variant}.astro?raw`)).default;
 }
 
 let showRender = true;
-if (render === false ) {
+if (!hasComponentSlot && !render ) {
   showRender = false
 }
 
 let showCode = true;
-if (code === false ) {
+if (!hasCodeSlot && !code) {
   showCode = false
 }
 ---

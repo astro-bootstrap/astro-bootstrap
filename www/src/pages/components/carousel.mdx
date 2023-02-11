@@ -6,10 +6,5 @@ description: A slideshow component for cycling through elements—images or slid
 ---
 import Example from '@components/Example.astro';
 import Api from '@components/Api.astro';
-import Basic from '@examples/Carousel/Basic.astro';
-import rawBasic from '@examples/Carousel/Basic.astro?raw';
 
-<Example>
-  <Basic slot="component" />
-  <Fragment slot="code" set:html={rawBasic} />
-</Example>
+<Example component="Carousel" variant="Basic" />

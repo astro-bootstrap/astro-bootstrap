@@ -40,15 +40,10 @@ api:
 
 import Example from '@components/Example.astro';
 import Api from '@components/Api.astro';
-import Basic from '@examples/Tabs/Basic.astro';
-import rawBasic from '@examples/Tabs/Basic.astro?raw';
 
 The `Tabs` component makes light work of creating a tabbed interface with the Bootstrap JavaScript plugin built in.Make sure you set one of your Tabs to `active` via your data.
 
-<Example>
-  <Basic slot="component" />
-  <Fragment slot="code" set:html={rawBasic} />
-</Example>
+<Example component="Tabs" variant="Basic" />
 
 
 ## API

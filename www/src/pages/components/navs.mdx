@@ -6,8 +6,6 @@ docs: navs-tabs
 description: Documentation and examples for how to use Bootstrap’s included navigation components.
 ---
 import Example from '@components/Example.astro';
-import rawBasic from '@examples/Navs/Basic.astro?raw';
-import Basic from '@examples/Navs/Basic.astro';
 
 The base `.nav` component provides a strong foundation for building all types of navigation components. 
 
@@ -15,8 +13,5 @@ The base `.nav` component provides a strong foundation for building all types of
 
 ### Basic
 
-<Example>
-  <Basic slot="component" />
-  <Fragment slot="code" set:html={rawBasic} />
-</Example>
+<Example  component="Navs" variant="Basic" />
 

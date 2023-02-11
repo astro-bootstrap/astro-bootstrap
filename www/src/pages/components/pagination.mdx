@@ -36,13 +36,13 @@ api:
 ---
 import Example from '@components/Example.astro'
 import Api from '@components/Api.astro';
-import Basic from '@examples/Pagination/basic.html'
+import Basic from '@examples/components/Pagination/basic.html'
 import rawBasic from './pagination-test/[...page].astro?raw'
 
 The pagination component generates the pagination controls for the page.
 
 You must set up the pagination through Astro's paginate function (see below). This component then accesses the `page` property to generate the pagination buttons.
-
+{/* uses old method as pulls in non example code */}s
 <Example>
 <div class="d-flex justify-content-center" slot="component">
 <Basic />

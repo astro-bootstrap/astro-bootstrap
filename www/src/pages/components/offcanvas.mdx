@@ -6,14 +6,9 @@ draft: true
 description: Build hidden sidebars into your project for navigation, shopping carts, and more with a few classes and our JavaScript plugin.
 ---
 import Example from '@components/Example.astro';
-import rawBasic from '@examples/Offcanvas/Basic.astro?raw';
-import Basic from '@examples/Offcanvas/Basic.astro';
 
 ## Examples
 
 ### Basic
 
-<Example>
-  <Basic slot="component" />
-  <Fragment slot="code" set:html={rawBasic} />
-</Example>
+<Example  component="Offcanvas" variant="Basic" />

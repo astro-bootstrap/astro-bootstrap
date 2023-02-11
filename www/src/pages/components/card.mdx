@@ -4,22 +4,14 @@ description: Bootstrap’s cards provide a flexible and extensible content conta
 layout: '@layouts/Component.astro'
 variant: template
 ---
-import Standard from '@examples/Card/Standard.astro';
-import rawStandard from '@examples/Card/Standard.astro?raw';
-import rawCard from '@examples/Card/Card.astro?raw';
 import Example from '@components/Example.astro'
 
 If displaying multiple cards, the code can be simplified by creating a card component. Add the data to an array of objects, and iterating over it e.g.
 
 
-<Example>
-  <Standard slot="component"/>
-  <Fragment slot="code" set:html={rawStandard} />
-</Example>
+<Example component="Card" variant="Basic" />
 
 **Card.astro**
 
 
-<Example>
-  <Fragment slot="code" set:html={rawCard} />
-</Example>
+<Example  component="ButtonGroup" variant="Basic" render={false}/>

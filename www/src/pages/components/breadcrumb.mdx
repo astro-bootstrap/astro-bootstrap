@@ -45,36 +45,20 @@ api:
 ---
 import Example from '@components/Example.astro';
 import Api from '@components/Api.astro';
-import rawStandard from '@examples/Breadcrumb/Standard.astro?raw';
-import Standard from '@examples/Breadcrumb/Standard.astro';
-import rawProps from '@examples/Breadcrumb/Props.astro?raw';
-import Props from '@examples/Breadcrumb/Props.astro';
-import rawManual from '@examples/Breadcrumb/Manual.astro?raw';
-import Manual from '@examples/Breadcrumb/Manual.astro';
-
 
 ## Examples
 
 ### Basic
 
-<Example>
-  <Standard slot="component"/>
-  <Fragment slot="code" set:html={rawStandard} />
-</Example>
+<Example component="Breadcrumb" variant="Basic" />
 
 ### Set optional properties
 
-<Example>
-  <Props slot="component"/>
-  <Fragment slot="code" set:html={rawProps} />
-</Example>
+<Example component="Breadcrumb" variant="Props" />
 
 ### Manual usage
 
-<Example>
-  <Manual slot="component"/>
-  <Fragment slot="code" set:html={rawManual} />
-</Example>
+<Example component="Breadcrumb" variant="Manual" />
 
 ## API
 
