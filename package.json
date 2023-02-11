@@ -14,7 +14,8 @@
     ".": "./index.ts"
   },
   "files": [
-    "lib/**/*"
+    "lib/**/*", 
+    "index.ts"
   ],
   "scripts": {
     "eslint": "eslint \"lib/**/*.{js,astro}\"",
