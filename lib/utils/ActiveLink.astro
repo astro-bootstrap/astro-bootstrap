@@ -36,12 +36,12 @@ if (parent) {
 }
 ---
 
-<a
+<VanishLink
   href={disabled ? undefined : href}
-  correct-class={classCompiled}
+  {/* correct-class={classCompiled} */}
   class={classCompiled}
   aria-current={ariaCurrent}
   {...props}
 >
   <slot>{text}</slot>
-</a>
+</VanishLink>

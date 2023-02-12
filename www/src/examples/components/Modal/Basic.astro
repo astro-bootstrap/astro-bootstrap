@@ -1,5 +1,5 @@
 ---
-import { Modal } from 'astro-bootstrap';
+import { Modal, Button } from 'astro-bootstrap';
 const id = 'modalDemo';
 ---
 <!-- Button to trigger -->
@@ -12,9 +12,7 @@ const id = 'modalDemo';
   <Modal.Header parent={id}>Modal title</Modal.Header>
   <Modal.Body>Woo-hoo, you're reading this text in a modal!</Modal.Body>
   <Modal.Footer>
-    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-      Close
-    </button>
-    <button type="button" class="btn btn-primary">Save changes</button>
+    <Button variant="primary" modalClose>Close</Button>
+    <Button variant="secondary" >Save Changes</Button>
   </Modal.Footer>
 </Modal>

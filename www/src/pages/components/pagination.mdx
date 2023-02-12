@@ -16,10 +16,6 @@ api:
         type: Astro page property
         default: Page pagination control
         description: Change the `aria-label`
-      - name: id
-        type: string
-        default:
-        description: Set the `id` on the `accordion` div.
       - name: class
         type: string
         default:
@@ -32,12 +28,20 @@ api:
         type: string
         default:
         description: Appends a class to the `page-link` `anchor` tag.
+      - name: delta
+        type: number
+        default: 2
+        description: Number of pages to display either side of the current page in pagination widget.
 
 ---
 import Example from '@components/Example.astro'
 import Api from '@components/Api.astro';
 import Basic from '@examples/components/Pagination/basic.html'
 import rawBasic from './pagination-test/[...page].astro?raw'
+
+## Examples
+
+### Basic
 
 The pagination component generates the pagination controls for the page.
 
@@ -59,6 +63,11 @@ You can optionally set the `aria-label` property with the `ariaLabel` prop e.g.
 ```
 <Pagination page={page} aria-label="Pagination">
 ```
+
+### Manual
+
+{/*  
+<Example component="Pagination" variant="Manual" /> */}
 
 ## API
 

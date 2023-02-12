@@ -1,0 +1,11 @@
+---
+const { class: className, variant, text } = Astro.props;
+export interface Props {
+  class?: string;
+  variant?: string;
+  text?: string;
+}
+---
+<button type="button" class:list={['btn', `btn-${variant}`, className]} data-bs-dismiss="modal">
+  <slot>{text}</slot>
+</button>

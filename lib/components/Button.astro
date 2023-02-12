@@ -1,16 +1,26 @@
 ---
-const { class: className, dropdown = false, variant, text, size } = Astro.props;
+const {
+  class: className,
+  dropdown = false,
+  variant,
+  text,
+  size,
+  modalClose = false,
+} = Astro.props;
 export interface Props {
   class?: string;
   dropdown?: boolean;
+  modalClose?: boolean;
   href?: string;
   variant: string;
   text?: string;
   size?: 'sm' | 'lg';
 }
-let dropdownProps = {};
+let props = {};
 if (dropdown) {
-  dropdownProps = { 'data-bs-toggle': 'dropdown', 'aria-expanded': 'false' };
+  props = { 'data-bs-toggle': 'dropdown', 'aria-expanded': 'false' };
+} else if (modalClose) {
+  props = { 'data-bs-dismiss': 'modal'};
 }
 ---
 
@@ -26,7 +36,7 @@ if (dropdown) {
     },
   ]}
   type="button"
-  {...dropdownProps}
+  {...props}
 >
   <slot>{text}</slot>
 </button>

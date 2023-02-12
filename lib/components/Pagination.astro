@@ -1,64 +1,27 @@
 ---
 import Pagination from './Pagination';
+import createPagination from '../utils/createPagination';
 const {
   page,
   'aria-label': ariaLabel = 'Page pagination control',
-  id,
   class: className,
   itemClass,
   linkClass,
   size,
+  delta,
 } = Astro.props;
 export interface Props {
-  page: any;
+  page?: any;
   'aria-label'?: string;
-  id?: string;
   class?: string;
   itemClass?: string;
   linkClass?: string;
   size?: 'sm' | 'lg';
+  delta?: number;
 }
 
-const { prev, next } = page.url;
-const { currentPage, lastPage } = page;
-
-const path: string = Astro.url.pathname;
-
-// remove numbers from the end of this pages path, if we are on a generated pagination page
-let baseURL: string = path.replace(/\d+$/, '');
-// remove trailing slash if present
-baseURL = baseURL.replace(/\/$/, '');
-
-const pagination = (current: number, last: number, delta: number = 2) => {
-  const left = current - delta;
-  const right = current + delta + 1;
-  const range = [];
-  const rangeWithDots = [];
-  let l;
-
-  for (let i = 1; i <= last; i++) {
-    // add first and last pages, and pages to display
-    if (i == 1 || i == last || (i >= left && i < right)) {
-      range.push(i);
-    }
-  }
-  // add ... for pages which don't exist in range[]
-  for (let i of range) {
-    if (l) {
-      if (i - l === 2) {
-        rangeWithDots.push(l + 1);
-      } else if (i - l !== 1) {
-        rangeWithDots.push('...');
-      }
-    }
-    rangeWithDots.push(i);
-    l = i;
-  }
-
-  return rangeWithDots;
-};
-
-const pages = pagination(currentPage, lastPage);
+const { pathname } = Astro.url;
+const pages = createPagination(page, pathname, delta);
 ---
 
 <nav aria-label={ariaLabel}>
@@ -68,56 +31,17 @@ const pages = pagination(currentPage, lastPage);
       className,
       { 'pagination-sm': size === 'sm', 'pagination-lg': size === 'lg' },
     ]}
-    {id}
   >
     <slot>
       {
-        pages && (
-          <Pagination.Item disabled={prev == null} class={itemClass}>
-            <Pagination.Link
-              disabled={prev == null}
-              href={prev}
-              class={linkClass}
-            >
-              Previous
-            </Pagination.Link>
-          </Pagination.Item>
-        )
-      }
-      {
         pages &&
-          pages.map((page) => {
-            let href = '';
-            let disabled = false;
-            if (page === 1) {
-              href = baseURL;
-            } else if (page === '...') {
-              href = null;
-              disabled = true;
-            } else {
-              href = `${baseURL}/${page}`;
-            }
-            return (
-              <Pagination.Item class={itemClass}>
-                <Pagination.Link href={href} disabled={disabled}>
-                  {page}
-                </Pagination.Link>
-              </Pagination.Item>
-            );
-          })
-      }
-      {
-        pages && (
-          <Pagination.Item disabled={next == null} class={itemClass}>
-            <Pagination.Link
-              disabled={next == null}
-              href={next}
-              class={linkClass}
-            >
-              Next
-            </Pagination.Link>
-          </Pagination.Item>
-        )
+          pages.map(({ href, disabled, page }) => (
+            <Pagination.Item class={itemClass} disabled={disabled}>
+              <Pagination.Link href={href} class={linkClass}>
+                {page}
+              </Pagination.Link>
+            </Pagination.Item>
+          ))
       }
     </slot>
   </ul>

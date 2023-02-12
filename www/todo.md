@@ -1,4 +1,4 @@
-update <Example> to new usage, and then update its code to remove old usage
+add page astro prop to createPagination.ts to check for correct input
 
 use active link for side menu on left
 explain that components include non component usage insturctions, and manual usage if component include auto generation logic
