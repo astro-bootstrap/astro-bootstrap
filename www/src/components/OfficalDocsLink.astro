@@ -3,16 +3,19 @@ const { slug } = Astro.props;
 export interface Props {
   slug: string;
 }
-// const response = await fetch('https://api.github.com/repos/twbs/bootstrap/releases/latest')
-// const data = await response.json();
-// const bsVer = data.tag_name
-// const regex = new RegExp(/[0-9]\.[0-9]+/);
-// const array = regex.exec(bsVer)
-// const ver = array[0];
-let url = '5.3';
-// if (ver && array) {
-//    url = `https://getbootstrap.com/docs/${ver}/components/${slug}/`
-// }
+
+let ver = '5.3'
+const response = await fetch('https://api.github.com/repos/twbs/bootstrap/releases/latest')
+const data = await response.json();
+if (data) {
+  const bsVer = data.tag_name
+  const regex = new RegExp(/[0-9]\.[0-9]+/);
+  const array = regex.exec(bsVer)
+  ver = array[0];
+}
+
+const url = `https://getbootstrap.com/docs/${ver}/${slug}/`
+
 ---
 <p>
   View the official docs{' '}

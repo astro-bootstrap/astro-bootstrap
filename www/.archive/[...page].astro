@@ -5,7 +5,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import { Pagination } from 'astro-bootstrap';
 
 export async function getStaticPaths({ paginate }) {
-  const pages = await Astro.glob('../**/*.{md,mdx}'); // set glob to ''./**/*.{md,mdx}'
+  const pages = await Astro.glob('../../../content/**/*.{md,mdx}'); // set glob to ''./**/*.{md,mdx}'
   return paginate(pages, { pageSize: 2 });
 }
 ---

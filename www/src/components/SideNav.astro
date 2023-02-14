@@ -1,17 +1,21 @@
 ---
 import SideNavItems from './SideNavItems.astro';
-const components = await Astro.glob('../pages/components/**/*.{md,mdx}');
-const utilities = await Astro.glob('../pages/utilities/**/*.{md,mdx}');
-const filtered = (posts => posts.filter((post) => !post.frontmatter.draft)) ;
+import { getCollection } from 'astro:content';
+const components = await getCollection('components', ({ data, id }) => {
+  return data.draft !== true && id.startsWith('components/');
+});
+const utilities = await getCollection('components', ({ data, id }) => {
+  return data.draft !== true && id.startsWith('utilities/');
+});
 ---
 
 <nav class="side-nav py-2">
   <h3 class="h5" id="sideComponents">Components</h3>
   <ul class="list-unstyled ps-2">
-    <SideNavItems elements={filtered(components)} />
+    <SideNavItems elements={components} />
   </ul>
   <h3 class="h5" id="sideUtilities">Utilities</h3>
   <ul class="list-unstyled ps-2">
-    <SideNavItems elements={filtered(utilities)} />
+    <SideNavItems elements={utilities} />
   </ul>
 </nav>

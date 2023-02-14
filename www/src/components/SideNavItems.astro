@@ -10,17 +10,17 @@ const { elements } = Astro.props;
 {
   elements.map((element) => {
     let suffix = {};
-    if (element.frontmatter.variant === 'component') {
+    if (element.data.variant === 'component') {
       suffix = { class: 'text-astro', text: '.astro' };
-    } else if (element.frontmatter.variant === 'js') {
+    } else if (element.data.variant === 'js') {
       suffix = { class: 'text-warning', text: 'JS' };
-    } else if (element.frontmatter.variant === 'template') {
+    } else if (element.data.variant === 'template') {
       suffix = { class: 'text-success', text: 'template' };
     }
     return (
       <li>
-        <ActiveLink href={element.url} class="text-decoration-none">
-          {element.frontmatter.title}
+        <ActiveLink href={`/components/${element.slug}`} class="text-decoration-none">
+          {element.data.title}
           {suffix && <SideNavSuffix {...suffix} />}
         </ActiveLink>
       </li>
