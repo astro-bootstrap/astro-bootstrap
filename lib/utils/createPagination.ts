@@ -1,75 +1,112 @@
-const pagination = (page: any, pathname: string, delta = 2) => {
-  interface Item {
-    disabled: boolean;
-    href: string;
-    page?: string | number;
+/**
+ * 
+ * @param page - astro 'page' object
+ * @param pathname - current page relative path
+ * @returns Item[] for use with Pagination.astro component
+ */
+
+
+// https://gist.github.com/kottenator/9d936eb3e4e3c3e02598
+
+const getRange = (start: number, end: number): number[] => {
+  return Array(end - start + 1)
+    .fill(undefined)
+    .map((v, i) => i + start);
+};
+
+const createPageNumbers = (
+  currentPage: number,
+  pageCount: number,
+): (number | string)[] => {
+  let delta: number;
+  if (pageCount <= 7) {
+    // delta === 7: [1 2 3 4 5 6 7]
+    delta = 7;
+  } else {
+    // delta === 2: [1 ... 4 5 6 ... 10]
+    // delta === 4: [1 2 3 4 5 ... 10]
+    delta = currentPage > 4 && currentPage < pageCount - 3 ? 2 : 4;
   }
 
+  const range = {
+    start: Math.round(currentPage - delta / 2),
+    end: Math.round(currentPage + delta / 2),
+  };
+
+  if (range.start - 1 === 1 || range.end + 1 === pageCount) {
+    range.start += 1;
+    range.end += 1;
+  }
+
+  let pages: any =
+    currentPage > delta
+      ? getRange(
+          Math.min(range.start, pageCount - delta),
+          Math.min(range.end, pageCount),
+        )
+      : getRange(1, Math.min(pageCount, delta + 1));
+
+  const withDots = (value: number, pair: any) =>
+    pages.length + 1 !== pageCount ? pair : [value];
+
+  if (pages[0] !== 1) {
+    pages = withDots(1, [1, '...']).concat(pages);
+  }
+
+  if (pages[pages.length - 1] < pageCount) {
+    pages = pages.concat(withDots(pageCount, ['...', pageCount]));
+  }
+
+  return pages;
+};
+
+interface Item {
+  disabled: boolean;
+  href: string | undefined;
+  page: string;
+}
+
+const createComponentData = (page: any, pathname: string): Item[] => {
   const { currentPage, lastPage, url } = page;
   const { prev, next } = url;
-  console.log(currentPage);
-
+  const pageNums = createPageNumbers(currentPage, lastPage);
   // remove numbers from the end of this pages path, if we are on a generated pagination page
   let baseURL: string = pathname.replace(/\d+$/, '');
   // remove trailing slash if present
   baseURL = baseURL.replace(/\/$/, '');
-  const prevLink: Item = {
-    disabled: prev == null,
-    href: prev,
-    page: 'Previous',
-  };
-  const nextLink: Item = {
+
+  // Initialise array with previous button
+  const pages: Item[] = [
+    {
+      disabled: prev == null,
+      href: prev,
+      page: 'Previous',
+    },
+  ];
+
+  // all page numbers
+  pageNums.forEach((page) => {
+    pages.push({
+      disabled: false,
+      href:
+        page === '...'
+          ? undefined
+          : page === 1
+          ? `${baseURL}`
+          : `${baseURL}/${page}`,
+      page: page.toString(),
+    });
+  });
+
+  // add next button
+  pages.push({
     disabled: next == null,
     href: next,
     page: 'Next',
-  };
+  });
 
-  // nested function inherits all parent props
-  const genItem = (page: '...' | number) => {
-    let href: string | undefined;
-    let disabled = false;
-    if (page === 1) {
-      href = baseURL;
-    } else if (page === '...') {
-      href = undefined;
-    } else {
-      href = `${baseURL}/${page}`;
-    }
-    return {
-      disabled,
-      href,
-      page,
-    };
-  };
-
-  // existing
-  const left = currentPage - delta;
-  const right = currentPage + delta + 1;
-  const range = [];
-  const rangeWithDots = [];
-  let l;
-
-  for (let i = 1; i <= lastPage; i++) {
-    // add first and last pages, and pages to display
-    if (i == 1 || i == lastPage || (i >= left && i < right)) {
-      range.push(i);
-    }
-  }
-  // add ... for pages which don't exist in range[]
-  for (let i of range) {
-    if (l) {
-      if (i - l === 2) {
-        rangeWithDots.push(genItem(l + 1));
-      } else if (i - l !== 1) {
-        rangeWithDots.push(genItem('...'));
-      }
-    }
-    rangeWithDots.push(genItem(i));
-    l = i;
-  }
-  rangeWithDots.unshift(prevLink);
-  rangeWithDots.push(nextLink);
-  return rangeWithDots;
+  return pages;
 };
 
-export default pagination;
+
+export default createComponentData;
