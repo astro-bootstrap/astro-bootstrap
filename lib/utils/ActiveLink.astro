@@ -23,8 +23,8 @@ export interface Props {
 }
 let active: boolean = href === Astro.url.pathname;
 const ariaCurrent = active ? 'page' : undefined;
-const activeClassStr: string = active ? `${activeClass}` : undefined;
-const disabledClassStr: string = disabled ? disabledClass : undefined;
+const activeClassStr: string | undefined = active ? `${activeClass}` : undefined;
+const disabledClassStr: string | undefined = disabled ? disabledClass : undefined;
 const classCompiled = clsx([activeClassStr, disabledClassStr, className]);
 
 // if parent set, set active if page is child of link
