@@ -1,7 +1,7 @@
 ---
 
 import Nav from './Nav';
-const { class: className, href, disabled, text, linkClass } = Astro.props;
+const { class: className, href, disabled, text, linkClass, ...props } = Astro.props;
 export interface Props {
   class?: string | string[];
   href?: string;
@@ -11,5 +11,5 @@ export interface Props {
 }
 ---
 <li class:list={['nav-item', className]}>
-  <Nav.Link class={linkClass} disabled={disabled} href={href}>{text}</Nav.Link>
+  <Nav.Link class={linkClass} disabled={disabled} href={href} {...props}><slot>{text}</slot></Nav.Link>
 </li>
