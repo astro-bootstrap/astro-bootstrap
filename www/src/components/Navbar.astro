@@ -1,6 +1,6 @@
 ---
 import { Icon } from 'astro-icon';
-import { Navbar } from 'astro-bootstrap';
+import { Navbar, Nav } from 'astro-bootstrap';
 import { SITE_TITLE, MAIN_MENU } from '../config';
 const navId = 'siteNav';
 import DarkModeToggle from './DarkModeToggle.astro';
@@ -11,7 +11,11 @@ import DarkModeToggle from './DarkModeToggle.astro';
     <a class="navbar-brand" href="#">{SITE_TITLE}</a>
     <Navbar.Toggler controls={navId} />
     <Navbar.Collapse id={navId}>
-      <Navbar.Items items={MAIN_MENU} class="me-auto mb-2 mb-lg-0"/>
+      <Navbar.Nav class="me-auto mb-2 mb-lg-0">
+        { MAIN_MENU.map(item => (
+        <Nav.Item href={item.href} parent={item.parent}>{item.text}</Nav.Item>
+      ))}
+      </Navbar.Nav>
       <ul class="navbar-nav">
         <li class="nav-item col-6 col-lg-auto">
           <a
