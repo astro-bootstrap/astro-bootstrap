@@ -1,0 +1,33 @@
+---
+import { Alert } from 'astro-bootstrap';
+import OfficalDocsLink from '@components/OfficalDocsLink.astro';
+import { Marked } from 'astro-bootstrap';
+import type { CollectionEntry } from 'astro:content';
+
+export interface Props {
+  children: any;
+  entry: CollectionEntry<'components'>;
+}
+
+const { entry } = Astro.props;
+const { data, slug } = entry;
+// markdown
+const { description, docs } = data;
+let docsSlug: string | CollectionEntry<'components'> = slug;
+const warningText = `\
+This component is still under development. Please only use the snippets provided below to avoid breaking changes.
+`;
+
+docs && (docsSlug = docs);
+---
+
+{
+  description && (
+    <p class="lead mb-2">
+      <Marked inline>{description}</Marked>
+    </p>
+  )
+}
+<Alert variant="danger">{warningText}</Alert>
+<OfficalDocsLink {docsSlug} />
+<slot />

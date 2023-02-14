@@ -1,44 +1,13 @@
 ---
-import { Marked } from 'astro-bootstrap';
 import BaseLayout from './BaseLayout.astro';
 import SideNav from '@components/SideNav.astro';
 import Toc from '@components/Toc.astro';
-import { Alert } from 'astro-bootstrap';
 import type { MarkdownHeading } from 'astro';
-import OfficalDocsLink from '@components/OfficalDocsLink.astro';
-
-// top level
-const { headings, entry } = Astro.props;
-const { collection, data } = entry;
-const { title, description, docs } = data;
-let { slug } = entry;
+const { title, headings } = Astro.props;
 export interface Props {
+  title: string;
   headings?: MarkdownHeading[];
-  children: any;
-  entry: any;
 }
-
-
-
-const warningText = `\
-This component is still under development. Please only use the snippets provided below to avoid breaking changes.
-`;
-
-// let category: string = '';
-// let slug: string = '';
-// if (url) {
-//   // split path into an array
-//   const slugs = url.split('/').filter((x: string) => x);
-//   // get first element in path array
-//   category = slugs[0];
-//   // get last element in path array
-//   slug = slugs[slugs.length - 1];
-// }
-
-// if markdown docs slug is provided, override
-docs && (slug = docs);
-
-const isComponent = collection === 'components' ? true : false;
 ---
 
 <BaseLayout {title}>
@@ -47,23 +16,6 @@ const isComponent = collection === 'components' ? true : false;
       <div class="py-2 px-3 col-main">
         <main>
           <h1 id="overview">{title}</h1>
-      
-          {
-            description && (
-              <p class="lead mb-2">
-                <Marked inline>{description}</Marked>
-              </p>
-            )
-          }
-
-          {
-            isComponent && (
-              <>
-                <Alert variant="danger">{warningText}</Alert>
-                <OfficalDocsLink slug={slug} />
-              </>
-            )
-          }
           <slot />
         </main>
       </div>
