@@ -8,7 +8,6 @@ const {
   itemClass,
   linkClass,
   size,
-  delta,
 } = Astro.props;
 export interface Props {
   page?: any;
@@ -21,7 +20,7 @@ export interface Props {
 }
 
 const { pathname } = Astro.url;
-const pages = createPagination(page, pathname, delta);
+const pages = createPagination(page, pathname);
 ---
 
 <nav aria-label={ariaLabel}>
