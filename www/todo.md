@@ -1,4 +1,4 @@
-active link not working
+active link not working in navbar
 
 add page astro prop type to createPagination.ts to check for correct input
 

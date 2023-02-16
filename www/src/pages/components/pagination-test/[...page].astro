@@ -1,0 +1,31 @@
+---
+// [...page].astro in root of content folder
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { Pagination } from 'astro-bootstrap';
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+const { page } = Astro.props;
+import type { Page } from 'astro';
+export interface Props {
+  page: Page;
+}
+
+export async function getStaticPaths({ paginate }) {
+  const pages: CollectionEntry<'components'>[] = await getCollection('components');
+  return paginate(pages, { pageSize: 2 });
+}
+---
+
+<BaseLayout title="Pagination test page">
+  
+  <h1>List of components (Pagination Test)</h1>
+  <p>Page {page.currentPage} of {page.lastPage}</p>
+  <p>{page.size} Items per page</p>
+  <p>Items {page.start + 1} to {page.end + 1}</p>
+  <ul>
+    {page.data.map(({ data }) => <li>{data.title}</li>)}
+  </ul>
+  <div class="d-flex justify-content-center mt-auto">
+    <Pagination {page}/>
+  </div>
+</BaseLayout>

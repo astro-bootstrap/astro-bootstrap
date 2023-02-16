@@ -19,6 +19,7 @@ This component is still under development. Please only use the snippets provided
 `;
 
 docs && (docsSlug = docs);
+console.log(docsSlug)
 ---
 
 {
@@ -29,5 +30,5 @@ docs && (docsSlug = docs);
   )
 }
 <Alert variant="danger">{warningText}</Alert>
-<OfficalDocsLink {docsSlug} />
+<OfficalDocsLink slug={docsSlug} />
 <slot />

@@ -4,7 +4,7 @@ import type { CollectionEntry } from 'astro:content';
 import Component from '@layouts/Component.astro';
 import ComponentContent from '@components/ComponentContent.astro';
 export async function getStaticPaths() {
-  const entries = await getCollection('components');
+  const entries:CollectionEntry<'components'>[] = await getCollection('components');
   return entries.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },

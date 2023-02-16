@@ -5,8 +5,12 @@ export interface Props {
 }
 
 let ver = '5.3'
-const response = await fetch('https://api.github.com/repos/twbs/bootstrap/releases/latest')
-const data = await response.json();
+let data;
+try {
+ data = await fetch('https://api.github.com/repos/twbs/bootstrap/releases/latest').then(response =>  response.json())
+} catch (e) {
+  console.log('bs version fetch failed');
+}
 if (data) {
   const bsVer = data.tag_name
   const regex = new RegExp(/[0-9]\.[0-9]+/);

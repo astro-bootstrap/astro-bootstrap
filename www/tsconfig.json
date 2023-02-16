@@ -6,8 +6,14 @@
       "@components/*": [
         "src/components/*"
       ],
+      "@content/*": [
+        "src/content/*"
+      ],
       "@layouts/*": [
         "src/layouts/*"
+      ],
+      "@pages/*": [
+        "src/pages/*"
       ],
       "@examples/*": [
         "src/examples/*"

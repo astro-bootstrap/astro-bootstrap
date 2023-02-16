@@ -1,6 +1,6 @@
 ---
 title: Pagination
-draft: true
+draft: false
 description: Documentation and examples for showing pagination to indicate a series of related content exists across multiple pages.
 test: '@layouts/Component.astro'
 variant: component
@@ -38,11 +38,7 @@ api:
 import Example from '@components/Example.astro'
 import Api from '@components/Api.astro';
 import Basic from '@examples/components/Pagination/basic.html'
-
-
-
-{/* 
-import rawBasic from './pagination-test/[...page].astro?raw' */}
+import rawBasic from '@pages/components/pagination-test/[...page].astro?raw' 
 
 ## Examples
 
@@ -51,17 +47,16 @@ import rawBasic from './pagination-test/[...page].astro?raw' */}
 The pagination component generates the pagination controls for the page.
 
 You must set up the pagination through Astro's paginate function (see below). This component then accesses the `page` property to generate the pagination buttons.
-{/* uses old method as pulls in non example code */}
+
 <Example>
 <div class="d-flex justify-content-center" slot="component">
 <Basic />
 </div>
+<Fragment slot="code" set:html={rawBasic}/> 
 </Example>
 
-{/* 
-<Fragment slot="code" set:html={rawBasic}/> */}
 
-The rendered code is a static example, <a href="pagination-test"> click here to see a live demo.</a>
+The rendered code is a static example, <a href="/components/pagination-test"> click here to see a live demo.</a>
 
 The Pagination component returns the default bootstrap pagination component, with the current page as an active link, and prev/next disabled if not available e.g.
 
