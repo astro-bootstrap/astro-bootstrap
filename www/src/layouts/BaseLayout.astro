@@ -1,12 +1,14 @@
 ---
+import Navbar from '@components/Navbar.astro';
+import Footer from '@components/Footer.astro';
+import 'bootstrap/dist/css/bootstrap.css';
+import { SITE_TITLE } from '../config';
+
+const { title } = Astro.props;
 export interface Props {
   title: string;
 }
 
-import { SITE_TITLE } from '../config';
-const { title } = Astro.props;
-import 'bootstrap/dist/css/bootstrap.css';
-import Navbar from '../components/Navbar.astro';
 const path = Astro.url.pathname;
 const isHome = path === '/';
 const titleText = isHome ? `${SITE_TITLE}` : `${title} - ${SITE_TITLE}`;
@@ -81,7 +83,9 @@ const titleText = isHome ? `${SITE_TITLE}` : `${title} - ${SITE_TITLE}`;
     <Navbar />
     <div class="content">
       <slot />
+      { isHome && <Footer /> }
     </div>
+
   </body>
 </html>
 <style>
