@@ -12,7 +12,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "predeploy": "pnpm run build",
-    "deploy": "gh-pages -d dist --branch master --repo \"https://github.com/astro-bootstrap/astro-bootstrap.github.io.git\"",
+    "deploy": "gh-pages -d dist --dotfiles --branch master --repo \"https://github.com/astro-bootstrap/astro-bootstrap.github.io.git\"",
     "update": "pnpm update --interactive --latest"
   },
   "dependencies": {
