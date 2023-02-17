@@ -5,18 +5,19 @@ export interface Props {
 }
 
 let ver = '5.3'
-let data;
-try {
- data = await fetch('https://api.github.com/repos/twbs/bootstrap/releases/latest').then(response =>  response.json())
-} catch (e) {
-  console.log('bs version fetch failed');
-}
-if (data) {
-  const bsVer = data.tag_name
-  const regex = new RegExp(/[0-9]\.[0-9]+/);
-  const array = regex.exec(bsVer)
-  ver = array[0];
-}
+// let data;
+// try {
+//  data = await fetch('https://api.github.com/repos/twbs/bootstrap/releases/latest').then(response =>  response.json())
+// } catch (e) {
+//   console.log('bs version fetch failed');
+// }
+// if (data) {
+//   const bsVer = data.tag_name
+//   const regex = new RegExp(/[0-9]\.[0-9]+/);
+//   const array = regex.exec(bsVer)
+//   console.log(array)
+//   ver = '1.1'
+// }
 
 const url = `https://getbootstrap.com/docs/${ver}/${slug}/`
 
