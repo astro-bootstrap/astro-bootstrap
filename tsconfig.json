@@ -1,3 +1,16 @@
 {
-  "extends": "astro/tsconfigs/strict",
+  "include": ["src"],
+  "compilerOptions": {
+    "allowJs": false,
+    "module": "ES2020",
+    "outDir": "./dist",
+    "target": "ES2020",
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "strict": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  }
 }
