@@ -15,7 +15,7 @@ export default defineConfig({
   vite: {
     build: {
       rollupOptions: {
-        external: ['nanoid',],
+        external: ['nanoid', 'clsx'],
       }
     }
   }
