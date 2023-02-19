@@ -15,7 +15,7 @@ export default defineConfig({
   vite: {
     build: {
       rollupOptions: {
-        external: ['nanoid', 'clsx', 'marked', 'title-case'],
+        external: ['nanoid', 'clsx', 'marked', 'title-case', 'bootstrap'],
       }
     }
   }
