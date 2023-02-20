@@ -6,7 +6,14 @@ export interface Props {
   fade?: boolean;
 }
 ---
-<div class:list={['modal', className, {fade}]} id={id} tabindex="-1" aria-labelledby={`${id}-label`} aria-hidden="true">
+
+<div
+  class:list={['modal', className, { fade }]}
+  {id}
+  tabindex="-1"
+  aria-labelledby={`${id}-label`}
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <slot />
@@ -14,5 +21,5 @@ export interface Props {
   </div>
 </div>
 <script>
-  import 'bootstrap/js/dist/modal';
+  // import { Modal } from 'bootstrap/dist/js/bootstrap.esm.js';
 </script>
