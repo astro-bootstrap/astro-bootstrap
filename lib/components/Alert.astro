@@ -17,12 +17,19 @@ export interface Props {
   role="alert"
 >
   <div><slot /></div>
-  { dismissable && <button
-    type="button"
-    class="btn-close"
-    data-bs-dismiss="alert"
-    aria-label="Close"></button>}
+  {
+    dismissable && (
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      />
+    )
+  }
 </div>
 <script>
-  import 'bootstrap/js/dist/alert';
+  import { Alert } from 'bootstrap/dist/js/bootstrap.esm.js';
+  const alertList = document.querySelectorAll('.alert')
+  const alerts = [...alertList].map(element => new Alert(element))
 </script>

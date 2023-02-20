@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@types/bootstrap': ^5.2.6
   '@types/dompurify': ^2.4.0
   '@types/marked': ^4.0.8
   '@typescript-eslint/eslint-plugin': ^5.51.0
@@ -20,6 +21,7 @@ specifiers:
   title-case: ^3.0.3
 
 dependencies:
+  '@types/bootstrap': 5.2.6
   astro: 2.0.10
   bootstrap: 5.2.3_@popperjs+core@2.11.6
   clsx: 1.2.1
@@ -709,6 +711,12 @@ packages:
     resolution: {integrity: sha512-1kbcJ40lLB7MHsj39U4Sh1uTd2E7rLEa79kmDpI6cy+XiXsteB3POdQomoq4FxszMrO3ZYchkhYJw7A2862b3w==}
     dependencies:
       '@babel/types': 7.20.7
+    dev: false
+
+  /@types/bootstrap/5.2.6:
+    resolution: {integrity: sha512-BlAc3YATdasbHoxMoBWODrSF6qwQO/E9X8wVxCCSa6rWjnaZfpkr2N6pUMCY6jj2+wf0muUtLySbvU9etX6YqA==}
+    dependencies:
+      '@popperjs/core': 2.11.6
     dev: false
 
   /@types/debug/4.1.7:

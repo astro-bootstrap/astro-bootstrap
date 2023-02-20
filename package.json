@@ -47,10 +47,11 @@
     "prettier-plugin-astro": "^0.8.0"
   },
   "peerDependencies": {
-    "astro": "1.x",
+    "astro": ">=1.x",
     "bootstrap": "5.x"
   },
   "dependencies": {
+    "@types/bootstrap": "^5.2.6",
     "astro": "^2.0.10",
     "clsx": "^1.2.1",
     "dompurify": "^2.4.3",

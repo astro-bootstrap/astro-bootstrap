@@ -55,5 +55,7 @@ const id = userId || `accordion-${nanoid(8)}`;
   </slot>
 </div>
 <script>
-  import 'bootstrap/js/dist/collapse.js';
+  import Collapse from 'bootstrap/dist/js/bootstrap.esm';
+  const collapseElementList = document.querySelectorAll('.collapse')
+  const collapseList = [...collapseElementList].map(collapseEl => new Collapse(collapseEl))
 </script>
