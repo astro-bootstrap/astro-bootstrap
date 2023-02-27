@@ -4,6 +4,24 @@ export interface Props {
   class?: string;
 }
 ---
+
 <nav class:list={['navbar', className]} {...props}>
   <slot />
 </nav>
+<script>
+  import Collapse from 'bootstrap/js/dist/collapse';
+  const collapseElementList = document.querySelectorAll(
+    '.astro-bs.navbar-collapse',
+  );
+  collapseElementList.forEach((collapseEl) => {
+    const collapse = new Collapse(collapseEl, { toggle: false });
+    const parent = collapseEl.parentNode;
+    if (parent) {
+      const toggler = parent.querySelector('.astro-bs.navbar-toggler');
+      toggler &&
+        toggler.addEventListener('click', function () {
+          collapse.toggle();
+        });
+    }
+  });
+</script>

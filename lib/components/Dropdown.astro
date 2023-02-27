@@ -13,13 +13,6 @@ const Tag = nav ? 'li' : 'div';
 </Tag>
 <script>
   import Dropdown from 'bootstrap/js/dist/dropdown';
-  const dropdownElementList = document.querySelectorAll(
-    '.astro-bs.dropdown-toggle',
-  );
- dropdownElementList.forEach((dropdownToggleEl) => {
-    const dropdown = new Dropdown(dropdownToggleEl);
-    dropdownToggleEl.addEventListener('click', function() {
-      dropdown.toggle();
-    })
-  });
+  const toggleElList = document.querySelectorAll('.astro-bs.dropdown-toggle');
+  toggleElList.forEach((toggleEl) => new Dropdown(toggleEl));
 </script>

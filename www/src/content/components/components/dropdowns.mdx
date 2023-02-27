@@ -8,11 +8,17 @@ import Example from '@components/Example.astro';
 
 ## Examples
 
-### Basic
+### Button
 
-You can keep your code dry by generating dropdown items with `map`. When a dropdown is used inside a `<Nav>` component, make sure you enable the `nav` option.
+You can keep your code dry by generating dropdown items with `map`. 
 
-<Example component="Dropdowns" variant="Basic" />
+<Example component="Dropdowns" variant="Button" />
+
+### Link
+
+Semanitcaly this option should only be used within the context of a navbar. You can keep your code dry by generating dropdown items with `map`. When a dropdown is used inside a `<Nav>` component, make sure you enable the `nav` option. (see the navbar component)
+
+<Example component="Dropdowns" variant="Link" />
 
 ## API
 

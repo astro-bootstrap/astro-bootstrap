@@ -1,0 +1,29 @@
+---
+import { Dropdown, Button } from 'astro-bootstrap';
+import type { DropdownItemType } from 'astro-bootstrap';
+const items: DropdownItemType[] = [
+  {
+    text: 'Action',
+    href: '#',
+  },
+  {
+    text: 'Another action',
+    href: '#',
+  },
+  {
+    text: 'Something else here',
+    href: '#',
+  },
+];
+---
+
+<Dropdown>
+  <Dropdown.Header>Dropdown button</Dropdown.Header>
+  <Dropdown.Menu>
+    {
+      items.map((item) => (
+        <Dropdown.Item href={item.href}>{item.text}</Dropdown.Item>
+      ))
+    }
+  </Dropdown.Menu>
+</Dropdown>
