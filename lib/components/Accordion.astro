@@ -37,7 +37,12 @@ const id = userId || `accordion-${nanoid(8)}`;
       data &&
         data.map((item, index: number) => (
           <Accordion.Item class={itemClass}>
-            <Accordion.Header parent={id} {index} class={headerClass} show={item.show}>
+            <Accordion.Header
+              parent={id}
+              {index}
+              class={headerClass}
+              show={item.show}
+            >
               <Fragment set:html={item.header} />
             </Accordion.Header>
             <Accordion.Body
@@ -55,11 +60,9 @@ const id = userId || `accordion-${nanoid(8)}`;
   </slot>
 </div>
 <script>
- 
-  const collapseElementList = document.querySelectorAll('.collapse')
-  if (collapseElementList) {
-    const Collapse = (await import(`bootstrap/js/dist/collapse`)).default;
-    const collapseList = [...collapseElementList].map(collapseEl => new Collapse(collapseEl))
-  }
-
+  import Collapse from 'bootstrap/js/dist/collapse';
+  const collapseElementList = document.querySelectorAll('.astro-bs.collapse');
+  collapseElementList.forEach(
+    (collapseEl) => new Collapse(collapseEl, {toggle: false}),
+  );
 </script>
