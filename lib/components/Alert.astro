@@ -11,6 +11,7 @@ export interface Props {
   class:list={[
     'alert',
     `alert-${variant}`,
+    'astro-bs',
     className,
     { 'alert-dismissible': dismissable },
   ]}
@@ -29,7 +30,7 @@ export interface Props {
   }
 </div>
 <script>
-  import { Alert } from 'bootstrap/dist/js/bootstrap.esm.js';
-  const alertList = document.querySelectorAll('.alert')
-  const alerts = [...alertList].map(element => new Alert(element))
+  import Alert from 'bootstrap/js/dist/alert';
+  const alertList = document.querySelectorAll('.alert.astro-bs')
+  alertList.forEach(element => new Alert(element))
 </script>
