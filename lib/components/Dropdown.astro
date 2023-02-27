@@ -13,6 +13,9 @@ const Tag = nav ? 'li' : 'div';
 </Tag>
 <script>
   import Dropdown from 'bootstrap/js/dist/dropdown';
-  const toggleElList = document.querySelectorAll('.astro-bs.dropdown-toggle');
-  toggleElList.forEach((toggleEl) => new Dropdown(toggleEl));
+  const toggleList = document.querySelectorAll('.astro-bs.dropdown-toggle');
+  toggleList.forEach((toggle) => {
+    /* eslint-disable-next-line no-unused-vars */
+    const dropdown = new Dropdown(toggle)
+    });
 </script>
