@@ -25,5 +25,6 @@ export interface Props {
 <script>
   import Carousel from 'bootstrap/js/dist/carousel';
   /* eslint-disable-next-line no-unused-vars */
-  const carousel = new Carousel('.astro-bs.carousel')
+  const carouselList = document.querySelectorAll('.astro-bs.carousel');
+  carouselList.forEach((carousel) => new Carousel(carousel));
 </script>
