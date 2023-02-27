@@ -1,16 +1,25 @@
 ---
-const {class: className, nav = false } = Astro.props;
+const { class: className, nav = false } = Astro.props;
 
 export interface Props {
   class?: string;
   nav?: boolean;
 }
-const Tag = nav ? 'li' : 'div'
+const Tag = nav ? 'li' : 'div';
 ---
 
-<Tag class:list={['dropdown', className, {'nav-item': nav}]}>
+<Tag class:list={['dropdown', className, { 'nav-item': nav }]}>
   <slot />
 </Tag>
 <script>
-  import 'bootstrap/js/dist/dropdown';
+  import Dropdown from 'bootstrap/js/dist/dropdown';
+  const dropdownElementList = document.querySelectorAll(
+    '.astro-bs.dropdown-toggle',
+  );
+ dropdownElementList.forEach((dropdownToggleEl) => {
+    const dropdown = new Dropdown(dropdownToggleEl);
+    dropdownToggleEl.addEventListener('click', function() {
+      dropdown.toggle();
+    })
+  });
 </script>
