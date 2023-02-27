@@ -1,20 +1,37 @@
 ---
 // Template example only
-// .collapse-js has been used to avoid conflict with the above data-bs-target
-// normally you can just use .collapse and remove the .collpase-js class
+const target = 'collapseExample-js';
 ---
-<p>
-  <button class="btn btn-primary" type="button" aria-expanded="false" aria-controls="collapseExample">
-    Button with JS
-  </button>
-</p>
-<div class="collapse collapse-js" id="collapseExample">
-  <div class="card card-body ">
-    Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+
+  <p>
+    <button
+      class="btn btn-primary collapse-btn"
+      type="button"
+      aria-expanded="false"
+      aria-controls={target}
+
+    >
+      Button with data-bs-target
+    </button>
+  </p>
+  <div class="collapse collapse-js" id={target}>
+    <div class="card card-body">
+      Some placeholder content for the collapse component. This panel is hidden
+      by default but revealed when the user activates the relevant trigger.
+    </div>
   </div>
-</div>
 <script>
-  import Collapse from 'bootstrap/js/dist/collapse'
-  const collapseElementList = document.querySelectorAll('.collapse-js')
-  const collapseList = [...collapseElementList].map(collapseEl => new Collapse(collapseEl, {toggle: false} )) 
+  import Collapse from 'bootstrap/js/dist/collapse';
+  const collapseElementList = document.querySelectorAll('.collapse-js');
+  collapseElementList.forEach((collapseEl) => {
+    const collapse = new Collapse(collapseEl, { toggle: false,});
+    const parent = collapseEl.parentNode;
+    if (parent) {
+      const button = parent.querySelector('.collapse-btn');
+      button &&
+        button.addEventListener('click', function () {
+          collapse.toggle();
+        });
+    }
+  });
 </script>

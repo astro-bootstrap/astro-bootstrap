@@ -47,10 +47,10 @@ export type { Props as DropdownLinkType } from './lib/components/DropdownLink.as
 export type { Props as DropdownMenuType } from './lib/components/DropdownMenu.astro';
 
 // Modal
-export { default as Modal } from './lib/components/Modal';
-export type { Props as ModalBodyType } from './lib/components/ModalBody.astro';
-export type { Props as ModalFooterType } from './lib/components/ModalFooter.astro';
-export type { Props as ModalHeaderType } from './lib/components/ModalHeader.astro';
+// export { default as Modal } from './lib/components/Modal';
+// export type { Props as ModalBodyType } from './lib/components/ModalBody.astro';
+// export type { Props as ModalFooterType } from './lib/components/ModalFooter.astro';
+// export type { Props as ModalHeaderType } from './lib/components/ModalHeader.astro';
 
 
 // Nav
@@ -90,10 +90,10 @@ export type { Props as TabPaneType } from './lib/components/TabPane.astro';
 
 
 // Toasts
-export { default as Toast } from './lib/components/Toast';
+// export { default as Toast } from './lib/components/Toast';
 
 // Tooltip
-export {default as Tooltip} from './lib/components/Tooltip.astro';
+// export {default as Tooltip} from './lib/components/Tooltip.astro';
 
 
 // Utils

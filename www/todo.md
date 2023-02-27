@@ -1,5 +1,7 @@
 active link not working in navbar
 
+add activelink and disabled to dropdown
+
 add page astro prop type to createPagination.ts to check for correct input
 
 use active link for side menu on left

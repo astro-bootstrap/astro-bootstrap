@@ -1,5 +1,23 @@
 ---
-const {
+const { title, placement, animation, delay, html, trigger, customClass } =
+  Astro.props;
+export interface Props {
+  title: string;
+  placement?: 'top' | 'bottom' | 'left' | 'right' | 'auto';
+  animation?: boolean;
+  delay?: number;
+  html?: boolean;
+  trigger?:
+    | 'click'
+    | 'hover'
+    | 'focus'
+    | 'click hover'
+    | 'click focus'
+    | 'click hover focus'
+    | 'hover focus';
+  customClass?: string;
+}
+const config = {
   title,
   placement,
   animation,
@@ -7,36 +25,29 @@ const {
   html,
   trigger,
   customClass,
-} = Astro.props;
-export interface Props {
-  title: string;
-  placement?: 'top' | 'bottom' | 'left' | 'right' | 'auto';
-  animation?: boolean;
-  delay?: number;
-  html?: boolean;
-  trigger?: 'click' | 'hover' | 'focus' | 'click hover' | 'click focus' | 'click hover focus' | 'hover focus';
-  customClass?: string;
-}
-const config = { title, placement, animation, delay, html, trigger, customClass}
+};
 ---
 
-<tooltip-wrapper>
-  <span
-    data-bs-toggle="tooltip"
-    data-bs-config={JSON.stringify(config)}
-  >
-    <slot />
-  </span>
-</tooltip-wrapper>
+<span
+  data-bs-toggle="tooltip"
+  data-bs-config={JSON.stringify(config)}
+  class="astro-bs"
+>
+  <slot />
+</span>
 
 <script>
   import Tooltip from 'bootstrap/js/dist/tooltip';
-  class AstroBootstrapTooltip extends HTMLElement {
-    constructor() {
-      super();
-      const span = this.querySelector('span');
-      new Tooltip(span);
-    }
-  }
-  customElements.define('tooltip-wrapper', AstroBootstrapTooltip);
+  // class AstroBootstrapTooltip extends HTMLElement {
+  //   constructor() {
+  //     super();
+  //     const span = this.querySelector('span');
+  //     span && new Tooltip(span);
+  //   }
+  // }
+  // customElements.define('tooltip-wrapper', AstroBootstrapTooltip);
+  const tooltipTriggerList = document.querySelectorAll(
+    '[data-bs-toggle="tooltip"]',
+  );
+  tooltipTriggerList.forEach((tooltip) => new Tooltip(tooltip));
 </script>
