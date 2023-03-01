@@ -22,13 +22,13 @@ e.g.
 
 ```bash
 #npm
-npm install bootstrap @types/bootstrap
+npm install bootstrap @popperjs/core @types/bootstrap
 
 # yarn
-yarn add bootstrap @types/bootstrap
+yarn add bootstrap @popperjs/core @types/bootstrap
 
 # pnpm
-pnpm add bootstrap @types/bootstrap
+pnpm add bootstrap @popperjs/core @types/bootstrap
 ```
 
 **Step 3 - Ensure that the bootstrap CSS (your your modified version of it) is being loaded**
