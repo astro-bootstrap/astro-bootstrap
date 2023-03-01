@@ -8,7 +8,7 @@
     "bootstrap",
     "components"
   ],
-  "version": "0.5.11",
+  "version": "0.5.12",
   "type": "module",
   "exports": {
     ".": "./index.ts"
