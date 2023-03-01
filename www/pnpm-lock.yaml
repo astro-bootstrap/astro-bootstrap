@@ -12,7 +12,7 @@ importers:
       astro: ^2.0.15
       astro-bootstrap: workspace:*
       astro-icon: ^0.8.0
-      bootstrap: ^5.2.3
+      bootstrap: 5.3.0-alpha1
       clipboard: ^2.0.11
       eslint: ^8.35.0
       eslint-config-prettier: ^8.6.0
@@ -29,7 +29,7 @@ importers:
       astro: 2.0.15_sass@1.58.3
       astro-bootstrap: link:..
       astro-icon: 0.8.0
-      bootstrap: 5.2.3_@popperjs+core@2.11.6
+      bootstrap: 5.3.0-alpha1_@popperjs+core@2.11.6
       clipboard: 2.0.11
       marked: 4.2.12
       sass: 1.58.3
@@ -1213,8 +1213,8 @@ packages:
     resolution: {integrity: sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==}
     dev: false
 
-  /bootstrap/5.2.3_@popperjs+core@2.11.6:
-    resolution: {integrity: sha512-cEKPM+fwb3cT8NzQZYEu4HilJ3anCrWqh3CHAok1p9jXqMPsPTBhU25fBckEJHJ/p+tTxTFTsFQGM+gaHpi3QQ==}
+  /bootstrap/5.3.0-alpha1_@popperjs+core@2.11.6:
+    resolution: {integrity: sha512-ABZpKK4ObS3kKlIqH+ZVDqoy5t/bhFG0oHTAzByUdon7YIom0lpCeTqRniDzJmbtcWkNe800VVPBiJgxSYTYew==}
     peerDependencies:
       '@popperjs/core': ^2.11.6
     dependencies:
