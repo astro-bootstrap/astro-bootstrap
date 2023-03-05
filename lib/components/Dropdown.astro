@@ -12,10 +12,23 @@ const Tag = nav ? 'li' : 'div';
   <slot />
 </Tag>
 <script>
+  // the default bs behaviour is broken so this is a hack to get it working
   import Dropdown from 'bootstrap/js/dist/dropdown';
   const toggleList = document.querySelectorAll('.astro-bs.dropdown-toggle');
   toggleList.forEach((toggle) => {
-    /* eslint-disable-next-line no-unused-vars */
-    const dropdown = new Dropdown(toggle)
+    const dropdown = new Dropdown(toggle);
+    // set attribute to keep an eye on the toggle state
+    toggle.setAttribute('astro-bs-expanded', 'false');
+    // toggle the menu open/closed and update the attribute
+    toggle.addEventListener('click', function () {
+      const expanded = toggle.getAttribute('astro-bs-expanded');
+      if (expanded === 'true') {
+        dropdown.hide();
+        toggle.setAttribute('astro-bs-expanded', 'false');
+      } else {
+        dropdown.show();
+        toggle.setAttribute('astro-bs-expanded', 'true');
+      }
     });
+  });
 </script>
