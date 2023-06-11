@@ -8,7 +8,7 @@
     "bootstrap",
     "components"
   ],
-  "version": "0.5.10",
+  "version": "0.5.14",
   "type": "module",
   "exports": {
     ".": "./index.ts"
@@ -47,7 +47,7 @@
     "prettier-plugin-astro": "^0.8.0"
   },
   "peerDependencies": {
-    "astro": "1.x",
+    "astro": "2.x",
     "bootstrap": "5.x"
   },
   "dependencies": {
