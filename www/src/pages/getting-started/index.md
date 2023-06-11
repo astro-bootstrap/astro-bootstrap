@@ -2,8 +2,20 @@
 title: Getting Started
 layout: '@layouts/Default.astro'
 ---
+**Step 1 - Create a new astro project**
 
-**Step 1 - Install with the package manager of your choice:**
+```bash
+# create a new project with npm
+npm create astro@latest
+
+# create a new project with yarn
+yarn create astro
+
+# create a new project with pnpm
+pnpm create astro@latest
+```
+
+**Step 2 - Install with the package manager of your choice:**
 
 ```bash
 #npm
@@ -16,22 +28,22 @@ yarn add astro-bootstrap
 pnpm add astro-bootstrap
 ```
 
-**Step 2 - Ensure that you have bootstrap v5.x installed, along with type definitions (it's a peer dependency, so install the version that you want)**
+**Step 3 - Ensure that you have bootstrap v5.x installed, along with type definitions (it's a peer dependency, so install the version that you want)**
 
 e.g.
 
 ```bash
 #npm
-npm install bootstrap @types/bootstrap
+npm install bootstrap @popperjs/core @types/bootstrap
 
 # yarn
-yarn add bootstrap @types/bootstrap
+yarn add bootstrap @popperjs/core @types/bootstrap
 
 # pnpm
-pnpm add bootstrap @types/bootstrap
+pnpm add bootstrap @popperjs/core @types/bootstrap
 ```
 
-**Step 3 - Ensure that the bootstrap CSS (your your modified version of it) is being loaded**
+**Step 4 - Ensure that the bootstrap CSS (your your modified version of it) is being loaded**
 
 ```astro
 ---
@@ -40,30 +52,38 @@ import 'bootstrap/dist/css/bootstrap.css'
 ---
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <main>
-    <slot />
-  </main>
-</body>
-</html>
+.....
 ```
 
-**Step 5 - Import and use an Astro-Bootstrap component**
+**Step 6 - Import and use an Astro-Bootstrap component**
 
 e.g.
 
 ```astro
 ---
-import Layout from '../layouts/Layout.astro';
-import { Breadcrumbs } from 'astro-bootstrap';
+// /src/layouts/Layout.astro
+export interface Props {
+	title: string;
+}
+const { title } = Astro.props;
+
+import 'bootstrap/dist/css/bootstrap.css'
+import { Breadcrumb } from 'astro-bootstrap';
 ---
-<BaseLayout>  
-  <Breadcrumbs />
-</BaseLayout>
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description">
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+    <Breadcrumb />
+		<slot />
+	</body>
+</html>
 ```
