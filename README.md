@@ -11,8 +11,20 @@ For docs, [view the docs website](http://astro-bootstrap.github.io)
 
 ## Quick Start
 
+**Step 1 - Create a new astro project**
 
-**Step 1 - Install with the package manager of your choice:**
+```bash
+# create a new project with npm
+npm create astro@latest
+
+# create a new project with yarn
+yarn create astro
+
+# create a new project with pnpm
+pnpm create astro@latest
+```
+
+**Step 2 - Install with the package manager of your choice:**
 
 ```bash
 #npm
@@ -25,7 +37,7 @@ yarn add astro-bootstrap
 pnpm add astro-bootstrap
 ```
 
-**Step 2 - Ensure that you have bootstrap v5.x installed, along with type definitions (it's a peer dependency, so install the version that you want)**
+**Step 3 - Ensure that you have bootstrap v5.x installed, along with type definitions (it's a peer dependency, so install the version that you want)**
 
 e.g.
 
@@ -40,7 +52,7 @@ yarn add bootstrap @popperjs/core @types/bootstrap
 pnpm add bootstrap @popperjs/core @types/bootstrap
 ```
 
-**Step 3 - Ensure that the bootstrap CSS (your your modified version of it) is being loaded**
+**Step 4 - Ensure that the bootstrap CSS (your your modified version of it) is being loaded**
 
 ```astro
 ---
@@ -63,7 +75,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 </html>
 ```
 
-**Step 5 - Import and use an Astro-Bootstrap component**
+**Step 6 - Import and use an Astro-Bootstrap component**
 
 e.g.
 
