@@ -1,13 +1,49 @@
 ---
-const { id, class: className, fade } = Astro.props;
+const {
+  id,
+  class: className,
+  fade,
+  scrollable,
+  centered,
+  size,
+  fullscreen,
+} = Astro.props;
+
 export interface Props {
   id?: string;
   class?: string;
   fade?: boolean;
+  scrollable?: boolean;
+  centered?: boolean;
+  size?: 'sm' | 'lg' | 'xl';
+  fullscreen?: 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | boolean;
 }
 ---
-<div class:list={['modal', className, {fade}]} id={id} tabindex="-1" aria-labelledby={`${id}-label`} aria-hidden="true">
-  <div class="modal-dialog">
+
+<div
+  class:list={['modal', className, { fade }]}
+  {id}
+  tabindex="-1"
+  aria-labelledby={`${id}-label`}
+  aria-hidden="true"
+>
+  <div
+    class:list={[
+      'modal-dialog',
+      {
+        'modal-dialog-scrollable': scrollable,
+        'modal-dialog-centered': centered,
+        'modal-sm': size === 'sm',
+        'modal-lg': size === 'lg',
+        'modal-xl': size === 'xl',
+      },
+      fullscreen === true
+        ? 'modal-fullscreen'
+        : typeof fullscreen === 'string'
+        ? `modal-fullscreen-${fullscreen}`
+        : '',
+    ]}
+  >
     <div class="modal-content">
       <slot />
     </div>
