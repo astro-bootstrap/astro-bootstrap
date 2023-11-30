@@ -1,0 +1,10 @@
+---
+export interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<div class:list={['offcanvas-body', className]}>
+  <slot />
+</div>

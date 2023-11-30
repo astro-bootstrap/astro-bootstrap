@@ -52,6 +52,10 @@ export type { Props as ModalBodyType } from './lib/components/ModalBody.astro';
 export type { Props as ModalFooterType } from './lib/components/ModalFooter.astro';
 export type { Props as ModalHeaderType } from './lib/components/ModalHeader.astro';
 
+// Offcanvas
+export { default as Offcanvas } from './lib/components/Offcanvas';
+export type { Props as OffcanvasBodyType } from './lib/components/OffcanvasBody.astro';
+export type { Props as OffcanvasHeaderType } from './lib/components/OffcanvasHeader.astro';
 
 // Nav
 export { default as Nav } from './lib/components/Nav';
