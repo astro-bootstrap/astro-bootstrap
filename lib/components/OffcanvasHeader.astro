@@ -1,0 +1,18 @@
+---
+export interface Props {
+  parent?: string;
+  h?: number;
+  class?: string;
+}
+const { parent: id, h = 5, class: className } = Astro.props;
+const Heading = `h${h}`;
+---
+
+<div class:list={['offcanvas-header', className]}>
+  <Heading class="offcanvas-title" id={`${id}Label`}><slot /></Heading>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="offcanvas"
+    aria-label="Close"></button>
+</div>

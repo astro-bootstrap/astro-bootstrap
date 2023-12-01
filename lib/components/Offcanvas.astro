@@ -1,0 +1,21 @@
+---
+export interface Props {
+  id?: string;
+  class?: string;
+  placement?: 'start' | 'end' | 'top' | 'bottom';
+}
+const { id, class: className, placement = 'start' } = Astro.props;
+---
+
+<div
+  class:list={['offcanvas', `offcanvas-${placement}`, className]}
+  tabindex="-1"
+  {id}
+  aria-labelledby={`${id}-label`}
+>
+  <slot />
+</div>
+
+<script>
+  import 'bootstrap/js/dist/offcanvas';
+</script>
