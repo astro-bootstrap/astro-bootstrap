@@ -52,7 +52,7 @@ yarn add bootstrap @popperjs/core @types/bootstrap
 pnpm add bootstrap @popperjs/core @types/bootstrap
 ```
 
-**Step 4 - Ensure that the bootstrap CSS (your your modified version of it) is being loaded**
+**Step 4 - Ensure that the bootstrap CSS (your modified version of it) is being loaded**
 
 ```astro
 ---
