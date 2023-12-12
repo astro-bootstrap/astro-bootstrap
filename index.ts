@@ -20,6 +20,10 @@ export type { Props as AlertHeadingType } from './lib/components/AlertHeading.as
 export type { Props as AlertLinkType } from './lib/components/AlertLink.astro';
 
 // Breadcrumb
+export { default as Badge } from './lib/components/Badge';
+export type { Props as BadgeProps } from './lib/components/Badge';
+
+// Breadcrumb
 export { default as Breadcrumb } from './lib/components/Breadcrumb';
 export type { Props as BreadcrumbType } from './lib/components/Breadcrumb.astro';
 export type { Props as BreadcrumbItemType } from './lib/components/BreadcrumbItem.astro';
