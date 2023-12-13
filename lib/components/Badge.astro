@@ -1,0 +1,30 @@
+---
+const {
+  class: className,
+  variant = 'primary',
+  colorVariant,
+  bgVariant,
+  pill,
+} = Astro.props;
+
+export interface Props {
+  class?: string;
+  variant?: string | false;
+  colorVariant?: string;
+  bgVariant?: string;
+  pill?: boolean;
+}
+---
+
+<span
+  class:list={[
+    'badge',
+    variant ? `text-bg-${variant}` : '',
+    bgVariant ? `bg-${bgVariant}` : '',
+    colorVariant ? `text-${colorVariant}` : '',
+    { 'rounded-pill': pill },
+    className,
+  ]}
+>
+  <slot />
+</span>
