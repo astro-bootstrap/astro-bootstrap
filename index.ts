@@ -4,7 +4,6 @@
  * import { ComponentName } from 'astro-bootstrap';
  */
 
-
 // Accordion
 export { default as Accordion } from './lib/components/Accordion';
 export type { Props as AccordionType } from './lib/components/Accordion.astro';
@@ -21,7 +20,7 @@ export type { Props as AlertLinkType } from './lib/components/AlertLink.astro';
 
 // Breadcrumb
 export { default as Badge } from './lib/components/Badge';
-export type { Props as BadgeProps } from './lib/components/Badge';
+export type { Props as BadgeType } from './lib/components/Badge.astro';
 
 // Breadcrumb
 export { default as Breadcrumb } from './lib/components/Breadcrumb';
@@ -35,19 +34,20 @@ export type { Props as ButtonType } from './lib/components/Button.astro';
 // Carousel
 export { default as Carousel } from './lib/components/Carousel';
 export type { CarouselSlideType } from './lib/components/CarouselSlide';
-export type { Prop as CarouselType } from './lib/components/Carousel.astro';
-export type { Prop as CarouselControlsType } from './lib/components/CarouselControls.astro';
-export type { Prop as CarouselControlType } from './lib/components/CarouselControl.astro';
-export type { Prop as CarouselIndicatorType } from './lib/components/CarouselIndicator.astro';
-export type { Prop as CarouselIndicatorsType } from './lib/components/CarouselIndicators.astro';
-export type { Prop as CarouselItemType } from './lib/components/CarouselItem.astro';
+export type { Props as CarouselType } from './lib/components/Carousel.astro';
+export type { Props as CarouselControlsType } from './lib/components/CarouselControls.astro';
+export type { Props as CarouselControlType } from './lib/components/CarouselControl.astro';
+export type { Props as CarouselIndicatorType } from './lib/components/CarouselIndicator.astro';
+export type { Props as CarouselIndicatorsType } from './lib/components/CarouselIndicators.astro';
+export type { Props as CarouselItemType } from './lib/components/CarouselItem.astro';
+export type { Props as CarouselInnerType } from './lib/components/CarouselInner.astro';
 
 // Dropdowns
 export { default as Dropdown } from './lib/components/Dropdown';
 export type { Props as DropdownType } from './lib/components/Dropdown.astro';
 export type { Props as DropdownDividerType } from './lib/components/DropdownDivider.astro';
 export type { Props as DropdownItemType } from './lib/components/DropdownItem.astro';
-export type { Props as DropdownLinkType } from './lib/components/DropdownLink.astro';
+export type { Props as DropdownHeaderType } from './lib/components/DropdownHeader.astro';
 export type { Props as DropdownMenuType } from './lib/components/DropdownMenu.astro';
 
 // Modal
@@ -63,10 +63,11 @@ export type { Props as OffcanvasHeaderType } from './lib/components/OffcanvasHea
 
 // Nav
 export { default as Nav } from './lib/components/Nav';
-export type { Props as NavType } from './lib/components/NavDefault.astro';
+export type { Props as NavType } from './lib/components/Nav.astro';
 export type { Props as NavItemType } from './lib/components/NavItem.astro';
+export type { Props as NavLinkType } from './lib/components/NavLink.astro';
 
-// Navbar 
+// Navbar
 export { default as Navbar } from './lib/components/Navbar';
 export type { Props as NavbarCollapseType } from './lib/components/NavbarCollapse.astro';
 export type { Props as NavbarItemsType } from './lib/components/NavbarItems.astro';
@@ -75,37 +76,32 @@ export type { NavbarItemType } from './lib/components/NavbarItems.astro';
 export type { Props as NavbarNavType } from './lib/components/NavbarNav.astro';
 export type { Props as NavbarTogglerType } from './lib/components/NavbarToggler.astro';
 
-
-
 // Pagination
 export { default as Pagination } from './lib/components/Pagination';
-export type { Props as PaginationType } from './lib/components/Pagination';
-export type { Props as PaginationItemType } from './lib/components/PaginationItem';
-export type { Props as PaginationLinkType } from './lib/components/PaginationLink';
-
+export type { Props as PaginationType } from './lib/components/Pagination.astro';
+export type { Props as PaginationItemType } from './lib/components/PaginationItem.astro';
+export type { Props as PaginationLinkType } from './lib/components/PaginationLink.astro';
 
 // Fix up type exports from here on
 
 // Tabs
-export { default as Tabs} from './lib/components/Tabs.astro';
+export { default as Tabs } from './lib/components/Tabs.astro';
 export type { TabsType } from './lib/components/Tabs.astro';
+
 // Tab
 export { default as Tab } from './lib/components/Tab';
-export type { Props as TabItemType } from './lib/components/TabsItem.astro';
-export type { Props as TabListType } from './lib/components/TabsList.astro';
+export type { Props as TabItemType } from './lib/components/TabItem.astro';
+export type { Props as TabListType } from './lib/components/TabList.astro';
 export type { Props as TabContentType } from './lib/components/TabContent.astro';
 export type { Props as TabPaneType } from './lib/components/TabPane.astro';
-
 
 // Toasts
 export { default as Toast } from './lib/components/Toast';
 
 // Tooltip
-export {default as Tooltip} from './lib/components/Tooltip.astro';
-
+export { default as Tooltip } from './lib/components/Tooltip.astro';
 
 // Utils
-//
 export { default as ActiveLink } from './lib/utils/ActiveLink.astro';
 export { default as VanishLink } from './lib/utils/VanishLink.astro';
 export { default as Marked } from './lib/utils/Marked.astro';
