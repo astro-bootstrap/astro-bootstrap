@@ -1,5 +1,5 @@
 ---
-import { Icon } from 'astro-icon';
+import { Icon } from 'astro-icon/components';
 import { Navbar, Nav } from 'astro-bootstrap';
 import { SITE_TITLE, MAIN_MENU } from '../config';
 const navId = 'siteNav';
@@ -24,7 +24,7 @@ import DarkModeToggle from './DarkModeToggle.astro';
             target="_blank"
             rel="noopener"
           >
-            <Icon name="bi-github" class="navbar-nav-svg" />
+            <Icon name="bi:github" class="navbar-nav-svg" />
             <small class="d-lg-none ms-2">GitHub</small>
           </a>
         </li>
