@@ -47,7 +47,7 @@
     "prettier-plugin-astro": "^0.8.0"
   },
   "peerDependencies": {
-    "astro": "2.x",
+    "astro": "4.x",
     "bootstrap": "5.x"
   },
   "dependencies": {
