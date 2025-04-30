@@ -31,9 +31,7 @@ export interface ApiProps {
             </td>
             <td>{prop.type}</td>
             <td>
-              {prop.default && (
-                <InlineCode code={prop.default} />
-              )}
+              {prop.default && ( <InlineCode code={prop.default} />)}
             </td>
             <td>
               <Marked inline>{prop.description}</Marked>
