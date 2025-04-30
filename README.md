@@ -6,7 +6,7 @@
 
 Bootstrap components crafted for use with Astro
 
-For docs, [view the docs website](http://astro-bootstrap.github.io)
+For docs, [view the docs website](http://astro-bootstrap.netlify.app)
 
 
 ## Quick Start
